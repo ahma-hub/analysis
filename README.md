@@ -101,9 +101,10 @@ the script ``run.sh``:
 The results are stored in the file ```evaluation_log_DL.txt```.
 
 ## Preprocessings
-In case you are measing raw traces from the oscilloscope by yourself:
+In case you are measuring raw traces from the oscilloscope by yourself:
 Once the raw traces have been acquired from oscilloscope and before beeing able to run the evualuation 
 some preprocessings are needed. 
+
 ### list_manipulation.py
 ```
 usage: list_manipulation.py [-h] 
