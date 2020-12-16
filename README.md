@@ -9,8 +9,8 @@ electromagnetic emanation*".
 .
 ├── README.md
 ├── requirements.txt
-│── run_dl.sh                  #> script to run the DL for all scenarii
-│── run_ml.sh                  #> script to run the ML for all scenarii
+│── run_dl.sh                  #> script to run the DL for all scenarios
+│── run_ml.sh                  #> script to run the ML for all scenarios
 │── update_lists.sh            #> script to update the location of the traces 
 │                              # in the lists 
 │
@@ -36,17 +36,16 @@ electromagnetic emanation*".
 │   │── files_lists_tagmap=type_classification.npy   
 │
 │
-├── pre-processings            #> codes use to preprocess the raw traces to be 
-│   │                          # able to run the evaluations
-│   │── list_manipulation.py   #> split traces in {learning, testing, validating} 
-│   │						   # sets 
+├── pre-processings            #> scripts needed to preprocess the raw traces  
+│   │                          #  to run evaluations
+│   │── list_manipulation.py   #> split traces in {learning, testing, validating} sets 
 │   │── accumulator.py         #> compute the sum and the square of the sum (to 
-│   │                          # be able to recompute quickly the NICVS)  
+│   │                          # be able to quickly recompute NICVS)  
 │   │── nicv.py                #> to compute the NICVs
 │   │── poi.py                 #> to extract the features
 │   │── signal_processing.py   #> some signal processings (stft, ...)
-│   │── tagmaps                #> all tagmaps use for to labelize the data 
-│       │                      # (use to creat the lists)
+│   │── tagmaps                #> all tagmaps used to labelize data 
+│       │                      # (used to create the file lists)
 │   	│── binary_classification.csv  
 │   	│── family_classification.csv  
 │   	│── novelties_classification.csv  
@@ -66,7 +65,7 @@ pip install -r requirements.txt
 ```
 
 ### Data
-The data used in the paper can be dowload on the following website:
+The data used in the paper can be dowloaded on the following website:
 
 ```
 https://zenodo.org/record/4317419
@@ -77,7 +76,7 @@ In order to update the location of the data, you previously dowloaded, inside
 the lists you need to run the script ``update_lists.sh``:
 
 ```
-./update_lists  [directory where are stored the list] [directory where are stored the traces]
+./update_lists  [directory of the folder list_selected_bandwidth] [directory of the traces downloaded from zenodo]
 ```
 
 ## Machine Learning (ML)
@@ -85,7 +84,7 @@ To run the computation of the all the machine learning experiments, you can use
 the script ``run.sh``:
 
 ```
-./run_ml.sh  [directory where are stored the list] [directory where are stored the models] [directory where are stored the transformed traces]
+./run_ml.sh  [directory of the folder list_selected_bandwidth] [directory of pretrained models]  [directory of the traces downloaded from zenodo]
 ```
 
 The results are stored in the file ```log-evaluation```.
@@ -96,13 +95,14 @@ To run the computation of the all deep learning experiments, you can use
 the script ``run.sh``:
 
 ```
-./run_dl.sh  [directory where are stored the list] [directory where are stored the models]
+./run_dl.sh  [directory of the folder list_selected_bandwidth] [directory of pretrained models]
 ```
 
 The results are stored in the file ```evaluation_log_DL.txt```.
 
 ## Preprocessings
-Once the traces have been aquiered and before beeing able to run the evualuation 
+In case you are measing raw traces from the oscilloscope by yourself:
+Once the raw traces have been acquired from oscilloscope and before beeing able to run the evualuation 
 some preprocessings are needed. 
 ### list_manipulation.py
 ```
