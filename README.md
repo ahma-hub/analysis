@@ -9,7 +9,7 @@ Electromagnetic obfuscated malware classification*".
 .
 ├── README.md
 ├── requirements.txt
-│── run_dl.sh                  #> script to run the DL for all scenarii
+│── run_dl.sh                  #> [coming soon] script to run the DL for all scenarii
 │── run_ml.sh                  #> script to run the ML for all scenarii
 │── update_lists.sh            #> script to update the location of the traces 
 │                              # in the lists 
@@ -20,9 +20,9 @@ Electromagnetic obfuscated malware classification*".
 │   │── log-evaluation.txt     #> store the results of the ML
 │
 │
-├── dl_analys
-│   │── evaluate.py            #> code to run MLP and CNN on all scenarios
-│   │── evaluation_log_DL.txt  #> output log file with stored accuracies
+├── dl_analys                  #> [coming soon]  
+│   │── evaluate.py            #> [coming soon] code to run MLP and CNN on all scenarios
+│   │── evaluation_log_DL.txt  #> [coming soon] output log file with stored accuracies
 │
 │
 ├── list_selected_bandwidth    #> list of the files used for training, 
