@@ -15,8 +15,7 @@ from   tabulate                import tabulate
 def change_directory (path_lists, new_dir):
 ################################################################################
 # change_directory
-# change the path of the directory where the traces are stored, the given file
-# is over-written
+# change the path of the directory where the traces are stored
 #
 # input:
 #  + new_dir: new directory
@@ -25,21 +24,26 @@ def change_directory (path_lists, new_dir):
         = np.load (path_lists, allow_pickle = True)
 
     for i in range (len (x_train_filelist)):
-        x_train_filelist [i] = new_dir + '/' + os.path.basename (x_train_filelist [i])
+        x_train_filelist [i] = new_dir +  '/' + os.path.basename (x_train_filelist [i])
+        ## hack to modify the extension
+        # x_train_filelist [i] = new_dir +  '/' + '.'.join (os.path.basename (x_train_filelist [i]).split ('.')[:-1]) + '.npy'
 
 
     for i in range (len (x_val_filelist)):
-        x_val_filelist [i] = new_dir + '/' + os.path.basename (x_val_filelist [i])
+        x_val_filelist [i] = new_dir +  '/' + os.path.basename (x_val_filelist [i])
+        ## hack to modify the extension
+        # x_val_filelist [i] = new_dir +  '/' + '.'.join (os.path.basename (x_val_filelist [i]).split ('.')[:-1]) + '.npy'
 
 
     for i in range (len (x_test_filelist)):
-        x_test_filelist [i] = new_dir + '/' + os.path.basename (x_test_filelist [i])
+        x_test_filelist [i] = new_dir +  '/' + os.path.basename (x_test_filelist [i])
+        ## hack to modify the extension
+        # x_test_filelist [i] = new_dir + '/' + '.'.join (os.path.basename (x_test_filelist [i]).split ('.')[:-1]) + '.npy'
 
 
     np.save (path_lists,
              [x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test],
              allow_pickle = True)
-
 
 ################################################################################
 def get_tag (f):
@@ -55,7 +59,7 @@ def get_tag (f):
 # + list of tags
 ################################################################################
     return "-".join(os.path.basename(f).split("-")[:-1])
-
+   
 ################################################################################
 def display_tabular (table, header):
 ################################################################################
@@ -80,23 +84,29 @@ def display_list (y_train, y_val, y_test):
     y_unique = np.unique (y_train + y_val + y_test)
 
     lines = []
+    
     for i in range (len (y_unique)):
-        line = [y_unique [i]]
-
+        line = [i, y_unique [i]]
+        count = 0
+        
         idx = np.where (np.array (y_train)  == y_unique [i])[0]
         line.append (len (idx))
-
+        count += len (idx)
+        
         idx = np.where (np.array (y_val)  == y_unique [i]) [0]
         line.append (len (idx))
-
-
+        count += len (idx)
+        line.append (count)
+        
         idx = np.where (np.array (y_test)  == y_unique [i]) [0]
         line.append (len (idx))
-
+        count += len (idx)
+        line.append (count)
 
         lines.append (line)
 
-    print(tabulate (lines, headers= ['label', 'train', 'val', 'test']))
+    print(tabulate (lines, headers= ['idx', 'label', 'train', 'val', 'train + val', 'test', 'total']))
+
 
 
 ################################################################################
@@ -110,7 +120,7 @@ def compute_main_list (data, extension = 'dat'):
 #  - extension: type of file in datadir
 #
 # outputs:
-#    lists: {filelist, labels} x {learning, validating, testing}
+# - lists: {filelist, labels} x {learning, validating, testing}
 ################################################################################
 
     if (not type (data) is list):
@@ -129,6 +139,7 @@ def compute_main_list (data, extension = 'dat'):
     x_train_filelist, x_val_filelist, y_train, y_val\
             = train_test_split (x_train_filelist, y_train, test_size=0.2)
 
+
     return x_train_filelist, x_val_filelist, x_test_filelist,\
         y_train, y_val, y_test
 
@@ -136,7 +147,7 @@ def compute_main_list (data, extension = 'dat'):
 ################################################################################
 def parse_data (filelist, tagmap):
 ################################################################################
-# parse_data_dir
+# parse_data
 # [from neural-network/utils]
 # Label the data and separate it in train and test dataset.
 # It is possible to provide a path to a file containing a tag map.
@@ -144,14 +155,12 @@ def parse_data (filelist, tagmap):
 # corresponding_label <space> dataset
 # Dataset value are 0: not used, 1: train only, 2: test only, 3: train and test
 # inputs:
-#  + filelist: list of the filename
-#  + tagmap: tagmap used for the labeling
+#  - filelist: list of the filename
+#  - tagmap: tagmap used for the labeling
 #
 # outputs:
-#  + x_{train, test}_filelist: list files for testing and training (not split yet
-#    into training and validating)
-#  + x_trainandtest_filelist: list that could be part of the testing and learning
-#  + y_{train, test, trainandtest}: labels of the list above
+#  - x_train_filelist, x_test_filelist, x_trainandtest_filelist: files lists
+#  - y_train, y_test, y_trainandtest: labels
 ################################################################################
 
     random.shuffle (filelist)
@@ -221,7 +230,7 @@ if __name__ == '__main__':
 
     parser.add_argument ('--extension', default='dat',
                          type = str, dest = 'extension',
-                         help = 'extensio of the files in \'datadir\' ')
+                         help = 'extensio of the raw traces ')
 
     parser.add_argument ('--log-level', default=logging.INFO,
                          type=lambda x: getattr (logging, x),
@@ -236,10 +245,16 @@ if __name__ == '__main__':
                          help = 'Absolute path to the raw data, to change in a given file lists')
 
     args, unknown = parser.parse_known_args ()
+    assert len (unknown) == 0, f"[ERROR] Unknown arguments:\n{unknown}\n"
+    
     logging.basicConfig (level = args.log_level)
+    
+    if (logging.root.level < logging.INFO):
+        print ("argument:")
+        for arg in vars(args):
+            print (f"{arg} : {getattr (args, arg)}")
 
     main_list = False
-
     ## change the directory of a list
     if ((args.path_lists is not None) and (args.path_new_dir is not None)):
         change_directory (args.path_lists, args.path_new_dir)
@@ -248,12 +263,12 @@ if __name__ == '__main__':
     ## generate main list (not tag needed)
     if (args.path_raw is not None and args.path_tagmap is None):
         # split testing and learning
-       x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test \
-           = compute_main_list (args.path_raw, extension = args.extension)
+        x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test \
+            = compute_main_list (args.path_raw, extension = args.extension)
 
-       main_list = True
+        main_list = True
 
-       if (logging.root.level < logging.INFO):
+        if (logging.root.level < logging.INFO):
             print ('main generated list:')
             display_list (y_train, y_val, y_test)
 
@@ -270,8 +285,8 @@ if __name__ == '__main__':
 
     ## creat list from the main list
     if (args.path_tagmap is not None and main_list):
-        x_train_filelist, _, x_trainandtest_filelist,\
-            y_train, _, y_trainandtest = parse_data (x_train_filelist + x_val_filelist,
+        x_train_filelist, x_del_0, x_trainandtest_filelist,\
+            y_train, y_del_0, y_trainandtest = parse_data (x_train_filelist + x_val_filelist,
                                                             args.path_tagmap)
 
         x_train_filelist = x_train_filelist + x_trainandtest_filelist
@@ -282,39 +297,40 @@ if __name__ == '__main__':
             = train_test_split (x_train_filelist, y_train, test_size=0.2)
 
         # compute testing
-        _, x_test_filelist, x_trainandtest_filelist,\
-            _, y_test, y_trainandtest = parse_data (x_test_filelist,
+        x_del_1, x_test_filelist, x_trainandtest_filelist,\
+            y_del_1, y_test, y_trainandtest = parse_data (x_test_filelist,
                                                     args.path_tagmap)
 
         x_test_filelist = x_test_filelist + x_trainandtest_filelist
         y_test = y_test+ y_trainandtest
-
+        
         if (logging.root.level < logging.INFO):
             print ('new list:')
             display_list (y_train, y_val, y_test)
 
+            if (len (x_del_0) != 0):
+                print (f'deleted from training: {len (x_del_0)}') 
+                display_list (y_del_0, [], [])
 
-        # ## test witht the paper values
-        # tmp = args.path_tagmap.split ('/')[-1].split ('.')[0]
-        # tmp = '../neural-network/files_lists/files_lists_tagmap=' + tmp + '_with_var.npy'
-        # [x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test]\
-        #     = np.load (tmp, allow_pickle = True)
+            if (len (x_del_1) != 0):
+                print (f'deleted from testing: {len (x_del_1)}') 
+                display_list ([], [], y_del_1)
 
-        # print ('paper list:')
-        # display_list (y_train, y_val, y_test)
+
 
     ## generate list from raw data and tagmap
-    elif (args.path_tagmap):
+    elif (args.path_tagmap is not None):
         # get the list of files
         filelist = glob.glob (args.path_raw + "/**/*.%s"%args.extension, recursive = True)
-
+               
         # creat lists
         x_train_filelist, x_test_filelist, x_trainandtest_filelist,\
-        y_train, y_test, y_trainandtest = parse_data (x_train_filelist + x_val_filelist,
-                                                            args.path_tagmap)
+        y_train, y_test, y_trainandtest = parse_data (filelist, args.path_tagmap)
 
         # split x_trainandtest
-        if len(x_trainandtest_filelist) > 0:
+        if (len (x_trainandtest_filelist) > 0):
+            print (f'{len (x_trainandtest_filelist)}, {np.unique (y_trainandtest, return_counts = True)[1].sum ()}')
+            
             x_train_filelist_tmp, x_test_filelist_tmp, y_train_tmp, y_test_tmp\
                 = train_test_split(x_trainandtest_filelist, y_trainandtest, test_size=0.2)
 
@@ -325,16 +341,24 @@ if __name__ == '__main__':
             y_test  += y_test_tmp
 
         # generate validating set
-        x_train_filelist, x_test_filelist, y_train, y_test = train_test_split(filelist, y_train, test_size=0.2)
+        x_train_filelist, x_val_filelist, y_train, y_val = train_test_split (x_train_filelist, y_train, test_size=0.2)
 
 
         if (logging.root.level < logging.INFO):
             print ('generated list:')
             display_list (y_train, y_val, y_test)
 
+    ## display a provided list
+    elif ((args.path_lists is not None) and  (logging.root.level < logging.INFO)):
+        [_, _, _, y_train, y_val, y_test] = np.load (args.path_lists, allow_pickle = True)
 
+        display_list (y_train, y_val, y_test)
+
+    
+            
     ## save the computed
     if (args.path_save is not None):
         np.save (args.path_save,
                  [x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test],
                  allow_pickle = True)
+

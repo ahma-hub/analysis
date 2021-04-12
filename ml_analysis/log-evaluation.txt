@@ -1,329 +1,2386 @@
 --------------------------------------------------------------------------------
-11.12.2020 - 13:13:09
-path_lists: ../lists_selected_bandwidth/files_lists_tagmap=binary_classification.npy
-log_file: log-evaluation.txt
-model_lda: ../ml_models/binary_classification/LDA_model=binary_classification.jl
-model_svm: ../ml_models/binary_classification/SVM_model=binary_classification.jl
-model_nb: ../ml_models/binary_classification/NB_model=binary_classification.jl
-means; [2, 3, 4, 5, 6, 7, 9, 10]
+09.04.2021 - 18:20:13
+path_lists: lists_selected_bandwidth//files_lists_tagmap=executable_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=executable_classification_24bd.jl
+model_nb: ../pretrained_models_prerelease//NB/NB_model=executable_classification_24bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 24
 --------------------------------------------------------------------------------
-LDA (loading): 0.04065346717834473 seconds
-NB (loading): 0.0007390975952148438 seconds
-SVM (loading): 0.03209114074707031 seconds
-transform (size: (14898, 19160)): 2.6322081089019775 seconds
-Test NB  (size: (19160, 30)) [0.5710897445678711 seconds]: 0.592901878914405 [0.944807391983342]
-Test SVM (size: (19160, 30)) [143.28619694709778 seconds]: 0.5917014613778706 [0.9525507548152005]
+transform (size: (14664, 20400)): 3.552657127380371 seconds
+Test NB  (size: (20400, 30)) [0.08741497993469238 seconds]:
+                      precision    recall  f1-score   support
+
+            bashlite     0.4106    0.3887    0.3993       620
+  bashlite_addopaque     0.3221    0.3069    0.3143       593
+        bashlite_bcf     0.7639    0.7414    0.7525       611
+  bashlite_cfflatten     0.8968    0.9251    0.9107       601
+    bashlite_flatten     0.2598    0.2603    0.2601       584
+        bashlite_sub     0.2738    0.3131    0.2922       578
+        bashlite_upx     0.7598    0.8259    0.7915       586
+ bashlite_virtualize     0.2595    0.2282    0.2429       596
+            gonnacry     0.9062    0.5350    0.6728      1228
+        gonnacry-aes     0.4734    0.8589    0.6104       581
+    gonnacry-aes-upx     0.4763    0.4845    0.4803       580
+        gonnacry-des     0.9105    0.9012    0.9058       587
+    gonnacry-des-upx     0.8985    0.8985    0.8985       611
+        gonnacry-upx     0.4817    0.4785    0.4801       604
+  gonnacry_addopaque     0.6359    0.6298    0.6329       624
+        gonnacry_bcf     0.5678    0.5975    0.5822       631
+  gonnacry_cfflatten     0.5066    0.5133    0.5099       600
+    gonnacry_flatten     0.5171    0.5654    0.5402       642
+        gonnacry_sub     0.4864    0.4743    0.4803       603
+gonnacry_virtualize2     0.5360    0.4758    0.5041       641
+               mirai     0.9491    0.9291    0.9390      1185
+           mirai-bcf     0.7958    0.8923    0.8413       594
+     mirai-cfflatten     0.9650    0.8889    0.9254       621
+           mirai-sub     0.8982    0.8533    0.8752       600
+           mirai-upx     0.8454    0.9179    0.8801       560
+     mirai_addopaque     0.7646    0.8933    0.8240       600
+       mirai_flatten     0.9108    0.7929    0.8478       618
+    mirai_virtualize     0.8108    0.7853    0.7979       573
+            random34     1.0000    1.0000    1.0000      1163
+       rootkit_kisni     0.6893    0.6881    0.6887       590
+      rootkit_maK_it     0.6913    0.6924    0.6919       595
+
+            accuracy                         0.6807     20400
+           macro avg     0.6666    0.6689    0.6636     20400
+        weighted avg     0.6914    0.6807    0.6809     20400
 compute with 2 per mean
-transform (size: (14898, 19160)): 1.6100809574127197 seconds
-Test NB   (size: (9559, 30)) [0.04453539848327637 seconds]: 0.6720368239355581
-Test SVM   (size: (9559, 30)) [14.721388578414917 seconds]: 0.6680615127105346
+NB - mean 2:
+                       precision    recall  f1-score   support
+
+            bashlite     0.5076    0.5372    0.5220       309
+  bashlite_addopaque     0.3969    0.3514    0.3728       296
+        bashlite_bcf     0.8554    0.9115    0.8825       305
+  bashlite_cfflatten     0.9866    0.9833    0.9850       300
+    bashlite_flatten     0.2939    0.3162    0.3046       291
+        bashlite_sub     0.3783    0.3993    0.3885       288
+        bashlite_upx     0.9118    0.9555    0.9331       292
+ bashlite_virtualize     0.3099    0.2525    0.2783       297
+            gonnacry     0.9811    0.7602    0.8566       613
+        gonnacry-aes     0.6527    0.9655    0.7789       290
+    gonnacry-aes-upx     0.4813    0.5329    0.5057       289
+        gonnacry-des     0.9630    0.9761    0.9695       293
+    gonnacry-des-upx     0.9670    0.9607    0.9638       305
+        gonnacry-upx     0.4908    0.4419    0.4650       301
+  gonnacry_addopaque     0.7627    0.7235    0.7426       311
+        gonnacry_bcf     0.7491    0.6921    0.7195       315
+  gonnacry_cfflatten     0.6073    0.6722    0.6381       299
+    gonnacry_flatten     0.5300    0.5250    0.5275       320
+        gonnacry_sub     0.5548    0.5714    0.5630       301
+gonnacry_virtualize2     0.5294    0.5344    0.5319       320
+               mirai     0.9948    0.9679    0.9812       592
+           mirai-bcf     0.9456    0.9392    0.9424       296
+     mirai-cfflatten     0.9869    0.9742    0.9805       310
+           mirai-sub     0.9470    0.9565    0.9517       299
+           mirai-upx     0.9352    0.9821    0.9580       279
+     mirai_addopaque     0.9132    0.9498    0.9311       299
+       mirai_flatten     0.9724    0.9156    0.9431       308
+    mirai_virtualize     0.8904    0.9091    0.8997       286
+            random34     1.0000    1.0000    1.0000       581
+       rootkit_kisni     0.7393    0.7619    0.7504       294
+      rootkit_maK_it     0.7569    0.7340    0.7453       297
+
+            accuracy                         0.7599     10176
+           macro avg     0.7417    0.7469    0.7423     10176
+        weighted avg     0.7634    0.7599    0.7595     10176
 compute with 3 per mean
-transform (size: (14898, 19160)): 0.8417322635650635 seconds
-Test NB   (size: (6365, 30)) [0.05404019355773926 seconds]: 0.7172034564021995
-Test SVM   (size: (6365, 30)) [9.691279172897339 seconds]: 0.7084053417124901
+NB - mean 3:
+                       precision    recall  f1-score   support
+
+            bashlite     0.5721    0.6165    0.5935       206
+  bashlite_addopaque     0.4444    0.3858    0.4130       197
+        bashlite_bcf     0.9336    0.9704    0.9517       203
+  bashlite_cfflatten     1.0000    1.0000    1.0000       200
+    bashlite_flatten     0.3128    0.3660    0.3373       194
+        bashlite_sub     0.4359    0.4427    0.4393       192
+        bashlite_upx     0.9749    0.9949    0.9848       195
+ bashlite_virtualize     0.3500    0.2828    0.3128       198
+            gonnacry     1.0000    0.8557    0.9223       409
+        gonnacry-aes     0.7598    1.0000    0.8635       193
+    gonnacry-aes-upx     0.4887    0.5596    0.5217       193
+        gonnacry-des     0.9650    0.9897    0.9772       195
+    gonnacry-des-upx     0.9899    0.9655    0.9776       203
+        gonnacry-upx     0.5088    0.4328    0.4677       201
+  gonnacry_addopaque     0.8454    0.7923    0.8180       207
+        gonnacry_bcf     0.8351    0.7476    0.7889       210
+  gonnacry_cfflatten     0.6352    0.7437    0.6852       199
+    gonnacry_flatten     0.5266    0.5117    0.5190       213
+        gonnacry_sub     0.6567    0.6600    0.6584       200
+gonnacry_virtualize2     0.5251    0.5399    0.5324       213
+               mirai     1.0000    0.9949    0.9975       394
+           mirai-bcf     0.9789    0.9442    0.9612       197
+     mirai-cfflatten     0.9951    0.9951    0.9951       206
+           mirai-sub     0.9466    0.9799    0.9630       199
+           mirai-upx     0.9894    1.0000    0.9947       186
+     mirai_addopaque     0.9557    0.9749    0.9652       199
+       mirai_flatten     0.9897    0.9366    0.9624       205
+    mirai_virtualize     0.9188    0.9526    0.9354       190
+            random34     1.0000    1.0000    1.0000       387
+       rootkit_kisni     0.7633    0.8061    0.7841       196
+      rootkit_maK_it     0.7968    0.7525    0.7740       198
+
+            accuracy                         0.7942      6778
+           macro avg     0.7772    0.7805    0.7773      6778
+        weighted avg     0.7965    0.7942    0.7938      6778
 compute with 4 per mean
-transform (size: (14898, 19160)): 0.24834108352661133 seconds
-Test NB   (size: (4771, 30)) [0.04433441162109375 seconds]: 0.7356948228882834
-Test SVM   (size: (4771, 30)) [7.319432973861694 seconds]: 0.7315028295954726
+NB - mean 4:
+                       precision    recall  f1-score   support
+
+            bashlite     0.5978    0.6948    0.6426       154
+  bashlite_addopaque     0.5088    0.3919    0.4427       148
+        bashlite_bcf     0.9618    0.9934    0.9773       152
+  bashlite_cfflatten     1.0000    1.0000    1.0000       150
+    bashlite_flatten     0.3591    0.4483    0.3988       145
+        bashlite_sub     0.4371    0.4583    0.4475       144
+        bashlite_upx     0.9865    1.0000    0.9932       146
+ bashlite_virtualize     0.3645    0.2635    0.3059       148
+            gonnacry     1.0000    0.7876    0.8812       306
+        gonnacry-aes     0.6905    1.0000    0.8169       145
+    gonnacry-aes-upx     0.4807    0.6042    0.5354       144
+        gonnacry-des     0.9865    1.0000    0.9932       146
+    gonnacry-des-upx     1.0000    0.9868    0.9934       152
+        gonnacry-upx     0.4956    0.3733    0.4259       150
+  gonnacry_addopaque     0.8750    0.8581    0.8664       155
+        gonnacry_bcf     0.9021    0.8217    0.8600       157
+  gonnacry_cfflatten     0.6630    0.8054    0.7273       149
+    gonnacry_flatten     0.5753    0.5250    0.5490       160
+        gonnacry_sub     0.7259    0.6533    0.6877       150
+gonnacry_virtualize2     0.5632    0.6125    0.5868       160
+               mirai     1.0000    1.0000    1.0000       296
+           mirai-bcf     0.9930    0.9527    0.9724       148
+     mirai-cfflatten     1.0000    1.0000    1.0000       155
+           mirai-sub     0.9548    0.9933    0.9737       149
+           mirai-upx     1.0000    1.0000    1.0000       139
+     mirai_addopaque     0.9739    1.0000    0.9868       149
+       mirai_flatten     1.0000    0.9870    0.9935       154
+    mirai_virtualize     0.9858    0.9720    0.9789       143
+            random34     1.0000    1.0000    1.0000       290
+       rootkit_kisni     0.8182    0.8571    0.8372       147
+      rootkit_maK_it     0.8511    0.8108    0.8304       148
+
+            accuracy                         0.8120      5079
+           macro avg     0.7984    0.8016    0.7969      5079
+        weighted avg     0.8161    0.8120    0.8108      5079
 compute with 5 per mean
-transform (size: (14898, 19160)): 0.19379091262817383 seconds
-Test NB   (size: (3812, 30)) [0.03798961639404297 seconds]: 0.7531479538300105
-Test SVM   (size: (3812, 30)) [5.928744077682495 seconds]: 0.7481636935991606
+NB - mean 5:
+                       precision    recall  f1-score   support
+
+            bashlite     0.6667    0.7154    0.6902       123
+  bashlite_addopaque     0.5747    0.4237    0.4878       118
+        bashlite_bcf     0.9760    1.0000    0.9879       122
+  bashlite_cfflatten     1.0000    1.0000    1.0000       120
+    bashlite_flatten     0.3916    0.4828    0.4324       116
+        bashlite_sub     0.4545    0.5217    0.4858       115
+        bashlite_upx     0.9832    1.0000    0.9915       117
+ bashlite_virtualize     0.4239    0.3277    0.3697       119
+            gonnacry     1.0000    0.8367    0.9111       245
+        gonnacry-aes     0.7436    1.0000    0.8529       116
+    gonnacry-aes-upx     0.4675    0.6261    0.5353       115
+        gonnacry-des     0.9915    1.0000    0.9957       117
+    gonnacry-des-upx     1.0000    0.9918    0.9959       122
+        gonnacry-upx     0.4691    0.3167    0.3781       120
+  gonnacry_addopaque     0.9469    0.8629    0.9030       124
+        gonnacry_bcf     0.9204    0.8254    0.8703       126
+  gonnacry_cfflatten     0.6867    0.8655    0.7658       119
+    gonnacry_flatten     0.5794    0.4844    0.5277       128
+        gonnacry_sub     0.7876    0.7417    0.7639       120
+gonnacry_virtualize2     0.5570    0.6484    0.5993       128
+               mirai     1.0000    1.0000    1.0000       236
+           mirai-bcf     1.0000    0.9746    0.9871       118
+     mirai-cfflatten     1.0000    1.0000    1.0000       124
+           mirai-sub     0.9754    1.0000    0.9876       119
+           mirai-upx     1.0000    1.0000    1.0000       111
+     mirai_addopaque     0.9833    0.9916    0.9874       119
+       mirai_flatten     1.0000    1.0000    1.0000       123
+    mirai_virtualize     0.9912    0.9825    0.9868       114
+            random34     1.0000    1.0000    1.0000       232
+       rootkit_kisni     0.8268    0.8974    0.8607       117
+      rootkit_maK_it     0.8889    0.8136    0.8496       118
+
+            accuracy                         0.8274      4061
+           macro avg     0.8157    0.8171    0.8130      4061
+        weighted avg     0.8319    0.8274    0.8263      4061
 compute with 6 per mean
-transform (size: (14898, 19160)): 0.15965008735656738 seconds
-Test NB   (size: (3176, 30)) [0.03233671188354492 seconds]: 0.7622795969773299
-Test SVM   (size: (3176, 30)) [4.938933372497559 seconds]: 0.7572418136020151
+NB - mean 6:
+                       precision    recall  f1-score   support
+
+            bashlite     0.7016    0.8447    0.7665       103
+  bashlite_addopaque     0.6341    0.5306    0.5778        98
+        bashlite_bcf     0.9902    1.0000    0.9951       101
+  bashlite_cfflatten     1.0000    1.0000    1.0000       100
+    bashlite_flatten     0.4359    0.5258    0.4766        97
+        bashlite_sub     0.5745    0.5625    0.5684        96
+        bashlite_upx     1.0000    1.0000    1.0000        97
+ bashlite_virtualize     0.4533    0.3434    0.3908        99
+            gonnacry     1.0000    0.8627    0.9263       204
+        gonnacry-aes     0.7742    1.0000    0.8727        96
+    gonnacry-aes-upx     0.4603    0.6042    0.5225        96
+        gonnacry-des     1.0000    1.0000    1.0000        97
+    gonnacry-des-upx     1.0000    1.0000    1.0000       101
+        gonnacry-upx     0.4571    0.3200    0.3765       100
+  gonnacry_addopaque     0.9479    0.8835    0.9146       103
+        gonnacry_bcf     0.9663    0.8190    0.8866       105
+  gonnacry_cfflatten     0.7302    0.9293    0.8178        99
+    gonnacry_flatten     0.6000    0.5094    0.5510       106
+        gonnacry_sub     0.8333    0.8000    0.8163       100
+gonnacry_virtualize2     0.5738    0.6604    0.6140       106
+               mirai     1.0000    1.0000    1.0000       197
+           mirai-bcf     1.0000    0.9694    0.9845        98
+     mirai-cfflatten     1.0000    1.0000    1.0000       103
+           mirai-sub     0.9706    1.0000    0.9851        99
+           mirai-upx     1.0000    1.0000    1.0000        93
+     mirai_addopaque     0.9802    1.0000    0.9900        99
+       mirai_flatten     1.0000    1.0000    1.0000       102
+    mirai_virtualize     1.0000    0.9789    0.9894        95
+            random34     1.0000    1.0000    1.0000       193
+       rootkit_kisni     0.8333    0.8673    0.8500        98
+      rootkit_maK_it     0.8632    0.8283    0.8454        99
+
+            accuracy                         0.8432      3380
+           macro avg     0.8316    0.8335    0.8296      3380
+        weighted avg     0.8463    0.8432    0.8419      3380
 compute with 7 per mean
-transform (size: (14898, 19160)): 0.134415864944458 seconds
-Test NB   (size: (2719, 30)) [0.027034759521484375 seconds]: 0.7716072085325487
-Test SVM   (size: (2719, 30)) [4.236155033111572 seconds]: 0.7705038617138654
+NB - mean 7:
+                       precision    recall  f1-score   support
+
+            bashlite     0.7400    0.8409    0.7872        88
+  bashlite_addopaque     0.6471    0.5238    0.5789        84
+        bashlite_bcf     1.0000    1.0000    1.0000        87
+  bashlite_cfflatten     1.0000    1.0000    1.0000        85
+    bashlite_flatten     0.4464    0.6024    0.5128        83
+        bashlite_sub     0.5844    0.5488    0.5660        82
+        bashlite_upx     1.0000    1.0000    1.0000        83
+ bashlite_virtualize     0.4308    0.3294    0.3733        85
+            gonnacry     1.0000    0.8229    0.9028       175
+        gonnacry-aes     0.7257    1.0000    0.8410        82
+    gonnacry-aes-upx     0.4786    0.6829    0.5628        82
+        gonnacry-des     1.0000    1.0000    1.0000        83
+    gonnacry-des-upx     1.0000    1.0000    1.0000        87
+        gonnacry-upx     0.4902    0.2907    0.3650        86
+  gonnacry_addopaque     0.9432    0.9326    0.9379        89
+        gonnacry_bcf     0.9753    0.8778    0.9240        90
+  gonnacry_cfflatten     0.8125    0.9176    0.8619        85
+    gonnacry_flatten     0.6133    0.5055    0.5542        91
+        gonnacry_sub     0.8118    0.8023    0.8070        86
+gonnacry_virtualize2     0.5794    0.6813    0.6263        91
+               mirai     1.0000    1.0000    1.0000       169
+           mirai-bcf     1.0000    0.9881    0.9940        84
+     mirai-cfflatten     1.0000    1.0000    1.0000        88
+           mirai-sub     0.9884    1.0000    0.9942        85
+           mirai-upx     1.0000    1.0000    1.0000        79
+     mirai_addopaque     0.9884    1.0000    0.9942        85
+       mirai_flatten     1.0000    1.0000    1.0000        88
+    mirai_virtualize     1.0000    0.9877    0.9938        81
+            random34     1.0000    1.0000    1.0000       166
+       rootkit_kisni     0.8352    0.9048    0.8686        84
+      rootkit_maK_it     0.8961    0.8214    0.8571        84
+
+            accuracy                         0.8485      2897
+           macro avg     0.8383    0.8407    0.8356      2897
+        weighted avg     0.8525    0.8485    0.8467      2897
+compute with 8 per mean
+NB - mean 8:
+                       precision    recall  f1-score   support
+
+            bashlite     0.7471    0.8442    0.7927        77
+  bashlite_addopaque     0.6393    0.5270    0.5778        74
+        bashlite_bcf     1.0000    1.0000    1.0000        76
+  bashlite_cfflatten     1.0000    1.0000    1.0000        75
+    bashlite_flatten     0.3619    0.5278    0.4294        72
+        bashlite_sub     0.5972    0.5972    0.5972        72
+        bashlite_upx     1.0000    1.0000    1.0000        73
+ bashlite_virtualize     0.5455    0.3243    0.4068        74
+            gonnacry     1.0000    0.8824    0.9375       153
+        gonnacry-aes     0.8000    1.0000    0.8889        72
+    gonnacry-aes-upx     0.4902    0.6944    0.5747        72
+        gonnacry-des     1.0000    1.0000    1.0000        73
+    gonnacry-des-upx     1.0000    1.0000    1.0000        76
+        gonnacry-upx     0.5111    0.3067    0.3833        75
+  gonnacry_addopaque     0.9474    0.9351    0.9412        77
+        gonnacry_bcf     1.0000    0.8590    0.9241        78
+  gonnacry_cfflatten     0.7500    0.9730    0.8471        74
+    gonnacry_flatten     0.6094    0.4875    0.5417        80
+        gonnacry_sub     0.9077    0.7867    0.8429        75
+gonnacry_virtualize2     0.5729    0.6875    0.6250        80
+               mirai     1.0000    1.0000    1.0000       148
+           mirai-bcf     1.0000    1.0000    1.0000        74
+     mirai-cfflatten     1.0000    1.0000    1.0000        77
+           mirai-sub     1.0000    1.0000    1.0000        74
+           mirai-upx     1.0000    1.0000    1.0000        69
+     mirai_addopaque     1.0000    1.0000    1.0000        74
+       mirai_flatten     1.0000    1.0000    1.0000        77
+    mirai_virtualize     1.0000    1.0000    1.0000        71
+            random34     1.0000    1.0000    1.0000       145
+       rootkit_kisni     0.8701    0.9178    0.8933        73
+      rootkit_maK_it     0.9143    0.8649    0.8889        74
+
+            accuracy                         0.8548      2534
+           macro avg     0.8472    0.8457    0.8417      2534
+        weighted avg     0.8606    0.8548    0.8533      2534
 compute with 9 per mean
-transform (size: (14898, 19160)): 0.09510016441345215 seconds
-Test NB   (size: (2111, 30)) [0.021792888641357422 seconds]: 0.7939365229748934
-Test SVM   (size: (2111, 30)) [3.231410503387451 seconds]: 0.7939365229748934
+NB - mean 9:
+                       precision    recall  f1-score   support
+
+            bashlite     0.7922    0.8971    0.8414        68
+  bashlite_addopaque     0.6800    0.5231    0.5913        65
+        bashlite_bcf     1.0000    1.0000    1.0000        67
+  bashlite_cfflatten     1.0000    1.0000    1.0000        66
+    bashlite_flatten     0.4390    0.5625    0.4932        64
+        bashlite_sub     0.5606    0.5781    0.5692        64
+        bashlite_upx     1.0000    1.0000    1.0000        65
+ bashlite_virtualize     0.5577    0.4394    0.4915        66
+            gonnacry     1.0000    0.8897    0.9416       136
+        gonnacry-aes     0.8101    1.0000    0.8951        64
+    gonnacry-aes-upx     0.5056    0.7031    0.5882        64
+        gonnacry-des     1.0000    1.0000    1.0000        65
+    gonnacry-des-upx     1.0000    1.0000    1.0000        67
+        gonnacry-upx     0.5476    0.3433    0.4220        67
+  gonnacry_addopaque     0.9429    0.9565    0.9496        69
+        gonnacry_bcf     0.9848    0.9286    0.9559        70
+  gonnacry_cfflatten     0.8312    0.9697    0.8951        66
+    gonnacry_flatten     0.6102    0.5070    0.5538        71
+        gonnacry_sub     0.9310    0.8182    0.8710        66
+gonnacry_virtualize2     0.5783    0.6761    0.6234        71
+               mirai     1.0000    1.0000    1.0000       131
+           mirai-bcf     1.0000    0.9846    0.9922        65
+     mirai-cfflatten     1.0000    1.0000    1.0000        68
+           mirai-sub     0.9851    1.0000    0.9925        66
+           mirai-upx     1.0000    1.0000    1.0000        62
+     mirai_addopaque     1.0000    1.0000    1.0000        66
+       mirai_flatten     1.0000    1.0000    1.0000        68
+    mirai_virtualize     1.0000    1.0000    1.0000        63
+            random34     1.0000    1.0000    1.0000       129
+       rootkit_kisni     0.8841    0.9385    0.9104        65
+      rootkit_maK_it     0.9355    0.8788    0.9062        66
+
+            accuracy                         0.8662      2250
+           macro avg     0.8573    0.8579    0.8543      2250
+        weighted avg     0.8696    0.8662    0.8649      2250
 compute with 10 per mean
-transform (size: (14898, 19160)): 0.10761857032775879 seconds
-Test NB   (size: (1899, 30)) [0.016857624053955078 seconds]: 0.8046340179041601
-Test SVM   (size: (1899, 30)) [2.6962952613830566 seconds]: 0.794102159031069
+NB - mean 10:
+                       precision    recall  f1-score   support
+
+            bashlite     0.8000    0.9180    0.8550        61
+  bashlite_addopaque     0.6739    0.5254    0.5905        59
+        bashlite_bcf     1.0000    1.0000    1.0000        61
+  bashlite_cfflatten     1.0000    1.0000    1.0000        60
+    bashlite_flatten     0.4211    0.5517    0.4776        58
+        bashlite_sub     0.5968    0.6491    0.6218        57
+        bashlite_upx     1.0000    1.0000    1.0000        58
+ bashlite_virtualize     0.5500    0.3729    0.4444        59
+            gonnacry     1.0000    0.8689    0.9298       122
+        gonnacry-aes     0.7838    1.0000    0.8788        58
+    gonnacry-aes-upx     0.4875    0.6842    0.5693        57
+        gonnacry-des     1.0000    1.0000    1.0000        58
+    gonnacry-des-upx     1.0000    1.0000    1.0000        61
+        gonnacry-upx     0.5135    0.3167    0.3918        60
+  gonnacry_addopaque     0.9672    0.9516    0.9593        62
+        gonnacry_bcf     1.0000    0.9206    0.9587        63
+  gonnacry_cfflatten     0.8056    0.9831    0.8855        59
+    gonnacry_flatten     0.6591    0.4531    0.5370        64
+        gonnacry_sub     0.9245    0.8167    0.8673        60
+gonnacry_virtualize2     0.5833    0.7656    0.6622        64
+               mirai     1.0000    1.0000    1.0000       118
+           mirai-bcf     1.0000    0.9831    0.9915        59
+     mirai-cfflatten     1.0000    1.0000    1.0000        62
+           mirai-sub     0.9833    1.0000    0.9916        59
+           mirai-upx     1.0000    1.0000    1.0000        55
+     mirai_addopaque     1.0000    1.0000    1.0000        59
+       mirai_flatten     1.0000    1.0000    1.0000        61
+    mirai_virtualize     1.0000    1.0000    1.0000        57
+            random34     1.0000    1.0000    1.0000       116
+       rootkit_kisni     0.9180    0.9655    0.9412        58
+      rootkit_maK_it     0.9643    0.9153    0.9391        59
+
+            accuracy                         0.8671      2024
+           macro avg     0.8591    0.8594    0.8546      2024
+        weighted avg     0.8716    0.8671    0.8649      2024
 --------------------------------------------------------------------------------
-11.12.2020 - 13:18:02
-path_lists: ../lists_selected_bandwidth/files_lists_tagmap=novelty_classification.npy
-log_file: log-evaluation.txt
-model_lda: ../ml_models/novelty_classification/LDA_model=novelty_classification.jl
-model_svm: ../ml_models/novelty_classification/SVM_model=novelty_classification.jl
-model_nb: ../ml_models/novelty_classification/NB_model=novelty_classification.jl
-means; [2, 3, 4, 5, 6, 7, 9, 10]
+09.04.2021 - 18:22:13
+path_lists: lists_selected_bandwidth//files_lists_tagmap=executable_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=executable_classification_20bd.jl
+model_svm: ../pretrained_models_prerelease//SVM/SVM_model=executable_classification_20bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 20
 --------------------------------------------------------------------------------
-LDA (loading): 0.004681587219238281 seconds
-NB (loading): 0.0005471706390380859 seconds
-SVM (loading): 0.001495361328125 seconds
-transform (size: (14898, 31200)): 3.8828940391540527 seconds
-Test NB  (size: (31200, 4)) [0.11270260810852051 seconds]: 0.9396794871794871 [0.994812925170068]
-Test SVM (size: (31200, 4)) [2.238915205001831 seconds]: 0.9450320512820513 [0.9951190476190476]
+transform (size: (12220, 20400)): 2.9373128414154053 seconds
+Test SVM  (size: (20400, 30)) [41.08011603355408 seconds]:
+                      precision    recall  f1-score   support
+
+            bashlite     0.4013    0.4065    0.4038       620
+  bashlite_addopaque     0.3194    0.2968    0.3077       593
+        bashlite_bcf     0.7516    0.7480    0.7498       611
+  bashlite_cfflatten     0.9092    0.9334    0.9212       601
+    bashlite_flatten     0.2496    0.2517    0.2506       584
+        bashlite_sub     0.2718    0.2855    0.2785       578
+        bashlite_upx     0.7831    0.8072    0.7950       586
+ bashlite_virtualize     0.2513    0.2383    0.2446       596
+            gonnacry     0.7232    0.7427    0.7328      1228
+        gonnacry-aes     0.4662    0.4509    0.4584       581
+    gonnacry-aes-upx     0.4598    0.4828    0.4710       580
+        gonnacry-des     0.9147    0.9131    0.9139       587
+    gonnacry-des-upx     0.9058    0.9133    0.9095       611
+        gonnacry-upx     0.4595    0.4321    0.4454       604
+  gonnacry_addopaque     0.6126    0.6410    0.6265       624
+        gonnacry_bcf     0.5876    0.6006    0.5940       631
+  gonnacry_cfflatten     0.5136    0.5333    0.5233       600
+    gonnacry_flatten     0.5104    0.5343    0.5221       642
+        gonnacry_sub     0.5092    0.4577    0.4821       603
+gonnacry_virtualize2     0.5213    0.4961    0.5084       641
+               mirai     0.9231    0.9426    0.9328      1185
+           mirai-bcf     0.9179    0.8653    0.8908       594
+     mirai-cfflatten     0.9468    0.9452    0.9460       621
+           mirai-sub     0.8860    0.9200    0.9027       600
+           mirai-upx     0.8314    0.7839    0.8070       560
+     mirai_addopaque     0.8240    0.8117    0.8178       600
+       mirai_flatten     0.8310    0.8592    0.8449       618
+    mirai_virtualize     0.8212    0.8098    0.8155       573
+            random34     1.0000    1.0000    1.0000      1163
+       rootkit_kisni     0.6983    0.7102    0.7042       590
+      rootkit_maK_it     0.7077    0.6958    0.7017       595
+
+            accuracy                         0.6816     20400
+           macro avg     0.6616    0.6616    0.6614     20400
+        weighted avg     0.6803    0.6816    0.6807     20400
 compute with 2 per mean
-transform (size: (14898, 31200)): 2.2516348361968994 seconds
-Test NB   (size: (15595, 4)) [0.017173290252685547 seconds]: 0.9803783263866624
-Test SVM   (size: (15595, 4)) [0.3828754425048828 seconds]: 0.985379929464572
+SVM - mean 2:
+                       precision    recall  f1-score   support
+
+            bashlite     0.5317    0.4887    0.5093       309
+  bashlite_addopaque     0.3833    0.3885    0.3859       296
+        bashlite_bcf     0.8786    0.9016    0.8900       305
+  bashlite_cfflatten     0.9966    0.9900    0.9933       300
+    bashlite_flatten     0.3009    0.3299    0.3148       291
+        bashlite_sub     0.3627    0.3576    0.3601       288
+        bashlite_upx     0.9406    0.9212    0.9308       292
+ bashlite_virtualize     0.2959    0.2929    0.2944       297
+            gonnacry     0.7654    0.8940    0.8247       613
+        gonnacry-aes     0.6477    0.4310    0.5176       290
+    gonnacry-aes-upx     0.4867    0.5052    0.4958       289
+        gonnacry-des     0.9731    0.9863    0.9797       293
+    gonnacry-des-upx     0.9834    0.9705    0.9769       305
+        gonnacry-upx     0.4895    0.4651    0.4770       301
+  gonnacry_addopaque     0.7152    0.7106    0.7129       311
+        gonnacry_bcf     0.7108    0.7333    0.7219       315
+  gonnacry_cfflatten     0.6159    0.6488    0.6319       299
+    gonnacry_flatten     0.5325    0.5625    0.5471       320
+        gonnacry_sub     0.6137    0.5648    0.5882       301
+gonnacry_virtualize2     0.5380    0.5094    0.5233       320
+               mirai     0.9783    0.9882    0.9832       592
+           mirai-bcf     0.9410    0.9696    0.9551       296
+     mirai-cfflatten     0.9840    0.9903    0.9871       310
+           mirai-sub     0.9792    0.9431    0.9608       299
+           mirai-upx     0.9557    0.9283    0.9418       279
+     mirai_addopaque     0.9364    0.8863    0.9107       299
+       mirai_flatten     0.9452    0.9513    0.9482       308
+    mirai_virtualize     0.8863    0.9266    0.9060       286
+            random34     1.0000    1.0000    1.0000       581
+       rootkit_kisni     0.7810    0.7279    0.7535       294
+      rootkit_maK_it     0.7476    0.7980    0.7720       297
+
+            accuracy                         0.7538     10176
+           macro avg     0.7386    0.7342    0.7353     10176
+        weighted avg     0.7534    0.7538    0.7524     10176
 compute with 3 per mean
-transform (size: (14898, 31200)): 1.266632318496704 seconds
-Test NB   (size: (10395, 4)) [0.03141069412231445 seconds]: 0.9935545935545935
-Test SVM   (size: (10395, 4)) [0.28963208198547363 seconds]: 0.9962481962481963
+SVM - mean 3:
+                       precision    recall  f1-score   support
+
+            bashlite     0.6786    0.5534    0.6096       206
+  bashlite_addopaque     0.4306    0.4721    0.4504       197
+        bashlite_bcf     0.9614    0.9803    0.9707       203
+  bashlite_cfflatten     1.0000    0.9950    0.9975       200
+    bashlite_flatten     0.3099    0.3402    0.3243       194
+        bashlite_sub     0.4420    0.4167    0.4290       192
+        bashlite_upx     0.9848    0.9949    0.9898       195
+ bashlite_virtualize     0.3137    0.3232    0.3184       198
+            gonnacry     0.7798    0.9609    0.8609       409
+        gonnacry-aes     0.8218    0.4301    0.5646       193
+    gonnacry-aes-upx     0.4794    0.4819    0.4806       193
+        gonnacry-des     0.9847    0.9897    0.9872       195
+    gonnacry-des-upx     0.9901    0.9852    0.9877       203
+        gonnacry-upx     0.4872    0.4726    0.4798       201
+  gonnacry_addopaque     0.7824    0.8164    0.7991       207
+        gonnacry_bcf     0.7725    0.7762    0.7743       210
+  gonnacry_cfflatten     0.7245    0.7136    0.7190       199
+    gonnacry_flatten     0.5289    0.5587    0.5434       213
+        gonnacry_sub     0.6736    0.6500    0.6616       200
+gonnacry_virtualize2     0.5323    0.5023    0.5169       213
+               mirai     0.9800    0.9975    0.9887       394
+           mirai-bcf     0.9657    1.0000    0.9825       197
+     mirai-cfflatten     1.0000    1.0000    1.0000       206
+           mirai-sub     1.0000    0.9648    0.9821       199
+           mirai-upx     0.9890    0.9624    0.9755       186
+     mirai_addopaque     0.9643    0.9497    0.9570       199
+       mirai_flatten     0.9755    0.9707    0.9731       205
+    mirai_virtualize     0.9433    0.9632    0.9531       190
+            random34     1.0000    1.0000    1.0000       387
+       rootkit_kisni     0.8093    0.8010    0.8051       196
+      rootkit_maK_it     0.8050    0.8131    0.8090       198
+
+            accuracy                         0.7877      6778
+           macro avg     0.7777    0.7689    0.7707      6778
+        weighted avg     0.7894    0.7877    0.7859      6778
 compute with 4 per mean
-transform (size: (14898, 31200)): 0.3754751682281494 seconds
-Test NB   (size: (7795, 4)) [0.02673959732055664 seconds]: 0.9970493906350224
-Test SVM   (size: (7795, 4)) [0.24078059196472168 seconds]: 0.9983322642719692
+SVM - mean 4:
+                       precision    recall  f1-score   support
+
+            bashlite     0.6739    0.6039    0.6370       154
+  bashlite_addopaque     0.4706    0.4865    0.4784       148
+        bashlite_bcf     0.9679    0.9934    0.9805       152
+  bashlite_cfflatten     1.0000    1.0000    1.0000       150
+    bashlite_flatten     0.3275    0.3862    0.3544       145
+        bashlite_sub     0.5040    0.4375    0.4684       144
+        bashlite_upx     0.9931    0.9795    0.9862       146
+ bashlite_virtualize     0.3333    0.3378    0.3356       148
+            gonnacry     0.7874    0.9804    0.8734       306
+        gonnacry-aes     0.9143    0.4414    0.5953       145
+    gonnacry-aes-upx     0.4861    0.4861    0.4861       144
+        gonnacry-des     0.9864    0.9932    0.9898       146
+    gonnacry-des-upx     0.9934    0.9868    0.9901       152
+        gonnacry-upx     0.5067    0.5067    0.5067       150
+  gonnacry_addopaque     0.8784    0.8387    0.8581       155
+        gonnacry_bcf     0.8447    0.8662    0.8553       157
+  gonnacry_cfflatten     0.6951    0.7651    0.7284       149
+    gonnacry_flatten     0.5500    0.5500    0.5500       160
+        gonnacry_sub     0.7609    0.7000    0.7292       150
+gonnacry_virtualize2     0.5500    0.5500    0.5500       160
+               mirai     0.9933    1.0000    0.9966       296
+           mirai-bcf     0.9737    1.0000    0.9867       148
+     mirai-cfflatten     1.0000    1.0000    1.0000       155
+           mirai-sub     1.0000    0.9732    0.9864       149
+           mirai-upx     1.0000    0.9856    0.9928       139
+     mirai_addopaque     0.9867    0.9933    0.9900       149
+       mirai_flatten     1.0000    0.9935    0.9967       154
+    mirai_virtualize     0.9860    0.9860    0.9860       143
+            random34     1.0000    1.0000    1.0000       290
+       rootkit_kisni     0.8503    0.8503    0.8503       147
+      rootkit_maK_it     0.8514    0.8514    0.8514       148
+
+            accuracy                         0.8088      5079
+           macro avg     0.8021    0.7911    0.7932      5079
+        weighted avg     0.8124    0.8088    0.8073      5079
 compute with 5 per mean
-transform (size: (14898, 31200)): 0.30562806129455566 seconds
-Test NB   (size: (6235, 4)) [0.01814866065979004 seconds]: 0.9993584603047313
-Test SVM   (size: (6235, 4)) [0.2097008228302002 seconds]: 0.9996792301523657
+SVM - mean 5:
+                       precision    recall  f1-score   support
+
+            bashlite     0.8172    0.6179    0.7037       123
+  bashlite_addopaque     0.5161    0.5424    0.5289       118
+        bashlite_bcf     1.0000    1.0000    1.0000       122
+  bashlite_cfflatten     1.0000    1.0000    1.0000       120
+    bashlite_flatten     0.3464    0.4569    0.3941       116
+        bashlite_sub     0.5900    0.5130    0.5488       115
+        bashlite_upx     1.0000    1.0000    1.0000       117
+ bashlite_virtualize     0.3388    0.3445    0.3417       119
+            gonnacry     0.7806    0.9878    0.8721       245
+        gonnacry-aes     0.9412    0.4138    0.5749       116
+    gonnacry-aes-upx     0.4741    0.4783    0.4762       115
+        gonnacry-des     1.0000    1.0000    1.0000       117
+    gonnacry-des-upx     1.0000    1.0000    1.0000       122
+        gonnacry-upx     0.4958    0.4917    0.4937       120
+  gonnacry_addopaque     0.8852    0.8710    0.8780       124
+        gonnacry_bcf     0.9083    0.8651    0.8862       126
+  gonnacry_cfflatten     0.7538    0.8235    0.7871       119
+    gonnacry_flatten     0.5462    0.5547    0.5504       128
+        gonnacry_sub     0.8205    0.8000    0.8101       120
+gonnacry_virtualize2     0.5476    0.5391    0.5433       128
+               mirai     1.0000    1.0000    1.0000       236
+           mirai-bcf     0.9833    1.0000    0.9916       118
+     mirai-cfflatten     1.0000    1.0000    1.0000       124
+           mirai-sub     1.0000    0.9832    0.9915       119
+           mirai-upx     1.0000    1.0000    1.0000       111
+     mirai_addopaque     0.9916    0.9916    0.9916       119
+       mirai_flatten     1.0000    1.0000    1.0000       123
+    mirai_virtualize     0.9912    0.9912    0.9912       114
+            random34     1.0000    1.0000    1.0000       232
+       rootkit_kisni     0.8468    0.8974    0.8714       117
+      rootkit_maK_it     0.8919    0.8390    0.8646       118
+
+            accuracy                         0.8230      4061
+           macro avg     0.8215    0.8065    0.8094      4061
+        weighted avg     0.8301    0.8230    0.8220      4061
 compute with 6 per mean
-transform (size: (14898, 31200)): 0.24436545372009277 seconds
-Test NB   (size: (5195, 4)) [0.01896047592163086 seconds]: 0.9996150144369587
-Test SVM   (size: (5195, 4)) [0.18355059623718262 seconds]: 0.9998075072184793
+SVM - mean 6:
+                       precision    recall  f1-score   support
+
+            bashlite     0.8690    0.7087    0.7807       103
+  bashlite_addopaque     0.4821    0.5510    0.5143        98
+        bashlite_bcf     1.0000    1.0000    1.0000       101
+  bashlite_cfflatten     1.0000    1.0000    1.0000       100
+    bashlite_flatten     0.4034    0.4948    0.4444        97
+        bashlite_sub     0.5921    0.4688    0.5233        96
+        bashlite_upx     1.0000    1.0000    1.0000        97
+ bashlite_virtualize     0.4216    0.4343    0.4279        99
+            gonnacry     0.7838    0.9951    0.8769       204
+        gonnacry-aes     0.9756    0.4167    0.5839        96
+    gonnacry-aes-upx     0.4848    0.5000    0.4923        96
+        gonnacry-des     1.0000    1.0000    1.0000        97
+    gonnacry-des-upx     1.0000    1.0000    1.0000       101
+        gonnacry-upx     0.5052    0.4900    0.4975       100
+  gonnacry_addopaque     0.9293    0.8932    0.9109       103
+        gonnacry_bcf     0.8785    0.8952    0.8868       105
+  gonnacry_cfflatten     0.7843    0.8081    0.7960        99
+    gonnacry_flatten     0.5926    0.6038    0.5981       106
+        gonnacry_sub     0.8081    0.8000    0.8040       100
+gonnacry_virtualize2     0.5962    0.5849    0.5905       106
+               mirai     0.9949    1.0000    0.9975       197
+           mirai-bcf     0.9899    1.0000    0.9949        98
+     mirai-cfflatten     1.0000    1.0000    1.0000       103
+           mirai-sub     1.0000    0.9899    0.9949        99
+           mirai-upx     1.0000    0.9892    0.9946        93
+     mirai_addopaque     0.9800    0.9899    0.9849        99
+       mirai_flatten     1.0000    1.0000    1.0000       102
+    mirai_virtualize     0.9894    0.9789    0.9841        95
+            random34     1.0000    1.0000    1.0000       193
+       rootkit_kisni     0.8542    0.8367    0.8454        98
+      rootkit_maK_it     0.8416    0.8586    0.8500        99
+
+            accuracy                         0.8320      3380
+           macro avg     0.8309    0.8157    0.8185      3380
+        weighted avg     0.8386    0.8320    0.8307      3380
 compute with 7 per mean
-transform (size: (14898, 31200)): 0.21380019187927246 seconds
-Test NB   (size: (4455, 4)) [0.012462377548217773 seconds]: 1.0
-Test SVM   (size: (4455, 4)) [0.17388343811035156 seconds]: 1.0
+SVM - mean 7:
+                       precision    recall  f1-score   support
+
+            bashlite     0.8286    0.6591    0.7342        88
+  bashlite_addopaque     0.5446    0.6548    0.5946        84
+        bashlite_bcf     1.0000    1.0000    1.0000        87
+  bashlite_cfflatten     1.0000    1.0000    1.0000        85
+    bashlite_flatten     0.4141    0.4940    0.4505        83
+        bashlite_sub     0.5942    0.5000    0.5430        82
+        bashlite_upx     1.0000    1.0000    1.0000        83
+ bashlite_virtualize     0.3976    0.3882    0.3929        85
+            gonnacry     0.7848    1.0000    0.8794       175
+        gonnacry-aes     1.0000    0.4146    0.5862        82
+    gonnacry-aes-upx     0.4713    0.5000    0.4852        82
+        gonnacry-des     1.0000    1.0000    1.0000        83
+    gonnacry-des-upx     1.0000    1.0000    1.0000        87
+        gonnacry-upx     0.4938    0.4651    0.4790        86
+  gonnacry_addopaque     0.9540    0.9326    0.9432        89
+        gonnacry_bcf     0.9231    0.9333    0.9282        90
+  gonnacry_cfflatten     0.8736    0.8941    0.8837        85
+    gonnacry_flatten     0.5895    0.6154    0.6022        91
+        gonnacry_sub     0.8588    0.8488    0.8538        86
+gonnacry_virtualize2     0.5977    0.5714    0.5843        91
+               mirai     1.0000    1.0000    1.0000       169
+           mirai-bcf     0.9882    1.0000    0.9941        84
+     mirai-cfflatten     1.0000    1.0000    1.0000        88
+           mirai-sub     1.0000    0.9882    0.9941        85
+           mirai-upx     1.0000    1.0000    1.0000        79
+     mirai_addopaque     0.9884    1.0000    0.9942        85
+       mirai_flatten     1.0000    1.0000    1.0000        88
+    mirai_virtualize     1.0000    0.9877    0.9938        81
+            random34     1.0000    1.0000    1.0000       166
+       rootkit_kisni     0.9059    0.9167    0.9112        84
+      rootkit_maK_it     0.9157    0.9048    0.9102        84
+
+            accuracy                         0.8433      2897
+           macro avg     0.8427    0.8280    0.8303      2897
+        weighted avg     0.8496    0.8433    0.8415      2897
+compute with 8 per mean
+SVM - mean 8:
+                       precision    recall  f1-score   support
+
+            bashlite     0.8548    0.6883    0.7626        77
+  bashlite_addopaque     0.6026    0.6351    0.6184        74
+        bashlite_bcf     1.0000    1.0000    1.0000        76
+  bashlite_cfflatten     1.0000    1.0000    1.0000        75
+    bashlite_flatten     0.3956    0.5000    0.4417        72
+        bashlite_sub     0.6207    0.5000    0.5538        72
+        bashlite_upx     1.0000    1.0000    1.0000        73
+ bashlite_virtualize     0.3875    0.4189    0.4026        74
+            gonnacry     0.7727    1.0000    0.8718       153
+        gonnacry-aes     1.0000    0.3750    0.5455        72
+    gonnacry-aes-upx     0.4545    0.4167    0.4348        72
+        gonnacry-des     1.0000    1.0000    1.0000        73
+    gonnacry-des-upx     1.0000    1.0000    1.0000        76
+        gonnacry-upx     0.4815    0.5200    0.5000        75
+  gonnacry_addopaque     0.9359    0.9481    0.9419        77
+        gonnacry_bcf     0.9157    0.9744    0.9441        78
+  gonnacry_cfflatten     0.8767    0.8649    0.8707        74
+    gonnacry_flatten     0.5976    0.6125    0.6049        80
+        gonnacry_sub     0.9286    0.8667    0.8966        75
+gonnacry_virtualize2     0.6026    0.5875    0.5949        80
+               mirai     1.0000    1.0000    1.0000       148
+           mirai-bcf     0.9867    1.0000    0.9933        74
+     mirai-cfflatten     1.0000    1.0000    1.0000        77
+           mirai-sub     1.0000    0.9865    0.9932        74
+           mirai-upx     1.0000    1.0000    1.0000        69
+     mirai_addopaque     0.9867    1.0000    0.9933        74
+       mirai_flatten     1.0000    1.0000    1.0000        77
+    mirai_virtualize     1.0000    0.9859    0.9929        71
+            random34     1.0000    1.0000    1.0000       145
+       rootkit_kisni     0.8986    0.8493    0.8732        73
+      rootkit_maK_it     0.8590    0.9054    0.8816        74
+
+            accuracy                         0.8425      2534
+           macro avg     0.8438    0.8269    0.8294      2534
+        weighted avg     0.8502    0.8425    0.8407      2534
 compute with 9 per mean
-transform (size: (14898, 31200)): 0.15407872200012207 seconds
-Test NB   (size: (3464, 4)) [0.01326608657836914 seconds]: 1.0
-Test SVM   (size: (3464, 4)) [0.1488032341003418 seconds]: 1.0
+SVM - mean 9:
+                       precision    recall  f1-score   support
+
+            bashlite     0.8947    0.7500    0.8160        68
+  bashlite_addopaque     0.6197    0.6769    0.6471        65
+        bashlite_bcf     1.0000    1.0000    1.0000        67
+  bashlite_cfflatten     1.0000    1.0000    1.0000        66
+    bashlite_flatten     0.4500    0.5625    0.5000        64
+        bashlite_sub     0.6364    0.5469    0.5882        64
+        bashlite_upx     1.0000    1.0000    1.0000        65
+ bashlite_virtualize     0.4688    0.4545    0.4615        66
+            gonnacry     0.7473    1.0000    0.8553       136
+        gonnacry-aes     1.0000    0.2812    0.4390        64
+    gonnacry-aes-upx     0.5152    0.5312    0.5231        64
+        gonnacry-des     1.0000    1.0000    1.0000        65
+    gonnacry-des-upx     1.0000    1.0000    1.0000        67
+        gonnacry-upx     0.5385    0.5224    0.5303        67
+  gonnacry_addopaque     0.9577    0.9855    0.9714        69
+        gonnacry_bcf     0.8919    0.9429    0.9167        70
+  gonnacry_cfflatten     0.8806    0.8939    0.8872        66
+    gonnacry_flatten     0.5867    0.6197    0.6027        71
+        gonnacry_sub     0.9153    0.8182    0.8640        66
+gonnacry_virtualize2     0.5970    0.5634    0.5797        71
+               mirai     1.0000    1.0000    1.0000       131
+           mirai-bcf     1.0000    1.0000    1.0000        65
+     mirai-cfflatten     1.0000    1.0000    1.0000        68
+           mirai-sub     1.0000    1.0000    1.0000        66
+           mirai-upx     1.0000    1.0000    1.0000        62
+     mirai_addopaque     1.0000    1.0000    1.0000        66
+       mirai_flatten     1.0000    1.0000    1.0000        68
+    mirai_virtualize     1.0000    1.0000    1.0000        63
+            random34     1.0000    1.0000    1.0000       129
+       rootkit_kisni     0.9219    0.9077    0.9147        65
+      rootkit_maK_it     0.9104    0.9242    0.9173        66
+
+            accuracy                         0.8524      2250
+           macro avg     0.8559    0.8381    0.8392      2250
+        weighted avg     0.8602    0.8524    0.8488      2250
 compute with 10 per mean
-transform (size: (14898, 31200)): 0.13491106033325195 seconds
-Test NB   (size: (3115, 4)) [0.012001514434814453 seconds]: 1.0
-Test SVM   (size: (3115, 4)) [0.14250659942626953 seconds]: 1.0
+SVM - mean 10:
+                       precision    recall  f1-score   support
+
+            bashlite     0.8800    0.7213    0.7928        61
+  bashlite_addopaque     0.6613    0.6949    0.6777        59
+        bashlite_bcf     1.0000    1.0000    1.0000        61
+  bashlite_cfflatten     1.0000    1.0000    1.0000        60
+    bashlite_flatten     0.4366    0.5345    0.4806        58
+        bashlite_sub     0.6531    0.5614    0.6038        57
+        bashlite_upx     1.0000    1.0000    1.0000        58
+ bashlite_virtualize     0.4355    0.4576    0.4463        59
+            gonnacry     0.7578    1.0000    0.8622       122
+        gonnacry-aes     1.0000    0.3276    0.4935        58
+    gonnacry-aes-upx     0.4915    0.5088    0.5000        57
+        gonnacry-des     1.0000    1.0000    1.0000        58
+    gonnacry-des-upx     1.0000    1.0000    1.0000        61
+        gonnacry-upx     0.5172    0.5000    0.5085        60
+  gonnacry_addopaque     0.9672    0.9516    0.9593        62
+        gonnacry_bcf     0.9254    0.9841    0.9538        63
+  gonnacry_cfflatten     0.8814    0.8814    0.8814        59
+    gonnacry_flatten     0.6061    0.6250    0.6154        64
+        gonnacry_sub     0.8947    0.8500    0.8718        60
+gonnacry_virtualize2     0.6129    0.5938    0.6032        64
+               mirai     1.0000    1.0000    1.0000       118
+           mirai-bcf     1.0000    1.0000    1.0000        59
+     mirai-cfflatten     1.0000    1.0000    1.0000        62
+           mirai-sub     1.0000    1.0000    1.0000        59
+           mirai-upx     1.0000    1.0000    1.0000        55
+     mirai_addopaque     1.0000    1.0000    1.0000        59
+       mirai_flatten     1.0000    1.0000    1.0000        61
+    mirai_virtualize     1.0000    1.0000    1.0000        57
+            random34     1.0000    1.0000    1.0000       116
+       rootkit_kisni     0.9286    0.8966    0.9123        58
+      rootkit_maK_it     0.9016    0.9322    0.9167        59
+
+            accuracy                         0.8538      2024
+           macro avg     0.8565    0.8394    0.8413      2024
+        weighted avg     0.8614    0.8538    0.8511      2024
 --------------------------------------------------------------------------------
-11.12.2020 - 13:20:16
-path_lists: ../lists_selected_bandwidth/files_lists_tagmap=packer_detection.npy
-log_file: log-evaluation.txt
-model_lda: ../ml_models/packer_detection/LDA_model=packer_detection.jl
-model_svm: ../ml_models/packer_detection/SVM_model=packer_detection.jl
-model_nb: ../ml_models/packer_detection/NB_model=packer_detection.jl
-means; [2, 3, 4, 5, 6, 7, 9, 10]
+09.04.2021 - 18:25:53
+path_lists: lists_selected_bandwidth//files_lists_tagmap=novelty_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=novelty_classification_28bd.jl
+model_nb: ../pretrained_models_prerelease//NB/NB_model=novelty_classification_28bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 28
 --------------------------------------------------------------------------------
-LDA (loading): 0.0024840831756591797 seconds
-NB (loading): 0.0006237030029296875 seconds
-SVM (loading): 0.0012059211730957031 seconds
-transform (size: (14898, 5984)): 0.31592655181884766 seconds
-Test NB  (size: (5984, 1)) [0.0856170654296875 seconds]: 0.6712901069518716 [0.9788474350433045]
-Test SVM (size: (5984, 1)) [0.5017004013061523 seconds]: 0.6699532085561497 [0.9790139906728847]
+transform (size: (17108, 7106)): 0.9796352386474609 seconds
+Test NB  (size: (7106, 4)) [0.002958536148071289 seconds]:
+              precision    recall  f1-score   support
+
+    bashlite     0.9832    0.9941    0.9886      1180
+      benign     1.0000    1.0000    1.0000      1163
+    gonnacry     0.9812    0.9767    0.9789      1761
+       mirai     0.9809    0.9789    0.9799      2412
+     rootkit     1.0000    1.0000    1.0000       590
+
+    accuracy                         0.9861      7106
+   macro avg     0.9891    0.9899    0.9895      7106
+weighted avg     0.9861    0.9861    0.9861      7106
 compute with 2 per mean
-transform (size: (14898, 5984)): 0.0971524715423584 seconds
-Test NB   (size: (2991, 1)) [0.013430356979370117 seconds]: 0.7204948177866934
-Test SVM   (size: (2991, 1)) [0.11496901512145996 seconds]: 0.7204948177866934
+NB - mean 2:
+               precision    recall  f1-score   support
+
+    bashlite     0.9983    1.0000    0.9992       588
+      benign     1.0000    1.0000    1.0000       581
+    gonnacry     0.9989    0.9966    0.9977       878
+       mirai     0.9975    0.9983    0.9979      1203
+     rootkit     1.0000    1.0000    1.0000       294
+
+    accuracy                         0.9986      3544
+   macro avg     0.9989    0.9990    0.9990      3544
+weighted avg     0.9986    0.9986    0.9986      3544
 compute with 3 per mean
-transform (size: (14898, 5984)): 0.06666374206542969 seconds
-Test NB   (size: (1993, 1)) [0.009112358093261719 seconds]: 0.7476166583040642
-Test SVM   (size: (1993, 1)) [0.08830142021179199 seconds]: 0.7471149021575514
+NB - mean 3:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       392
+      benign     1.0000    1.0000    1.0000       387
+    gonnacry     1.0000    0.9983    0.9991       585
+       mirai     0.9988    1.0000    0.9994       800
+     rootkit     1.0000    1.0000    1.0000       196
+
+    accuracy                         0.9996      2360
+   macro avg     0.9998    0.9997    0.9997      2360
+weighted avg     0.9996    0.9996    0.9996      2360
 compute with 4 per mean
-transform (size: (14898, 5984)): 0.05065321922302246 seconds
-Test NB   (size: (1495, 1)) [0.007006168365478516 seconds]: 0.7959866220735786
-Test SVM   (size: (1495, 1)) [0.0706017017364502 seconds]: 0.797324414715719
+NB - mean 4:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       293
+      benign     1.0000    1.0000    1.0000       290
+    gonnacry     1.0000    1.0000    1.0000       438
+       mirai     1.0000    1.0000    1.0000       601
+     rootkit     1.0000    1.0000    1.0000       147
+
+    accuracy                         1.0000      1769
+   macro avg     1.0000    1.0000    1.0000      1769
+weighted avg     1.0000    1.0000    1.0000      1769
 compute with 5 per mean
-transform (size: (14898, 5984)): 0.04377102851867676 seconds
-Test NB   (size: (1195, 1)) [0.006110429763793945 seconds]: 0.8192468619246862
-Test SVM   (size: (1195, 1)) [0.05592942237854004 seconds]: 0.8200836820083682
+NB - mean 5:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       235
+      benign     1.0000    1.0000    1.0000       232
+    gonnacry     1.0000    1.0000    1.0000       350
+       mirai     1.0000    1.0000    1.0000       480
+     rootkit     1.0000    1.0000    1.0000       117
+
+    accuracy                         1.0000      1414
+   macro avg     1.0000    1.0000    1.0000      1414
+weighted avg     1.0000    1.0000    1.0000      1414
 compute with 6 per mean
-transform (size: (14898, 5984)): 0.03932046890258789 seconds
-Test NB   (size: (996, 1)) [0.005365848541259766 seconds]: 0.8443775100401606
-Test SVM   (size: (996, 1)) [0.051136016845703125 seconds]: 0.8433734939759037
+NB - mean 6:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       196
+      benign     1.0000    1.0000    1.0000       193
+    gonnacry     1.0000    1.0000    1.0000       291
+       mirai     1.0000    1.0000    1.0000       399
+     rootkit     1.0000    1.0000    1.0000        98
+
+    accuracy                         1.0000      1177
+   macro avg     1.0000    1.0000    1.0000      1177
+weighted avg     1.0000    1.0000    1.0000      1177
 compute with 7 per mean
-transform (size: (14898, 5984)): 0.034668922424316406 seconds
-Test NB   (size: (853, 1)) [0.004652500152587891 seconds]: 0.8522860492379836
-Test SVM   (size: (853, 1)) [0.04448246955871582 seconds]: 0.8522860492379836
+NB - mean 7:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       168
+      benign     1.0000    1.0000    1.0000       166
+    gonnacry     1.0000    1.0000    1.0000       249
+       mirai     1.0000    1.0000    1.0000       342
+     rootkit     1.0000    1.0000    1.0000        84
+
+    accuracy                         1.0000      1009
+   macro avg     1.0000    1.0000    1.0000      1009
+weighted avg     1.0000    1.0000    1.0000      1009
+compute with 8 per mean
+NB - mean 8:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       146
+      benign     1.0000    1.0000    1.0000       145
+    gonnacry     1.0000    1.0000    1.0000       218
+       mirai     1.0000    1.0000    1.0000       299
+     rootkit     1.0000    1.0000    1.0000        73
+
+    accuracy                         1.0000       881
+   macro avg     1.0000    1.0000    1.0000       881
+weighted avg     1.0000    1.0000    1.0000       881
 compute with 9 per mean
-transform (size: (14898, 5984)): 0.027420997619628906 seconds
-Test NB   (size: (664, 1)) [0.0034606456756591797 seconds]: 0.8900602409638554
-Test SVM   (size: (664, 1)) [0.03464865684509277 seconds]: 0.891566265060241
+NB - mean 9:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       130
+      benign     1.0000    1.0000    1.0000       129
+    gonnacry     1.0000    1.0000    1.0000       194
+       mirai     1.0000    1.0000    1.0000       265
+     rootkit     1.0000    1.0000    1.0000        65
+
+    accuracy                         1.0000       783
+   macro avg     1.0000    1.0000    1.0000       783
+weighted avg     1.0000    1.0000    1.0000       783
 compute with 10 per mean
-transform (size: (14898, 5984)): 0.029543638229370117 seconds
-Test NB   (size: (597, 1)) [0.0032761096954345703 seconds]: 0.9212730318257957
-Test SVM   (size: (597, 1)) [0.033651113510131836 seconds]: 0.9195979899497487
+NB - mean 10:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       117
+      benign     1.0000    1.0000    1.0000       116
+    gonnacry     1.0000    1.0000    1.0000       174
+       mirai     1.0000    1.0000    1.0000       239
+     rootkit     1.0000    1.0000    1.0000        58
+
+    accuracy                         1.0000       704
+   macro avg     1.0000    1.0000    1.0000       704
+weighted avg     1.0000    1.0000    1.0000       704
 --------------------------------------------------------------------------------
-11.12.2020 - 13:20:35
-path_lists: ../lists_selected_bandwidth/files_lists_tagmap=virtualization_detection.npy
-log_file: log-evaluation.txt
-model_lda: ../ml_models/virtualization_detection/LDA_model=virtualization_detection.jl
-model_svm: ../ml_models/virtualization_detection/SVM_model=virtualization_detection.jl
-model_nb: ../ml_models/virtualization_detection/NB_model=virtualization_detection.jl
-means; [2, 3, 4, 5, 6, 7, 9, 10]
+09.04.2021 - 18:26:27
+path_lists: lists_selected_bandwidth//files_lists_tagmap=novelty_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=novelty_classification_28bd.jl
+model_svm: ../pretrained_models_prerelease//SVM/SVM_model=novelty_classification_28bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 28
 --------------------------------------------------------------------------------
-LDA (loading): 0.0021369457244873047 seconds
-NB (loading): 0.0006215572357177734 seconds
-SVM (loading): 0.0012888908386230469 seconds
-transform (size: (14898, 3613)): 0.13573789596557617 seconds
-Test NB  (size: (3613, 1)) [0.07421064376831055 seconds]: 0.6227511763077774 [1.0]
-Test SVM (size: (3613, 1)) [0.05435037612915039 seconds]: 0.5463603653473568 [1.0]
+transform (size: (17108, 7106)): 1.0331907272338867 seconds
+Test SVM  (size: (7106, 4)) [0.18769574165344238 seconds]:
+              precision    recall  f1-score   support
+
+    bashlite     0.9874    0.9941    0.9907      1180
+      benign     1.0000    1.0000    1.0000      1163
+    gonnacry     0.9818    0.9784    0.9801      1761
+       mirai     0.9817    0.9809    0.9813      2412
+     rootkit     1.0000    1.0000    1.0000       590
+
+    accuracy                         0.9872      7106
+   macro avg     0.9902    0.9907    0.9904      7106
+weighted avg     0.9872    0.9872    0.9872      7106
 compute with 2 per mean
-transform (size: (14898, 3613)): 0.061571359634399414 seconds
-Test NB   (size: (1805, 1)) [0.008692264556884766 seconds]: 0.6609418282548476
-Test SVM   (size: (1805, 1)) [0.008503198623657227 seconds]: 0.5872576177285319
+SVM - mean 2:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    0.9983    0.9991       588
+      benign     1.0000    1.0000    1.0000       581
+    gonnacry     0.9989    0.9966    0.9977       878
+       mirai     0.9967    0.9992    0.9979      1203
+     rootkit     1.0000    1.0000    1.0000       294
+
+    accuracy                         0.9986      3544
+   macro avg     0.9991    0.9988    0.9990      3544
+weighted avg     0.9986    0.9986    0.9986      3544
 compute with 3 per mean
-transform (size: (14898, 3613)): 0.04504823684692383 seconds
-Test NB   (size: (1203, 1)) [0.005316019058227539 seconds]: 0.6907730673316709
-Test SVM   (size: (1203, 1)) [0.005522012710571289 seconds]: 0.6442227763923525
+SVM - mean 3:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       392
+      benign     1.0000    1.0000    1.0000       387
+    gonnacry     1.0000    0.9983    0.9991       585
+       mirai     0.9988    1.0000    0.9994       800
+     rootkit     1.0000    1.0000    1.0000       196
+
+    accuracy                         0.9996      2360
+   macro avg     0.9998    0.9997    0.9997      2360
+weighted avg     0.9996    0.9996    0.9996      2360
 compute with 4 per mean
-transform (size: (14898, 3613)): 0.03488349914550781 seconds
-Test NB   (size: (902, 1)) [0.0055615901947021484 seconds]: 0.7084257206208425
-Test SVM   (size: (902, 1)) [0.005561351776123047 seconds]: 0.6784922394678492
+SVM - mean 4:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       293
+      benign     1.0000    1.0000    1.0000       290
+    gonnacry     1.0000    1.0000    1.0000       438
+       mirai     1.0000    1.0000    1.0000       601
+     rootkit     1.0000    1.0000    1.0000       147
+
+    accuracy                         1.0000      1769
+   macro avg     1.0000    1.0000    1.0000      1769
+weighted avg     1.0000    1.0000    1.0000      1769
 compute with 5 per mean
-transform (size: (14898, 3613)): 0.02805352210998535 seconds
-Test NB   (size: (721, 1)) [0.0032148361206054688 seconds]: 0.7170596393897365
-Test SVM   (size: (721, 1)) [0.004211902618408203 seconds]: 0.6907073509015257
+SVM - mean 5:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       235
+      benign     1.0000    1.0000    1.0000       232
+    gonnacry     1.0000    1.0000    1.0000       350
+       mirai     1.0000    1.0000    1.0000       480
+     rootkit     1.0000    1.0000    1.0000       117
+
+    accuracy                         1.0000      1414
+   macro avg     1.0000    1.0000    1.0000      1414
+weighted avg     1.0000    1.0000    1.0000      1414
 compute with 6 per mean
-transform (size: (14898, 3613)): 0.025256633758544922 seconds
-Test NB   (size: (601, 1)) [0.0034694671630859375 seconds]: 0.7554076539101497
-Test SVM   (size: (601, 1)) [0.003695249557495117 seconds]: 0.7321131447587355
+SVM - mean 6:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       196
+      benign     1.0000    1.0000    1.0000       193
+    gonnacry     1.0000    1.0000    1.0000       291
+       mirai     1.0000    1.0000    1.0000       399
+     rootkit     1.0000    1.0000    1.0000        98
+
+    accuracy                         1.0000      1177
+   macro avg     1.0000    1.0000    1.0000      1177
+weighted avg     1.0000    1.0000    1.0000      1177
 compute with 7 per mean
-transform (size: (14898, 3613)): 0.024206876754760742 seconds
-Test NB   (size: (515, 1)) [0.0029277801513671875 seconds]: 0.7592233009708738
-Test SVM   (size: (515, 1)) [0.003121614456176758 seconds]: 0.7378640776699029
+SVM - mean 7:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       168
+      benign     1.0000    1.0000    1.0000       166
+    gonnacry     1.0000    1.0000    1.0000       249
+       mirai     1.0000    1.0000    1.0000       342
+     rootkit     1.0000    1.0000    1.0000        84
+
+    accuracy                         1.0000      1009
+   macro avg     1.0000    1.0000    1.0000      1009
+weighted avg     1.0000    1.0000    1.0000      1009
+compute with 8 per mean
+SVM - mean 8:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       146
+      benign     1.0000    1.0000    1.0000       145
+    gonnacry     1.0000    1.0000    1.0000       218
+       mirai     1.0000    1.0000    1.0000       299
+     rootkit     1.0000    1.0000    1.0000        73
+
+    accuracy                         1.0000       881
+   macro avg     1.0000    1.0000    1.0000       881
+weighted avg     1.0000    1.0000    1.0000       881
 compute with 9 per mean
-transform (size: (14898, 3613)): 0.017978191375732422 seconds
-Test NB   (size: (401, 1)) [0.0019769668579101562 seconds]: 0.7930174563591023
-Test SVM   (size: (401, 1)) [0.00179290771484375 seconds]: 0.7780548628428927
+SVM - mean 9:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       130
+      benign     1.0000    1.0000    1.0000       129
+    gonnacry     1.0000    1.0000    1.0000       194
+       mirai     1.0000    1.0000    1.0000       265
+     rootkit     1.0000    1.0000    1.0000        65
+
+    accuracy                         1.0000       783
+   macro avg     1.0000    1.0000    1.0000       783
+weighted avg     1.0000    1.0000    1.0000       783
 compute with 10 per mean
-transform (size: (14898, 3613)): 0.015875816345214844 seconds
-Test NB   (size: (360, 1)) [0.002397298812866211 seconds]: 0.7777777777777778
-Test SVM   (size: (360, 1)) [0.002670764923095703 seconds]: 0.7833333333333333
+SVM - mean 10:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       117
+      benign     1.0000    1.0000    1.0000       116
+    gonnacry     1.0000    1.0000    1.0000       174
+       mirai     1.0000    1.0000    1.0000       239
+     rootkit     1.0000    1.0000    1.0000        58
+
+    accuracy                         1.0000       704
+   macro avg     1.0000    1.0000    1.0000       704
+weighted avg     1.0000    1.0000    1.0000       704
 --------------------------------------------------------------------------------
-11.12.2020 - 13:20:45
-path_lists: ../lists_selected_bandwidth/files_lists_tagmap=family_classification.npy
-log_file: log-evaluation.txt
-model_lda: ../ml_models/family_classification/LDA_model=family_classification.jl
-model_svm: ../ml_models/family_classification/SVM_model=family_classification.jl
-model_nb: ../ml_models/family_classification/NB_model=family_classification.jl
-means; [2, 3, 4, 5, 6, 7, 9, 10]
+09.04.2021 - 18:26:58
+path_lists: lists_selected_bandwidth//files_lists_tagmap=packer_identification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=packer_identification_6bd.jl
+model_nb: ../pretrained_models_prerelease//NB/NB_model=packer_identification_6bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 6
 --------------------------------------------------------------------------------
-LDA (loading): 0.005749940872192383 seconds
-NB (loading): 0.0006394386291503906 seconds
-SVM (loading): 0.0021088123321533203 seconds
-transform (size: (14898, 19140)): 0.9047062397003174 seconds
-Test NB  (size: (19140, 5)) [0.17023134231567383 seconds]: 0.9461337513061651 [0.983424408014572]
-Test SVM (size: (19140, 5)) [6.417642116546631 seconds]: 0.9492685475444096 [0.9843611761644548]
+transform (size: (3666, 7142)): 0.07000422477722168 seconds
+Test NB  (size: (7142, 1)) [0.0010516643524169922 seconds]:
+              precision    recall  f1-score   support
+
+  not_packed     0.8102    0.7955    0.8028      4201
+      packed     0.7153    0.7338    0.7244      2941
+
+    accuracy                         0.7701      7142
+   macro avg     0.7627    0.7646    0.7636      7142
+weighted avg     0.7711    0.7701    0.7705      7142
 compute with 2 per mean
-transform (size: (14898, 19140)): 1.007411003112793 seconds
-Test NB   (size: (9565, 5)) [0.022931575775146484 seconds]: 0.9768949294302143
-Test SVM   (size: (9565, 5)) [0.6293783187866211 seconds]: 0.9771040250914793
+NB - mean 2:
+               precision    recall  f1-score   support
+
+  not_packed     0.8584    0.8703    0.8643      2097
+      packed     0.8107    0.7947    0.8026      1466
+
+    accuracy                         0.8392      3563
+   macro avg     0.8346    0.8325    0.8335      3563
+weighted avg     0.8388    0.8392    0.8389      3563
 compute with 3 per mean
-transform (size: (14898, 19140)): 0.2931938171386719 seconds
-Test NB   (size: (6376, 5)) [0.015512228012084961 seconds]: 0.9824341279799247
-Test SVM   (size: (6376, 5)) [0.49389219284057617 seconds]: 0.9822772898368883
+NB - mean 3:
+               precision    recall  f1-score   support
+
+  not_packed     0.8852    0.9055    0.8953      1397
+      packed     0.8605    0.8323    0.8462       978
+
+    accuracy                         0.8754      2375
+   macro avg     0.8728    0.8689    0.8707      2375
+weighted avg     0.8750    0.8754    0.8750      2375
 compute with 4 per mean
-transform (size: (14898, 19140)): 0.252028226852417 seconds
-Test NB   (size: (4781, 5)) [0.014521598815917969 seconds]: 0.9849403890399498
-Test SVM   (size: (4781, 5)) [0.40042996406555176 seconds]: 0.9851495503032839
+NB - mean 4:
+               precision    recall  f1-score   support
+
+  not_packed     0.8970    0.9236    0.9101      1047
+      packed     0.8857    0.8482    0.8665       731
+
+    accuracy                         0.8926      1778
+   macro avg     0.8914    0.8859    0.8883      1778
+weighted avg     0.8924    0.8926    0.8922      1778
 compute with 5 per mean
-transform (size: (14898, 19140)): 0.15549659729003906 seconds
-Test NB   (size: (3825, 5)) [0.015509366989135742 seconds]: 0.984313725490196
-Test SVM   (size: (3825, 5)) [0.3145411014556885 seconds]: 0.9858823529411764
+NB - mean 5:
+               precision    recall  f1-score   support
+
+  not_packed     0.9075    0.9379    0.9224       837
+      packed     0.9066    0.8632    0.8844       585
+
+    accuracy                         0.9072      1422
+   macro avg     0.9071    0.9006    0.9034      1422
+weighted avg     0.9072    0.9072    0.9068      1422
 compute with 6 per mean
-transform (size: (14898, 19140)): 0.15854811668395996 seconds
-Test NB   (size: (3186, 5)) [0.02154064178466797 seconds]: 0.9865034526051475
-Test SVM   (size: (3186, 5)) [0.2531929016113281 seconds]: 0.9865034526051475
+NB - mean 6:
+               precision    recall  f1-score   support
+
+  not_packed     0.9223    0.9369    0.9295       697
+      packed     0.9076    0.8871    0.8972       487
+
+    accuracy                         0.9164      1184
+   macro avg     0.9149    0.9120    0.9134      1184
+weighted avg     0.9162    0.9164    0.9162      1184
 compute with 7 per mean
-transform (size: (14898, 19140)): 0.10727715492248535 seconds
-Test NB   (size: (2732, 5)) [0.008076190948486328 seconds]: 0.986822840409956
-Test SVM   (size: (2732, 5)) [0.24646949768066406 seconds]: 0.9882869692532943
+NB - mean 7:
+               precision    recall  f1-score   support
+
+  not_packed     0.9285    0.9347    0.9316       597
+      packed     0.9056    0.8969    0.9012       417
+
+    accuracy                         0.9191      1014
+   macro avg     0.9170    0.9158    0.9164      1014
+weighted avg     0.9190    0.9191    0.9191      1014
+compute with 8 per mean
+NB - mean 8:
+               precision    recall  f1-score   support
+
+  not_packed     0.9218    0.9465    0.9340       523
+      packed     0.9202    0.8849    0.9022       365
+
+    accuracy                         0.9212       888
+   macro avg     0.9210    0.9157    0.9181       888
+weighted avg     0.9211    0.9212    0.9209       888
 compute with 9 per mean
-transform (size: (14898, 19140)): 0.07421875 seconds
-Test NB   (size: (2123, 5)) [0.008144140243530273 seconds]: 0.9863400847856807
-Test SVM   (size: (2123, 5)) [0.20761609077453613 seconds]: 0.9868111163447951
+NB - mean 9:
+               precision    recall  f1-score   support
+
+  not_packed     0.9423    0.9504    0.9464       464
+      packed     0.9283    0.9169    0.9226       325
+
+    accuracy                         0.9366       789
+   macro avg     0.9353    0.9337    0.9345       789
+weighted avg     0.9366    0.9366    0.9366       789
 compute with 10 per mean
-transform (size: (14898, 19140)): 0.10072684288024902 seconds
-Test NB   (size: (1911, 5)) [0.005903959274291992 seconds]: 0.988487702773417
-Test SVM   (size: (1911, 5)) [0.18631577491760254 seconds]: 0.9879644165358451
+NB - mean 10:
+               precision    recall  f1-score   support
+
+  not_packed     0.9495    0.9472    0.9484       417
+      packed     0.9247    0.9278    0.9262       291
+
+    accuracy                         0.9393       708
+   macro avg     0.9371    0.9375    0.9373       708
+weighted avg     0.9393    0.9393    0.9393       708
 --------------------------------------------------------------------------------
-11.12.2020 - 13:21:57
-path_lists: ../lists_selected_bandwidth/files_lists_tagmap=obfuscation_classification.npy
-log_file: log-evaluation.txt
-model_lda: ../ml_models/obfuscation_classification/LDA_model=obfuscation_classification.jl
-model_svm: ../ml_models/obfuscation_classification/SVM_model=obfuscation_classification.jl
-model_nb: ../ml_models/obfuscation_classification/NB_model=obfuscation_classification.jl
-means; [2, 3, 4, 5, 6, 7, 9, 10]
+09.04.2021 - 18:27:11
+path_lists: lists_selected_bandwidth//files_lists_tagmap=packer_identification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=packer_identification_6bd.jl
+model_svm: ../pretrained_models_prerelease//SVM/SVM_model=packer_identification_6bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 6
 --------------------------------------------------------------------------------
-LDA (loading): 0.006085395812988281 seconds
-NB (loading): 0.0005829334259033203 seconds
-SVM (loading): 0.00633549690246582 seconds
-transform (size: (14898, 13200)): 0.5840790271759033 seconds
-Test NB  (size: (13200, 6)) [0.14351797103881836 seconds]: 0.5408333333333334 [0.8953787878787879]
-Test SVM (size: (13200, 6)) [15.753042697906494 seconds]: 0.5412878787878788 [0.8994886363636364]
+transform (size: (3666, 7142)): 0.1222989559173584 seconds
+Test SVM  (size: (7142, 1)) [2.342555046081543 seconds]:
+              precision    recall  f1-score   support
+
+  not_packed     0.8042    0.8077    0.8059      4201
+      packed     0.7236    0.7191    0.7214      2941
+
+    accuracy                         0.7712      7142
+   macro avg     0.7639    0.7634    0.7636      7142
+weighted avg     0.7710    0.7712    0.7711      7142
 compute with 2 per mean
-transform (size: (14898, 13200)): 0.426699161529541 seconds
-Test NB   (size: (6595, 6)) [0.018900156021118164 seconds]: 0.6589840788476118
-Test SVM   (size: (6595, 6)) [1.5607755184173584 seconds]: 0.6577710386656558
+SVM - mean 2:
+               precision    recall  f1-score   support
+
+  not_packed     0.8517    0.8817    0.8664      2097
+      packed     0.8218    0.7804    0.8006      1466
+
+    accuracy                         0.8400      3563
+   macro avg     0.8368    0.8310    0.8335      3563
+weighted avg     0.8394    0.8400    0.8393      3563
 compute with 3 per mean
-transform (size: (14898, 13200)): 0.23694610595703125 seconds
-Test NB   (size: (4395, 6)) [0.012441396713256836 seconds]: 0.7308304891922639
-Test SVM   (size: (4395, 6)) [1.0848422050476074 seconds]: 0.7267349260523321
+SVM - mean 3:
+               precision    recall  f1-score   support
+
+  not_packed     0.8765    0.9141    0.8949      1397
+      packed     0.8693    0.8160    0.8418       978
+
+    accuracy                         0.8737      2375
+   macro avg     0.8729    0.8650    0.8683      2375
+weighted avg     0.8735    0.8737    0.8730      2375
 compute with 4 per mean
-transform (size: (14898, 13200)): 0.1476898193359375 seconds
-Test NB   (size: (3296, 6)) [0.011305093765258789 seconds]: 0.7572815533980582
-Test SVM   (size: (3296, 6)) [0.8258106708526611 seconds]: 0.758495145631068
+SVM - mean 4:
+               precision    recall  f1-score   support
+
+  not_packed     0.8907    0.9341    0.9119      1047
+      packed     0.8985    0.8358    0.8661       731
+
+    accuracy                         0.8937      1778
+   macro avg     0.8946    0.8850    0.8890      1778
+weighted avg     0.8939    0.8937    0.8930      1778
 compute with 5 per mean
-transform (size: (14898, 13200)): 0.11350679397583008 seconds
-Test NB   (size: (2636, 6)) [0.008594751358032227 seconds]: 0.7924886191198786
-Test SVM   (size: (2636, 6)) [0.7313332557678223 seconds]: 0.787556904400607
+SVM - mean 5:
+               precision    recall  f1-score   support
+
+  not_packed     0.8965    0.9415    0.9184       837
+      packed     0.9098    0.8444    0.8759       585
+
+    accuracy                         0.9015      1422
+   macro avg     0.9031    0.8930    0.8972      1422
+weighted avg     0.9019    0.9015    0.9009      1422
 compute with 6 per mean
-transform (size: (14898, 13200)): 0.09402203559875488 seconds
-Test NB   (size: (2196, 6)) [0.0066869258880615234 seconds]: 0.8155737704918032
-Test SVM   (size: (2196, 6)) [0.5810306072235107 seconds]: 0.8119307832422586
+SVM - mean 6:
+               precision    recall  f1-score   support
+
+  not_packed     0.9155    0.9484    0.9316       697
+      packed     0.9221    0.8747    0.8978       487
+
+    accuracy                         0.9181      1184
+   macro avg     0.9188    0.9115    0.9147      1184
+weighted avg     0.9182    0.9181    0.9177      1184
 compute with 7 per mean
-transform (size: (14898, 13200)): 0.08157229423522949 seconds
-Test NB   (size: (1882, 6)) [0.01223301887512207 seconds]: 0.8363443145589798
-Test SVM   (size: (1882, 6)) [0.5230019092559814 seconds]: 0.8352816153028693
+SVM - mean 7:
+               precision    recall  f1-score   support
+
+  not_packed     0.9199    0.9430    0.9313       597
+      packed     0.9154    0.8825    0.8987       417
+
+    accuracy                         0.9181      1014
+   macro avg     0.9177    0.9128    0.9150      1014
+weighted avg     0.9181    0.9181    0.9179      1014
+compute with 8 per mean
+SVM - mean 8:
+               precision    recall  f1-score   support
+
+  not_packed     0.9068    0.9484    0.9271       523
+      packed     0.9208    0.8603    0.8895       365
+
+    accuracy                         0.9122       888
+   macro avg     0.9138    0.9043    0.9083       888
+weighted avg     0.9125    0.9122    0.9117       888
 compute with 9 per mean
-transform (size: (14898, 13200)): 0.05632591247558594 seconds
-Test NB   (size: (1463, 6)) [0.005097866058349609 seconds]: 0.8591934381408065
-Test SVM   (size: (1463, 6)) [0.4036068916320801 seconds]: 0.8537252221462748
+SVM - mean 9:
+               precision    recall  f1-score   support
+
+  not_packed     0.9345    0.9526    0.9434       464
+      packed     0.9304    0.9046    0.9173       325
+
+    accuracy                         0.9328       789
+   macro avg     0.9324    0.9286    0.9304       789
+weighted avg     0.9328    0.9328    0.9327       789
 compute with 10 per mean
-transform (size: (14898, 13200)): 0.05627918243408203 seconds
-Test NB   (size: (1317, 6)) [0.0041942596435546875 seconds]: 0.8709187547456341
-Test SVM   (size: (1317, 6)) [0.37437987327575684 seconds]: 0.8686408504176157
+SVM - mean 10:
+               precision    recall  f1-score   support
+
+  not_packed     0.9254    0.9520    0.9385       417
+      packed     0.9283    0.8900    0.9088       291
+
+    accuracy                         0.9266       708
+   macro avg     0.9269    0.9210    0.9237       708
+weighted avg     0.9266    0.9266    0.9263       708
 --------------------------------------------------------------------------------
-11.12.2020 - 13:23:01
-path_lists: ../lists_selected_bandwidth/files_lists_tagmap=type_classification.npy
-log_file: log-evaluation.txt
-model_lda: ../ml_models/type_classification/LDA_model=type_classification.jl
-model_svm: ../ml_models/type_classification/SVM_model=type_classification.jl
-model_nb: ../ml_models/type_classification/NB_model=type_classification.jl
-means; [2, 3, 4, 5, 6, 7, 9, 10]
+09.04.2021 - 18:27:27
+path_lists: lists_selected_bandwidth//files_lists_tagmap=virtualization_identification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=virtualization_identification_16bd.jl
+model_nb: ../pretrained_models_prerelease//NB/NB_model=virtualization_identification_16bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 16
 --------------------------------------------------------------------------------
-LDA (loading): 0.004529714584350586 seconds
-NB (loading): 0.0005249977111816406 seconds
-SVM (loading): 0.001481771469116211 seconds
-transform (size: (14898, 19205)): 2.251272201538086 seconds
-Test NB  (size: (19205, 3)) [0.11866188049316406 seconds]: 0.9613121582921115 [0.9849339149684224]
-Test SVM (size: (19205, 3)) [5.385725736618042 seconds]: 0.961051809424629 [0.9849599583306204]
+transform (size: (9776, 4843)): 0.2870361804962158 seconds
+Test NB  (size: (4843, 1)) [0.0008673667907714844 seconds]:
+              precision    recall  f1-score   support
+
+        orig     0.9040    0.9126    0.9083      3033
+ virtualized     0.8512    0.8376    0.8443      1810
+
+    accuracy                         0.8846      4843
+   macro avg     0.8776    0.8751    0.8763      4843
+weighted avg     0.8843    0.8846    0.8844      4843
 compute with 2 per mean
-transform (size: (14898, 19205)): 1.4093687534332275 seconds
-Test NB   (size: (9600, 3)) [0.012667655944824219 seconds]: 0.9910416666666667
-Test SVM   (size: (9600, 3)) [0.48868536949157715 seconds]: 0.9907291666666667
+NB - mean 2:
+               precision    recall  f1-score   support
+
+        orig     0.9386    0.9181    0.9282      1514
+ virtualized     0.8675    0.8992    0.8831       903
+
+    accuracy                         0.9110      2417
+   macro avg     0.9030    0.9087    0.9057      2417
+weighted avg     0.9120    0.9110    0.9114      2417
 compute with 3 per mean
-transform (size: (14898, 19205)): 0.7109568119049072 seconds
-Test NB   (size: (6399, 3)) [0.01513814926147461 seconds]: 0.9979684325675887
-Test SVM   (size: (6399, 3)) [0.3661026954650879 seconds]: 0.9982809814033443
+NB - mean 3:
+               precision    recall  f1-score   support
+
+        orig     0.9495    0.9316    0.9405      1009
+ virtualized     0.8887    0.9168    0.9025       601
+
+    accuracy                         0.9261      1610
+   macro avg     0.9191    0.9242    0.9215      1610
+weighted avg     0.9268    0.9261    0.9263      1610
 compute with 4 per mean
-transform (size: (14898, 19205)): 0.21630311012268066 seconds
-Test NB   (size: (4799, 3)) [0.019376754760742188 seconds]: 0.9995832465096895
-Test SVM   (size: (4799, 3)) [0.30351877212524414 seconds]: 0.9997916232548447
+NB - mean 4:
+               precision    recall  f1-score   support
+
+        orig     0.9552    0.9312    0.9431       756
+ virtualized     0.8894    0.9268    0.9077       451
+
+    accuracy                         0.9296      1207
+   macro avg     0.9223    0.9290    0.9254      1207
+weighted avg     0.9306    0.9296    0.9299      1207
 compute with 5 per mean
-transform (size: (14898, 19205)): 0.17633724212646484 seconds
-Test NB   (size: (3839, 3)) [0.012729644775390625 seconds]: 1.0
-Test SVM   (size: (3839, 3)) [0.24989771842956543 seconds]: 1.0
+NB - mean 5:
+               precision    recall  f1-score   support
+
+        orig     0.9589    0.9272    0.9428       604
+ virtualized     0.8845    0.9335    0.9084       361
+
+    accuracy                         0.9295       965
+   macro avg     0.9217    0.9303    0.9256       965
+weighted avg     0.9311    0.9295    0.9299       965
 compute with 6 per mean
-transform (size: (14898, 19205)): 0.13469648361206055 seconds
-Test NB   (size: (3199, 3)) [0.012166023254394531 seconds]: 1.0
-Test SVM   (size: (3199, 3)) [0.23147130012512207 seconds]: 1.0
+NB - mean 6:
+               precision    recall  f1-score   support
+
+        orig     0.9649    0.9286    0.9464       504
+ virtualized     0.8871    0.9433    0.9144       300
+
+    accuracy                         0.9341       804
+   macro avg     0.9260    0.9360    0.9304       804
+weighted avg     0.9359    0.9341    0.9345       804
 compute with 7 per mean
-transform (size: (14898, 19205)): 0.12856602668762207 seconds
-Test NB   (size: (2742, 3)) [0.016629695892333984 seconds]: 1.0
-Test SVM   (size: (2742, 3)) [0.21069025993347168 seconds]: 1.0
+NB - mean 7:
+               precision    recall  f1-score   support
+
+        orig     0.9663    0.9306    0.9481       432
+ virtualized     0.8901    0.9455    0.9170       257
+
+    accuracy                         0.9361       689
+   macro avg     0.9282    0.9380    0.9325       689
+weighted avg     0.9379    0.9361    0.9365       689
+compute with 8 per mean
+NB - mean 8:
+               precision    recall  f1-score   support
+
+        orig     0.9646    0.9365    0.9503       378
+ virtualized     0.8983    0.9422    0.9197       225
+
+    accuracy                         0.9386       603
+   macro avg     0.9314    0.9394    0.9350       603
+weighted avg     0.9398    0.9386    0.9389       603
 compute with 9 per mean
-transform (size: (14898, 19205)): 0.08671283721923828 seconds
-Test NB   (size: (2132, 3)) [0.006134033203125 seconds]: 1.0
-Test SVM   (size: (2132, 3)) [0.17451214790344238 seconds]: 1.0
+NB - mean 9:
+               precision    recall  f1-score   support
+
+        orig     0.9691    0.9373    0.9530       335
+ virtualized     0.9005    0.9500    0.9246       200
+
+    accuracy                         0.9421       535
+   macro avg     0.9348    0.9437    0.9388       535
+weighted avg     0.9435    0.9421    0.9423       535
 compute with 10 per mean
-transform (size: (14898, 19205)): 0.07197713851928711 seconds
-Test NB   (size: (1919, 3)) [0.006137847900390625 seconds]: 1.0
-Test SVM   (size: (1919, 3)) [0.1616363525390625 seconds]: 1.0
+NB - mean 10:
+               precision    recall  f1-score   support
+
+        orig     0.9693    0.9435    0.9562       301
+ virtualized     0.9096    0.9500    0.9293       180
+
+    accuracy                         0.9459       481
+   macro avg     0.9394    0.9468    0.9428       481
+weighted avg     0.9469    0.9459    0.9462       481
+--------------------------------------------------------------------------------
+09.04.2021 - 18:27:38
+path_lists: lists_selected_bandwidth//files_lists_tagmap=virtualization_identification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=virtualization_identification_16bd.jl
+model_svm: ../pretrained_models_prerelease//SVM/SVM_model=virtualization_identification_16bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 16
+--------------------------------------------------------------------------------
+transform (size: (9776, 4843)): 0.28867650032043457 seconds
+Test SVM  (size: (4843, 1)) [0.036728858947753906 seconds]:
+              precision    recall  f1-score   support
+
+        orig     0.9032    0.9139    0.9086      3033
+ virtualized     0.8529    0.8359    0.8443      1810
+
+    accuracy                         0.8848      4843
+   macro avg     0.8781    0.8749    0.8764      4843
+weighted avg     0.8844    0.8848    0.8845      4843
+compute with 2 per mean
+SVM - mean 2:
+               precision    recall  f1-score   support
+
+        orig     0.9386    0.9181    0.9282      1514
+ virtualized     0.8675    0.8992    0.8831       903
+
+    accuracy                         0.9110      2417
+   macro avg     0.9030    0.9087    0.9057      2417
+weighted avg     0.9120    0.9110    0.9114      2417
+compute with 3 per mean
+SVM - mean 3:
+               precision    recall  f1-score   support
+
+        orig     0.9486    0.9326    0.9405      1009
+ virtualized     0.8900    0.9151    0.9024       601
+
+    accuracy                         0.9261      1610
+   macro avg     0.9193    0.9239    0.9215      1610
+weighted avg     0.9267    0.9261    0.9263      1610
+compute with 4 per mean
+SVM - mean 4:
+               precision    recall  f1-score   support
+
+        orig     0.9539    0.9312    0.9424       756
+ virtualized     0.8891    0.9246    0.9065       451
+
+    accuracy                         0.9287      1207
+   macro avg     0.9215    0.9279    0.9245      1207
+weighted avg     0.9297    0.9287    0.9290      1207
+compute with 5 per mean
+SVM - mean 5:
+               precision    recall  f1-score   support
+
+        orig     0.9590    0.9288    0.9437       604
+ virtualized     0.8868    0.9335    0.9096       361
+
+    accuracy                         0.9306       965
+   macro avg     0.9229    0.9312    0.9266       965
+weighted avg     0.9320    0.9306    0.9309       965
+compute with 6 per mean
+SVM - mean 6:
+               precision    recall  f1-score   support
+
+        orig     0.9630    0.9306    0.9465       504
+ virtualized     0.8896    0.9400    0.9141       300
+
+    accuracy                         0.9341       804
+   macro avg     0.9263    0.9353    0.9303       804
+weighted avg     0.9356    0.9341    0.9344       804
+compute with 7 per mean
+SVM - mean 7:
+               precision    recall  f1-score   support
+
+        orig     0.9663    0.9306    0.9481       432
+ virtualized     0.8901    0.9455    0.9170       257
+
+    accuracy                         0.9361       689
+   macro avg     0.9282    0.9380    0.9325       689
+weighted avg     0.9379    0.9361    0.9365       689
+compute with 8 per mean
+SVM - mean 8:
+               precision    recall  f1-score   support
+
+        orig     0.9646    0.9365    0.9503       378
+ virtualized     0.8983    0.9422    0.9197       225
+
+    accuracy                         0.9386       603
+   macro avg     0.9314    0.9394    0.9350       603
+weighted avg     0.9398    0.9386    0.9389       603
+compute with 9 per mean
+SVM - mean 9:
+               precision    recall  f1-score   support
+
+        orig     0.9692    0.9403    0.9545       335
+ virtualized     0.9048    0.9500    0.9268       200
+
+    accuracy                         0.9439       535
+   macro avg     0.9370    0.9451    0.9407       535
+weighted avg     0.9451    0.9439    0.9442       535
+compute with 10 per mean
+SVM - mean 10:
+               precision    recall  f1-score   support
+
+        orig     0.9693    0.9435    0.9562       301
+ virtualized     0.9096    0.9500    0.9293       180
+
+    accuracy                         0.9459       481
+   macro avg     0.9394    0.9468    0.9428       481
+weighted avg     0.9469    0.9459    0.9462       481
+--------------------------------------------------------------------------------
+09.04.2021 - 18:27:49
+path_lists: lists_selected_bandwidth//files_lists_tagmap=family_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=family_classification_26bd.jl
+model_nb: ../pretrained_models_prerelease//NB/NB_model=family_classification_26bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 26
+--------------------------------------------------------------------------------
+transform (size: (15886, 20400)): 3.8120269775390625 seconds
+Test NB  (size: (20400, 5)) [0.007970333099365234 seconds]:
+              precision    recall  f1-score   support
+
+    bashlite     0.9921    0.9952    0.9936      4769
+      benign     0.9906    1.0000    0.9953      1163
+    gonnacry     0.9842    0.9810    0.9826      7932
+       kisni     0.6634    0.6881    0.6755       590
+      maK_it     0.6789    0.6538    0.6661       595
+       mirai     0.9753    0.9753    0.9753      5351
+
+    accuracy                         0.9659     20400
+   macro avg     0.8807    0.8822    0.8814     20400
+weighted avg     0.9659    0.9659    0.9659     20400
+compute with 2 per mean
+NB - mean 2:
+               precision    recall  f1-score   support
+
+    bashlite     0.9992    1.0000    0.9996      2378
+      benign     0.9983    1.0000    0.9991       581
+    gonnacry     0.9932    0.9977    0.9955      3957
+       kisni     0.7296    0.7891    0.7582       294
+      maK_it     0.7729    0.7104    0.7404       297
+       mirai     0.9974    0.9895    0.9934      2669
+
+    accuracy                         0.9818     10176
+   macro avg     0.9151    0.9145    0.9144     10176
+weighted avg     0.9819    0.9818    0.9818     10176
+compute with 3 per mean
+NB - mean 3:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000      1585
+      benign     1.0000    1.0000    1.0000       387
+    gonnacry     0.9970    0.9996    0.9983      2636
+       kisni     0.7847    0.8367    0.8099       196
+      maK_it     0.8270    0.7727    0.7990       198
+       mirai     0.9994    0.9955    0.9975      1776
+
+    accuracy                         0.9873      6778
+   macro avg     0.9347    0.9341    0.9341      6778
+weighted avg     0.9874    0.9873    0.9873      6778
+compute with 4 per mean
+NB - mean 4:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000      1187
+      benign     1.0000    1.0000    1.0000       290
+    gonnacry     0.9965    1.0000    0.9982      1974
+       kisni     0.7888    0.8639    0.8247       147
+      maK_it     0.8507    0.7703    0.8085       148
+       mirai     1.0000    0.9947    0.9974      1333
+
+    accuracy                         0.9880      5079
+   macro avg     0.9393    0.9382    0.9381      5079
+weighted avg     0.9882    0.9880    0.9880      5079
+compute with 5 per mean
+NB - mean 5:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       950
+      benign     1.0000    1.0000    1.0000       232
+    gonnacry     0.9975    1.0000    0.9987      1580
+       kisni     0.8231    0.9145    0.8664       117
+      maK_it     0.9048    0.8051    0.8520       118
+       mirai     1.0000    0.9962    0.9981      1064
+
+    accuracy                         0.9909      4061
+   macro avg     0.9542    0.9526    0.9525      4061
+weighted avg     0.9912    0.9909    0.9909      4061
+compute with 6 per mean
+NB - mean 6:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       791
+      benign     1.0000    1.0000    1.0000       193
+    gonnacry     1.0000    1.0000    1.0000      1313
+       kisni     0.8585    0.9286    0.8922        98
+      maK_it     0.9231    0.8485    0.8842        99
+       mirai     1.0000    1.0000    1.0000       886
+
+    accuracy                         0.9935      3380
+   macro avg     0.9636    0.9628    0.9627      3380
+weighted avg     0.9936    0.9935    0.9935      3380
+compute with 7 per mean
+NB - mean 7:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       677
+      benign     1.0000    1.0000    1.0000       166
+    gonnacry     1.0000    1.0000    1.0000      1127
+       kisni     0.8526    0.9643    0.9050        84
+      maK_it     0.9589    0.8333    0.8917        84
+       mirai     1.0000    1.0000    1.0000       759
+
+    accuracy                         0.9941      2897
+   macro avg     0.9686    0.9663    0.9661      2897
+weighted avg     0.9945    0.9941    0.9941      2897
+compute with 8 per mean
+NB - mean 8:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       593
+      benign     1.0000    1.0000    1.0000       145
+    gonnacry     1.0000    1.0000    1.0000       985
+       kisni     0.8642    0.9589    0.9091        73
+      maK_it     0.9545    0.8514    0.9000        74
+       mirai     1.0000    1.0000    1.0000       664
+
+    accuracy                         0.9945      2534
+   macro avg     0.9698    0.9684    0.9682      2534
+weighted avg     0.9948    0.9945    0.9945      2534
+compute with 9 per mean
+NB - mean 9:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       525
+      benign     1.0000    1.0000    1.0000       129
+    gonnacry     0.9989    1.0000    0.9994       876
+       kisni     0.8955    0.9231    0.9091        65
+      maK_it     0.9219    0.8939    0.9077        66
+       mirai     1.0000    0.9983    0.9992       589
+
+    accuracy                         0.9942      2250
+   macro avg     0.9694    0.9692    0.9692      2250
+weighted avg     0.9942    0.9942    0.9942      2250
+compute with 10 per mean
+NB - mean 10:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       473
+      benign     1.0000    1.0000    1.0000       116
+    gonnacry     1.0000    1.0000    1.0000       788
+       kisni     0.8906    0.9828    0.9344        58
+      maK_it     0.9811    0.8814    0.9286        59
+       mirai     1.0000    1.0000    1.0000       530
+
+    accuracy                         0.9960      2024
+   macro avg     0.9786    0.9774    0.9772      2024
+weighted avg     0.9963    0.9960    0.9960      2024
+--------------------------------------------------------------------------------
+09.04.2021 - 18:29:49
+path_lists: lists_selected_bandwidth//files_lists_tagmap=family_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=family_classification_26bd.jl
+model_svm: ../pretrained_models_prerelease//SVM/SVM_model=family_classification_26bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 26
+--------------------------------------------------------------------------------
+transform (size: (15886, 20400)): 2.8469884395599365 seconds
+Test SVM  (size: (20400, 5)) [2.0581440925598145 seconds]:
+              precision    recall  f1-score   support
+
+    bashlite     0.9954    0.9931    0.9942      4769
+      benign     1.0000    1.0000    1.0000      1163
+    gonnacry     0.9833    0.9854    0.9843      7932
+       kisni     0.6699    0.6983    0.6838       590
+      maK_it     0.6877    0.6588    0.6730       595
+       mirai     0.9781    0.9770    0.9776      5351
+
+    accuracy                         0.9680     20400
+   macro avg     0.8857    0.8854    0.8855     20400
+weighted avg     0.9680    0.9680    0.9680     20400
+compute with 2 per mean
+SVM - mean 2:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    0.9996    0.9998      2378
+      benign     1.0000    1.0000    1.0000       581
+    gonnacry     0.9940    0.9987    0.9963      3957
+       kisni     0.7444    0.7925    0.7677       294
+      maK_it     0.7806    0.7306    0.7548       297
+       mirai     0.9981    0.9914    0.9947      2669
+
+    accuracy                         0.9833     10176
+   macro avg     0.9195    0.9188    0.9189     10176
+weighted avg     0.9834    0.9833    0.9833     10176
+compute with 3 per mean
+SVM - mean 3:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000      1585
+      benign     1.0000    1.0000    1.0000       387
+    gonnacry     0.9985    0.9996    0.9991      2636
+       kisni     0.7864    0.8265    0.8060       196
+      maK_it     0.8191    0.7778    0.7979       198
+       mirai     0.9994    0.9977    0.9986      1776
+
+    accuracy                         0.9878      6778
+   macro avg     0.9339    0.9336    0.9336      6778
+weighted avg     0.9878    0.9878    0.9877      6778
+compute with 4 per mean
+SVM - mean 4:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000      1187
+      benign     1.0000    1.0000    1.0000       290
+    gonnacry     0.9975    1.0000    0.9987      1974
+       kisni     0.8194    0.8639    0.8411       147
+      maK_it     0.8571    0.8108    0.8333       148
+       mirai     1.0000    0.9962    0.9981      1333
+
+    accuracy                         0.9896      5079
+   macro avg     0.9457    0.9452    0.9452      5079
+weighted avg     0.9896    0.9896    0.9896      5079
+compute with 5 per mean
+SVM - mean 5:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       950
+      benign     1.0000    1.0000    1.0000       232
+    gonnacry     0.9994    1.0000    0.9997      1580
+       kisni     0.8346    0.9060    0.8689       117
+      maK_it     0.8981    0.8220    0.8584       118
+       mirai     1.0000    0.9991    0.9995      1064
+
+    accuracy                         0.9919      4061
+   macro avg     0.9554    0.9545    0.9544      4061
+weighted avg     0.9920    0.9919    0.9919      4061
+compute with 6 per mean
+SVM - mean 6:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       791
+      benign     1.0000    1.0000    1.0000       193
+    gonnacry     1.0000    1.0000    1.0000      1313
+       kisni     0.8911    0.9184    0.9045        98
+      maK_it     0.9167    0.8889    0.9026        99
+       mirai     1.0000    1.0000    1.0000       886
+
+    accuracy                         0.9944      3380
+   macro avg     0.9680    0.9679    0.9678      3380
+weighted avg     0.9944    0.9944    0.9944      3380
+compute with 7 per mean
+SVM - mean 7:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       677
+      benign     1.0000    1.0000    1.0000       166
+    gonnacry     1.0000    1.0000    1.0000      1127
+       kisni     0.8617    0.9643    0.9101        84
+      maK_it     0.9595    0.8452    0.8987        84
+       mirai     1.0000    1.0000    1.0000       759
+
+    accuracy                         0.9945      2897
+   macro avg     0.9702    0.9683    0.9681      2897
+weighted avg     0.9948    0.9945    0.9945      2897
+compute with 8 per mean
+SVM - mean 8:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       593
+      benign     1.0000    1.0000    1.0000       145
+    gonnacry     1.0000    1.0000    1.0000       985
+       kisni     0.8947    0.9315    0.9128        73
+      maK_it     0.9296    0.8919    0.9103        74
+       mirai     1.0000    1.0000    1.0000       664
+
+    accuracy                         0.9949      2534
+   macro avg     0.9707    0.9706    0.9705      2534
+weighted avg     0.9949    0.9949    0.9949      2534
+compute with 9 per mean
+SVM - mean 9:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       525
+      benign     1.0000    1.0000    1.0000       129
+    gonnacry     0.9989    1.0000    0.9994       876
+       kisni     0.9375    0.9231    0.9302        65
+      maK_it     0.9254    0.9394    0.9323        66
+       mirai     1.0000    0.9983    0.9992       589
+
+    accuracy                         0.9956      2250
+   macro avg     0.9770    0.9768    0.9769      2250
+weighted avg     0.9956    0.9956    0.9956      2250
+compute with 10 per mean
+SVM - mean 10:
+               precision    recall  f1-score   support
+
+    bashlite     1.0000    1.0000    1.0000       473
+      benign     1.0000    1.0000    1.0000       116
+    gonnacry     1.0000    1.0000    1.0000       788
+       kisni     0.9048    0.9828    0.9421        58
+      maK_it     0.9815    0.8983    0.9381        59
+       mirai     1.0000    1.0000    1.0000       530
+
+    accuracy                         0.9965      2024
+   macro avg     0.9810    0.9802    0.9800      2024
+weighted avg     0.9967    0.9965    0.9965      2024
+--------------------------------------------------------------------------------
+09.04.2021 - 18:32:00
+path_lists: lists_selected_bandwidth//files_lists_tagmap=obfuscation_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=obfuscation_classification_24bd.jl
+model_nb: ../pretrained_models_prerelease//NB/NB_model=obfuscation_classification_24bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 24
+--------------------------------------------------------------------------------
+transform (size: (14664, 13240)): 1.623058557510376 seconds
+Test NB  (size: (13240, 6)) [0.004580497741699219 seconds]:
+              precision    recall  f1-score   support
+
+   addopaque     0.4847    0.5041    0.4942      1817
+         bcf     0.6407    0.6225    0.6315      1836
+   cfflatten     0.6990    0.7036    0.7013      1822
+     flatten     0.5096    0.5033    0.5064      1844
+         sub     0.4833    0.5115    0.4970      1781
+         upx     0.9598    0.9318    0.9456      2330
+  virtualize     0.4762    0.4641    0.4701      1810
+
+    accuracy                         0.6187     13240
+   macro avg     0.6076    0.6058    0.6066     13240
+weighted avg     0.6215    0.6187    0.6199     13240
+compute with 2 per mean
+NB - mean 2:
+               precision    recall  f1-score   support
+
+   addopaque     0.5676    0.5795    0.5735       906
+         bcf     0.7767    0.7555    0.7659       916
+   cfflatten     0.7984    0.7888    0.7936       909
+     flatten     0.5607    0.5582    0.5594       919
+         sub     0.5648    0.5788    0.5717       888
+         upx     0.9859    0.9664    0.9761      1161
+  virtualize     0.5157    0.5282    0.5219       903
+
+    accuracy                         0.6907      6602
+   macro avg     0.6814    0.6793    0.6803      6602
+weighted avg     0.6935    0.6907    0.6920      6602
+compute with 3 per mean
+NB - mean 3:
+               precision    recall  f1-score   support
+
+   addopaque     0.6304    0.6252    0.6278       603
+         bcf     0.8285    0.8000    0.8140       610
+   cfflatten     0.8566    0.8198    0.8378       605
+     flatten     0.5844    0.5768    0.5806       612
+         sub     0.5981    0.6497    0.6229       591
+         upx     0.9935    0.9819    0.9877       775
+  virtualize     0.5557    0.5724    0.5639       601
+
+    accuracy                         0.7285      4397
+   macro avg     0.7211    0.7180    0.7192      4397
+weighted avg     0.7321    0.7285    0.7300      4397
+compute with 4 per mean
+NB - mean 4:
+               precision    recall  f1-score   support
+
+   addopaque     0.6524    0.6726    0.6623       452
+         bcf     0.8753    0.8600    0.8675       457
+   cfflatten     0.8871    0.8480    0.8671       454
+     flatten     0.6269    0.6187    0.6228       459
+         sub     0.6704    0.6840    0.6771       443
+         upx     0.9965    0.9879    0.9922       579
+  virtualize     0.5782    0.5987    0.5882       451
+
+    accuracy                         0.7621      3295
+   macro avg     0.7552    0.7528    0.7539      3295
+weighted avg     0.7648    0.7621    0.7633      3295
+compute with 5 per mean
+NB - mean 5:
+               precision    recall  f1-score   support
+
+   addopaque     0.6856    0.7008    0.6932       361
+         bcf     0.9078    0.8880    0.8978       366
+   cfflatten     0.9000    0.8678    0.8836       363
+     flatten     0.6338    0.6131    0.6233       367
+         sub     0.6902    0.7175    0.7036       354
+         upx     0.9978    0.9957    0.9968       463
+  virtualize     0.5764    0.5956    0.5858       361
+
+    accuracy                         0.7772      2635
+   macro avg     0.7702    0.7683    0.7691      2635
+weighted avg     0.7793    0.7772    0.7781      2635
+compute with 6 per mean
+NB - mean 6:
+               precision    recall  f1-score   support
+
+   addopaque     0.7029    0.7333    0.7178       300
+         bcf     0.9354    0.9046    0.9197       304
+   cfflatten     0.9228    0.8709    0.8961       302
+     flatten     0.6090    0.6230    0.6159       305
+         sub     0.6941    0.7153    0.7045       295
+         upx     1.0000    0.9974    0.9987       386
+  virtualize     0.5920    0.5900    0.5910       300
+
+    accuracy                         0.7851      2192
+   macro avg     0.7794    0.7763    0.7777      2192
+weighted avg     0.7883    0.7851    0.7865      2192
+compute with 7 per mean
+NB - mean 7:
+               precision    recall  f1-score   support
+
+   addopaque     0.7044    0.7481    0.7256       258
+         bcf     0.9346    0.9310    0.9328       261
+   cfflatten     0.9414    0.8721    0.9054       258
+     flatten     0.6172    0.6031    0.6100       262
+         sub     0.7227    0.7312    0.7269       253
+         upx     1.0000    1.0000    1.0000       330
+  virtualize     0.5758    0.5914    0.5835       257
+
+    accuracy                         0.7908      1879
+   macro avg     0.7851    0.7824    0.7835      1879
+weighted avg     0.7935    0.7908    0.7919      1879
+compute with 8 per mean
+NB - mean 8:
+               precision    recall  f1-score   support
+
+   addopaque     0.7203    0.7556    0.7375       225
+         bcf     0.9307    0.9430    0.9368       228
+   cfflatten     0.9524    0.8850    0.9174       226
+     flatten     0.6176    0.6419    0.6296       229
+         sub     0.7689    0.7376    0.7529       221
+         upx     1.0000    1.0000    1.0000       289
+  virtualize     0.5947    0.6000    0.5973       225
+
+    accuracy                         0.8028      1643
+   macro avg     0.7978    0.7947    0.7959      1643
+weighted avg     0.8057    0.8028    0.8039      1643
+compute with 9 per mean
+NB - mean 9:
+               precision    recall  f1-score   support
+
+   addopaque     0.6996    0.7800    0.7376       200
+         bcf     0.9590    0.9257    0.9421       202
+   cfflatten     0.9418    0.8900    0.9152       200
+     flatten     0.6562    0.6207    0.6380       203
+         sub     0.7732    0.7653    0.7692       196
+         upx     1.0000    1.0000    1.0000       258
+  virtualize     0.5913    0.6150    0.6029       200
+
+    accuracy                         0.8074      1459
+   macro avg     0.8030    0.7995    0.8007      1459
+weighted avg     0.8108    0.8074    0.8086      1459
+compute with 10 per mean
+NB - mean 10:
+               precision    recall  f1-score   support
+
+   addopaque     0.7409    0.7944    0.7668       180
+         bcf     0.9462    0.9617    0.9539       183
+   cfflatten     0.9636    0.8785    0.9191       181
+     flatten     0.6283    0.6557    0.6417       183
+         sub     0.8024    0.7614    0.7813       176
+         upx     1.0000    1.0000    1.0000       230
+  virtualize     0.5856    0.5889    0.5873       180
+
+    accuracy                         0.8134      1313
+   macro avg     0.8096    0.8058    0.8072      1313
+weighted avg     0.8169    0.8134    0.8146      1313
+--------------------------------------------------------------------------------
+09.04.2021 - 18:33:11
+path_lists: lists_selected_bandwidth//files_lists_tagmap=obfuscation_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=obfuscation_classification_24bd.jl
+model_svm: ../pretrained_models_prerelease//SVM/SVM_model=obfuscation_classification_24bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 24
+--------------------------------------------------------------------------------
+transform (size: (14664, 13240)): 1.754457712173462 seconds
+Test SVM  (size: (13240, 6)) [5.604175090789795 seconds]:
+              precision    recall  f1-score   support
+
+   addopaque     0.5009    0.4772    0.4887      1817
+         bcf     0.6456    0.6231    0.6341      1836
+   cfflatten     0.6965    0.6954    0.6960      1822
+     flatten     0.4973    0.5054    0.5013      1844
+         sub     0.4898    0.4997    0.4947      1781
+         upx     0.9503    0.9446    0.9475      2330
+  virtualize     0.4600    0.4856    0.4725      1810
+
+    accuracy                         0.6178     13240
+   macro avg     0.6058    0.6044    0.6050     13240
+weighted avg     0.6194    0.6178    0.6185     13240
+compute with 2 per mean
+SVM - mean 2:
+               precision    recall  f1-score   support
+
+   addopaque     0.5686    0.5806    0.5745       906
+         bcf     0.7734    0.7675    0.7704       916
+   cfflatten     0.7923    0.7976    0.7950       909
+     flatten     0.5553    0.5462    0.5507       919
+         sub     0.5900    0.5574    0.5732       888
+         upx     0.9860    0.9681    0.9770      1161
+  virtualize     0.5062    0.5437    0.5243       903
+
+    accuracy                         0.6916      6602
+   macro avg     0.6817    0.6802    0.6807      6602
+weighted avg     0.6937    0.6916    0.6925      6602
+compute with 3 per mean
+SVM - mean 3:
+               precision    recall  f1-score   support
+
+   addopaque     0.6084    0.6517    0.6293       603
+         bcf     0.8212    0.8131    0.8171       610
+   cfflatten     0.8424    0.8479    0.8451       605
+     flatten     0.5765    0.5605    0.5684       612
+         sub     0.6448    0.5990    0.6211       591
+         upx     0.9935    0.9819    0.9877       775
+  virtualize     0.5494    0.5740    0.5614       601
+
+    accuracy                         0.7289      4397
+   macro avg     0.7194    0.7183    0.7186      4397
+weighted avg     0.7304    0.7289    0.7294      4397
+compute with 4 per mean
+SVM - mean 4:
+               precision    recall  f1-score   support
+
+   addopaque     0.6389    0.6969    0.6667       452
+         bcf     0.8550    0.8643    0.8596       457
+   cfflatten     0.8652    0.8767    0.8709       454
+     flatten     0.6299    0.5969    0.6130       459
+         sub     0.7095    0.6230    0.6635       443
+         upx     0.9983    0.9896    0.9939       579
+  virtualize     0.5602    0.5987    0.5788       451
+
+    accuracy                         0.7590      3295
+   macro avg     0.7510    0.7495    0.7495      3295
+weighted avg     0.7607    0.7590    0.7591      3295
+compute with 5 per mean
+SVM - mean 5:
+               precision    recall  f1-score   support
+
+   addopaque     0.6582    0.7202    0.6878       361
+         bcf     0.8898    0.9044    0.8970       366
+   cfflatten     0.8757    0.8926    0.8840       363
+     flatten     0.6429    0.6131    0.6276       367
+         sub     0.7170    0.6299    0.6707       354
+         upx     1.0000    0.9935    0.9967       463
+  virtualize     0.5756    0.6011    0.5881       361
+
+    accuracy                         0.7742      2635
+   macro avg     0.7656    0.7650    0.7646      2635
+weighted avg     0.7748    0.7742    0.7738      2635
+compute with 6 per mean
+SVM - mean 6:
+               precision    recall  f1-score   support
+
+   addopaque     0.6949    0.7667    0.7290       300
+         bcf     0.9216    0.9276    0.9246       304
+   cfflatten     0.9037    0.9007    0.9022       302
+     flatten     0.6284    0.6098    0.6190       305
+         sub     0.7678    0.6949    0.7295       295
+         upx     1.0000    0.9974    0.9987       386
+  virtualize     0.5850    0.5967    0.5908       300
+
+    accuracy                         0.7933      2192
+   macro avg     0.7859    0.7848    0.7848      2192
+weighted avg     0.7943    0.7933    0.7933      2192
+compute with 7 per mean
+SVM - mean 7:
+               precision    recall  f1-score   support
+
+   addopaque     0.6645    0.7829    0.7189       258
+         bcf     0.9211    0.9387    0.9298       261
+   cfflatten     0.9109    0.9109    0.9109       258
+     flatten     0.6367    0.5954    0.6154       262
+         sub     0.7870    0.6719    0.7249       253
+         upx     1.0000    1.0000    1.0000       330
+  virtualize     0.5808    0.5875    0.5841       257
+
+    accuracy                         0.7924      1879
+   macro avg     0.7858    0.7839    0.7834      1879
+weighted avg     0.7941    0.7924    0.7919      1879
+compute with 8 per mean
+SVM - mean 8:
+               precision    recall  f1-score   support
+
+   addopaque     0.6932    0.8133    0.7485       225
+         bcf     0.9241    0.9605    0.9419       228
+   cfflatten     0.9196    0.9115    0.9156       226
+     flatten     0.6278    0.6114    0.6195       229
+         sub     0.8261    0.6878    0.7506       221
+         upx     1.0000    1.0000    1.0000       289
+  virtualize     0.5901    0.5822    0.5861       225
+
+    accuracy                         0.8034      1643
+   macro avg     0.7973    0.7952    0.7946      1643
+weighted avg     0.8050    0.8034    0.8026      1643
+compute with 9 per mean
+SVM - mean 9:
+               precision    recall  f1-score   support
+
+   addopaque     0.6818    0.8250    0.7466       200
+         bcf     0.9423    0.9703    0.9561       202
+   cfflatten     0.9250    0.9250    0.9250       200
+     flatten     0.6667    0.6010    0.6321       203
+         sub     0.8333    0.6888    0.7542       196
+         upx     1.0000    1.0000    1.0000       258
+  virtualize     0.5777    0.5950    0.5862       200
+
+    accuracy                         0.8088      1459
+   macro avg     0.8038    0.8007    0.8000      1459
+weighted avg     0.8115    0.8088    0.8080      1459
+compute with 10 per mean
+SVM - mean 10:
+               precision    recall  f1-score   support
+
+   addopaque     0.6948    0.8222    0.7532       180
+         bcf     0.9415    0.9672    0.9542       183
+   cfflatten     0.9222    0.9171    0.9197       181
+     flatten     0.6480    0.6339    0.6409       183
+         sub     0.8652    0.6932    0.7697       176
+         upx     1.0000    1.0000    1.0000       230
+  virtualize     0.5879    0.5944    0.5912       180
+
+    accuracy                         0.8119      1313
+   macro avg     0.8085    0.8040    0.8041      1313
+weighted avg     0.8157    0.8119    0.8117      1313
+--------------------------------------------------------------------------------
+09.04.2021 - 18:34:30
+path_lists: lists_selected_bandwidth//files_lists_tagmap=type_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=type_classification_22bd.jl
+model_nb: ../pretrained_models_prerelease//NB/NB_model=type_classification_22bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 22
+--------------------------------------------------------------------------------
+transform (size: (13442, 20400)): 2.5744831562042236 seconds
+Test NB  (size: (20400, 3)) [0.0037779808044433594 seconds]:
+              precision    recall  f1-score   support
+
+      benign     0.9873    1.0000    0.9936      1163
+        ddos     0.9844    0.9819    0.9832     10120
+  ransomware     0.9781    0.9796    0.9788      7932
+     rootkit     1.0000    0.9992    0.9996      1185
+
+    accuracy                         0.9830     20400
+   macro avg     0.9875    0.9902    0.9888     20400
+weighted avg     0.9830    0.9830    0.9830     20400
+compute with 2 per mean
+NB - mean 2:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       581
+        ddos     0.9958    0.9956    0.9957      5047
+  ransomware     0.9944    0.9947    0.9946      3957
+     rootkit     1.0000    1.0000    1.0000       591
+
+    accuracy                         0.9958     10176
+   macro avg     0.9976    0.9976    0.9976     10176
+weighted avg     0.9958    0.9958    0.9958     10176
+compute with 3 per mean
+NB - mean 3:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       387
+        ddos     0.9985    0.9979    0.9982      3361
+  ransomware     0.9973    0.9981    0.9977      2636
+     rootkit     1.0000    1.0000    1.0000       394
+
+    accuracy                         0.9982      6778
+   macro avg     0.9990    0.9990    0.9990      6778
+weighted avg     0.9982    0.9982    0.9982      6778
+compute with 4 per mean
+NB - mean 4:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       290
+        ddos     0.9992    0.9980    0.9986      2520
+  ransomware     0.9975    0.9990    0.9982      1974
+     rootkit     1.0000    1.0000    1.0000       295
+
+    accuracy                         0.9986      5079
+   macro avg     0.9992    0.9993    0.9992      5079
+weighted avg     0.9986    0.9986    0.9986      5079
+compute with 5 per mean
+NB - mean 5:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       232
+        ddos     1.0000    0.9995    0.9998      2014
+  ransomware     0.9994    1.0000    0.9997      1580
+     rootkit     1.0000    1.0000    1.0000       235
+
+    accuracy                         0.9998      4061
+   macro avg     0.9998    0.9999    0.9999      4061
+weighted avg     0.9998    0.9998    0.9998      4061
+compute with 6 per mean
+NB - mean 6:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       193
+        ddos     1.0000    1.0000    1.0000      1677
+  ransomware     1.0000    1.0000    1.0000      1313
+     rootkit     1.0000    1.0000    1.0000       197
+
+    accuracy                         1.0000      3380
+   macro avg     1.0000    1.0000    1.0000      3380
+weighted avg     1.0000    1.0000    1.0000      3380
+compute with 7 per mean
+NB - mean 7:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       166
+        ddos     1.0000    1.0000    1.0000      1436
+  ransomware     1.0000    1.0000    1.0000      1127
+     rootkit     1.0000    1.0000    1.0000       168
+
+    accuracy                         1.0000      2897
+   macro avg     1.0000    1.0000    1.0000      2897
+weighted avg     1.0000    1.0000    1.0000      2897
+compute with 8 per mean
+NB - mean 8:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       145
+        ddos     1.0000    1.0000    1.0000      1257
+  ransomware     1.0000    1.0000    1.0000       985
+     rootkit     1.0000    1.0000    1.0000       147
+
+    accuracy                         1.0000      2534
+   macro avg     1.0000    1.0000    1.0000      2534
+weighted avg     1.0000    1.0000    1.0000      2534
+compute with 9 per mean
+NB - mean 9:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       129
+        ddos     1.0000    1.0000    1.0000      1114
+  ransomware     1.0000    1.0000    1.0000       876
+     rootkit     1.0000    1.0000    1.0000       131
+
+    accuracy                         1.0000      2250
+   macro avg     1.0000    1.0000    1.0000      2250
+weighted avg     1.0000    1.0000    1.0000      2250
+compute with 10 per mean
+NB - mean 10:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       116
+        ddos     1.0000    1.0000    1.0000      1003
+  ransomware     1.0000    1.0000    1.0000       788
+     rootkit     1.0000    1.0000    1.0000       117
+
+    accuracy                         1.0000      2024
+   macro avg     1.0000    1.0000    1.0000      2024
+weighted avg     1.0000    1.0000    1.0000      2024
+--------------------------------------------------------------------------------
+09.04.2021 - 18:36:16
+path_lists: lists_selected_bandwidth//files_lists_tagmap=type_classification.npy
+log_file: ml_analysis/log-evaluation.txt
+model_lda: ../pretrained_models_prerelease//LDA/LDA_model=type_classification_24bd.jl
+model_svm: ../pretrained_models_prerelease//SVM/SVM_model=type_classification_24bd.jl
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+nb_of_bd: 24
+--------------------------------------------------------------------------------
+transform (size: (14664, 20400)): 2.593501567840576 seconds
+Test SVM  (size: (20400, 3)) [1.1916885375976562 seconds]:
+              precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000      1163
+        ddos     0.9841    0.9845    0.9843     10120
+  ransomware     0.9802    0.9797    0.9799      7932
+     rootkit     1.0000    1.0000    1.0000      1185
+
+    accuracy                         0.9844     20400
+   macro avg     0.9911    0.9910    0.9911     20400
+weighted avg     0.9844    0.9844    0.9844     20400
+compute with 2 per mean
+SVM - mean 2:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       581
+        ddos     0.9956    0.9960    0.9958      5047
+  ransomware     0.9949    0.9944    0.9947      3957
+     rootkit     1.0000    1.0000    1.0000       591
+
+    accuracy                         0.9959     10176
+   macro avg     0.9976    0.9976    0.9976     10176
+weighted avg     0.9959    0.9959    0.9959     10176
+compute with 3 per mean
+SVM - mean 3:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       387
+        ddos     0.9988    0.9985    0.9987      3361
+  ransomware     0.9981    0.9985    0.9983      2636
+     rootkit     1.0000    1.0000    1.0000       394
+
+    accuracy                         0.9987      6778
+   macro avg     0.9992    0.9992    0.9992      6778
+weighted avg     0.9987    0.9987    0.9987      6778
+compute with 4 per mean
+SVM - mean 4:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       290
+        ddos     0.9996    0.9992    0.9994      2520
+  ransomware     0.9990    0.9995    0.9992      1974
+     rootkit     1.0000    1.0000    1.0000       295
+
+    accuracy                         0.9994      5079
+   macro avg     0.9996    0.9997    0.9997      5079
+weighted avg     0.9994    0.9994    0.9994      5079
+compute with 5 per mean
+SVM - mean 5:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       232
+        ddos     1.0000    0.9995    0.9998      2014
+  ransomware     0.9994    1.0000    0.9997      1580
+     rootkit     1.0000    1.0000    1.0000       235
+
+    accuracy                         0.9998      4061
+   macro avg     0.9998    0.9999    0.9999      4061
+weighted avg     0.9998    0.9998    0.9998      4061
+compute with 6 per mean
+SVM - mean 6:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       193
+        ddos     1.0000    1.0000    1.0000      1677
+  ransomware     1.0000    1.0000    1.0000      1313
+     rootkit     1.0000    1.0000    1.0000       197
+
+    accuracy                         1.0000      3380
+   macro avg     1.0000    1.0000    1.0000      3380
+weighted avg     1.0000    1.0000    1.0000      3380
+compute with 7 per mean
+SVM - mean 7:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       166
+        ddos     1.0000    1.0000    1.0000      1436
+  ransomware     1.0000    1.0000    1.0000      1127
+     rootkit     1.0000    1.0000    1.0000       168
+
+    accuracy                         1.0000      2897
+   macro avg     1.0000    1.0000    1.0000      2897
+weighted avg     1.0000    1.0000    1.0000      2897
+compute with 8 per mean
+SVM - mean 8:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       145
+        ddos     1.0000    1.0000    1.0000      1257
+  ransomware     1.0000    1.0000    1.0000       985
+     rootkit     1.0000    1.0000    1.0000       147
+
+    accuracy                         1.0000      2534
+   macro avg     1.0000    1.0000    1.0000      2534
+weighted avg     1.0000    1.0000    1.0000      2534
+compute with 9 per mean
+SVM - mean 9:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       129
+        ddos     1.0000    1.0000    1.0000      1114
+  ransomware     1.0000    1.0000    1.0000       876
+     rootkit     1.0000    1.0000    1.0000       131
+
+    accuracy                         1.0000      2250
+   macro avg     1.0000    1.0000    1.0000      2250
+weighted avg     1.0000    1.0000    1.0000      2250
+compute with 10 per mean
+SVM - mean 10:
+               precision    recall  f1-score   support
+
+      benign     1.0000    1.0000    1.0000       116
+        ddos     1.0000    1.0000    1.0000      1003
+  ransomware     1.0000    1.0000    1.0000       788
+     rootkit     1.0000    1.0000    1.0000       117
+
+    accuracy                         1.0000      2024
+   macro avg     1.0000    1.0000    1.0000      2024
+weighted avg     1.0000    1.0000    1.0000      2024
