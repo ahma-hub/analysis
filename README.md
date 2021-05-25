@@ -9,7 +9,7 @@ Electromagnetic obfuscated malware classification*".
 .
 ├── README.md
 ├── requirements.txt
-│── run_dl.sh                  #> [coming soon] script to run the DL for all scenarii
+│── run_dl.sh                  #> script to run the DL for all scenarii
 │── run_ml.sh                  #> script to run the ML for all scenarii
 │── update_lists.sh            #> script to update the location of the traces 
 │                              # in the lists 
@@ -20,9 +20,9 @@ Electromagnetic obfuscated malware classification*".
 │   │── log-evaluation.txt     #> store the results of the ML
 │
 │
-├── dl_analys                  #> [coming soon]  
-│   │── evaluate.py            #> [coming soon] code to run MLP and CNN on all scenarios
-│   │── evaluation_log_DL.txt  #> [coming soon] output log file with stored accuracies
+├── dl_analysis                #> 
+│   │── evaluate.py            #> code to run MLP and CNN on all scenarios
+│   │── evaluation_log_DL.txt  #> output log file with stored accuracies
 │
 │
 ├── list_selected_bandwidth    #> list of the files used for training, 
@@ -87,13 +87,20 @@ To run the computation of the all the machine learning experiments, you can use
 the script ``run.sh``:
 
 ```
-./run_ml.sh  [directory where are stored the list] [directory where are stored the models] [directory where are stored accumulated data ]
+./run_ml.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
 ```
 
 The results are stored in the file ```log-evaluation.txt```.
 
-## Deep Learning (DL) [coming soon]
+## Deep Learning (DL) 
+To run the computation of the all the deep learning experiments, you can use
+the script ``run_dl.sh``:
 
+```
+./run_dl.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
+```
+
+The results are stored in the file ```log-evaluation.txt```.
 ## Preprocessings
 Once the traces have been aquiered and before beeing able to run the evualuation 
 some preprocessings are needed. 
