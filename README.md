@@ -100,7 +100,7 @@ the script ``run_dl.sh``:
 ./run_dl.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
 ```
 
-The results are stored in the file ```log-evaluation.txt```.
+The results are stored in the file ```evaluation_log_DL.txt```.
 ## Preprocessings
 Once the traces have been aquiered and before beeing able to run the evualuation 
 some preprocessings are needed. 
