@@ -35,7 +35,9 @@ Electromagnetic obfuscated malware classification*".
 │
 │
 ├── dl_analysis
-│   │── evaluate.py            #> code to run MLP and CNN on all scenarios
+│   │── evaluate.py            #> code to predict MLP and CNN using pretrained models
+│   │── training.py            #> code to train MLP and CNN and store models 
+|   |                          # according to best validation accuracy   
 │   │── evaluation_log_DL.txt  #> output log file with stored accuracies
 |
 │
