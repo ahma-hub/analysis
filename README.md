@@ -224,6 +224,31 @@ optional arguments:
 ```
 
 ## Deep Learning (DL) 
+
+### evaluate.py
+Script to run prediction on a testing dataset using pre-trained models.
+
+``` 
+usage: evaluate.py [-h] 
+                   [--lists PATH_LISTS]  
+                   [--acc PATH_ACC]  
+                   [--band NB_OF_BANDWIDTH]  
+                   [--model h5-file containing precomputed model] 
+```
+
+### training.py
+Script to run training for our mlp or cnn model on a training and validation dataset and store trained models.
+``` 
+usage: training.py [-h] 
+                   [--lists PATH_LISTS]  
+                   [--acc PATH_ACC]  
+                   [--band NB_OF_BANDWIDTH]  
+                   [--epochs number of epochs] 
+                   [--batch batch size]
+		   [--arch neural network architecture {cnn, mlp}] 
+		   [--save filename to store model (h5 file)]
+```
+
 To run the computation of the all the deep learning experiments on the testing dataset using pre-trained models, you can use
 the script ``run_dl_on_selected_bandwidth.sh``:
 
