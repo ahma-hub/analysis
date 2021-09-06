@@ -1,0 +1,78 @@
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//MLP/executable_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=executable_classification.npy
+Nr of bandwidth: 24
+Testing accuracy: 71.31862745098039%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//MLP/novelty_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=novelty_classification.npy
+Nr of bandwidth: 12
+Testing accuracy: 92.03490008443569%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//MLP/virtualization_identification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=virtualization_identification.npy
+Nr of bandwidth: 20
+Testing accuracy: 94.42494321701425%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//MLP/family_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=family_classification.npy
+Nr of bandwidth: 28
+Testing accuracy: 97.77941176470588%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//MLP/obfuscation_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=obfuscation_classification.npy
+Nr of bandwidth: 28
+Testing accuracy: 72.77945619335348%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//MLP/type_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=type_classification.npy
+Nr of bandwidth: 28
+Testing accuracy: 99.70098039215686%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//CNN/executable_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=executable_classification.npy
+Nr of bandwidth: 24
+Testing accuracy: 80.02450980392157%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//CNN/novelty_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=novelty_classification.npy
+Nr of bandwidth: 16
+Testing accuracy: 97.42471151139883%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//CNN/packer_identification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=packer_identification.npy
+Nr of bandwidth: 16
+Testing accuracy: 90.84290114813778%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//CNN/virtualization_identification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=virtualization_identification.npy
+Nr of bandwidth: 24
+Testing accuracy: 95.95292174272146%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//CNN/family_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=family_classification.npy
+Nr of bandwidth: 28
+Testing accuracy: 99.32843137254902%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//CNN/obfuscation_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=obfuscation_classification.npy
+Nr of bandwidth: 28
+Testing accuracy: 81.85045317220543%
+------------------------------
+------------------------------
+Preloaded model from: ../pretrained_models_prerelease//CNN/type_classification.h5
+File list: lists_selected_bandwidth//files_lists_tagmap=type_classification.npy
+Nr of bandwidth: 28
+Testing accuracy: 99.92156862745098%
+------------------------------

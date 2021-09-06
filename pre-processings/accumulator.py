@@ -4,16 +4,10 @@ from  list_manipulation   import get_tag
 from   tqdm               import tqdm
 from   signal_processing  import stft, unpackData
 
-
 import multiprocessing    as mltp
 import concurrent.futures
 import numpy              as np
-import functools
-import operator
-import time
 import argparse
-import logging
-import glob, os
 
 
 ################################################################################
@@ -21,13 +15,13 @@ def acc_batch (name,
                filenames,
                pos):
 ################################################################################
-# acc_stft_batch
+# acc_batch
 # compute the sum and the sum of the square by set. The accumulators are save in
-# acc_x and acc_xx (manager.list for the multithreading)
+# acc_x and acc_xx and then saved in the given file. no stft applied.
 # inputs:
 #  - name: output to save the files
 #  - filenames: files to read
-#  - pos: postion in the screen for the tqdm progress bar
+#  - pos: position in the screen for the tqdm progress bar
 # 
 # outputs:
 #  - {acc_x, acc_xx}: no returned value, but the results are stored in the
@@ -42,7 +36,7 @@ def acc_batch (name,
 
         acc_x  += tmp_stft
         acc_xx += tmp_stft**2
-
+   
     np.save (name + 'acc_x.npy',  [t, f, acc_x],  allow_pickle= True)
     np.save (name + 'acc_xx.npy', [t, f, acc_xx], allow_pickle= True)
 
@@ -52,38 +46,49 @@ def acc_stft_batch (name,
                     filenames,
                     freq,
                     window,
-                    overlap, pos):
+                    overlap, pos, duration, device):
 ################################################################################
 # acc_stft_batch
 # compute the sum and the sum of the square by set. The accumulators are save in
-# acc_x and acc_xx (manager.list for the multithreading)
+# acc_x and acc_xx and then save the given file, stft apllied.
 # inputs:
 #  - name: output to save the files
 #  - filenames: files to read
 #  - freq: frequency of the sampling rate
 #  - windows: size of the windows (for the stft)
 #  - overlap: size of the overlap for the stft
-#  - pos: postion in the screen for the tqdm progress bar
+#  - pos: position in the screen for the tqdm progress bar
+#  - duration: to fixe the duration in second (for none constant size traces)
+#  - device: type of files
 # 
 # outputs:
-#  - {acc_x, acc_xx}: no returned value, but the results are stored in the
-#  accumulators
+#  - {acc_x, acc_xx} save in name (no returned arguments)
 ################################################################################
 
     acc_x  = np.float64 (0.)
     acc_xx = np.float64 (0.)
 
-    for i in tqdm (range (len (filenames)), position = pos, desc ='%s'%pos, leave = False):
-        t, f, tmp_stft = stft (unpackData (filenames [i], device = 'pico'),\
-                               freq, window, overlap, False)
+    try:
+        for i in tqdm (range (len (filenames)), position = pos, desc ='%s'%pos, leave = False):
+            trace = unpackData (filenames [i], device = device)
+            if (duration is not None):
+                if (len (trace) < int (freq*duration)):
+                    trace = np.pad (trace, (0, int (duration * freq - len (trace))), mode = 'constant')
 
-        acc_x  += tmp_stft
-        acc_xx += tmp_stft**2
-
+                elif (len (trace) > int (freq*duration)):
+                    trace = trace [:int (duration * freq)]
         
-    np.save (name + 'acc_x.npy',  [t, f, acc_x],  allow_pickle= True)
-    np.save (name + 'acc_xx.npy', [t, f, acc_xx], allow_pickle= True)
+            t, f, tmp_stft = stft (trace, freq, window, overlap, False)
+        
+            acc_x  += tmp_stft
+            acc_xx += tmp_stft**2
+            
+        np.save (name + 'acc_x.npy',  [t, f, acc_x],  allow_pickle= True)
+        np.save (name + 'acc_xx.npy', [t, f, acc_xx], allow_pickle= True)
 
+    except Exception as e:
+        print(e, name)
+        
 ################################################################################
 def acc_stft_by_sets (path_lists,
                       freq,
@@ -91,7 +96,9 @@ def acc_stft_by_sets (path_lists,
                       overlap,
                       output,
                       nb_of_threads,
-                      no_stft):
+                      no_stft,
+                      duration,
+                      device):
 ################################################################################
 # acc_fft_by_sets
 # compute the sum and the sum of the square by set of the spectrogram. The
@@ -108,6 +115,8 @@ def acc_stft_by_sets (path_lists,
 #  less one and the given parameter
 #  - no_stft: at true if no need of stft  on the data (it means that data are npy). 
 #  otherwise the data are raw data (need to be unpacked)
+#  - duration: to fixe the duration in second (for none constant size traces)
+#  - device: type of files
 ################################################################################
     ## load the main list
     [x_train_filelist, x_val_filelist, _, _, _, _] \
@@ -121,6 +130,8 @@ def acc_stft_by_sets (path_lists,
     unique_y = np.unique (y)
     nb_of_sets = len (unique_y)
 
+    print (unique_y)
+    
     # arguments for the multithreading
     args = []
     nb_of_threads = min (mltp.cpu_count () - 2, nb_of_threads)
@@ -132,10 +143,11 @@ def acc_stft_by_sets (path_lists,
             current_file_list = x_file_list [idx]
 
             current_name = output + '/' + unique_y [i] + '_%s_'%len (idx)
+        
             args.append ([current_name,
                           current_file_list,
                           freq, window, overlap,
-                          i%nb_of_threads])
+                          i%nb_of_threads, duration, device])
         
         with concurrent.futures.ProcessPoolExecutor (max_workers =  nb_of_threads) as executor:
             ## the * is needed otherwise it does not work
@@ -184,14 +196,24 @@ if __name__ == '__main__':
 
     parser.add_argument('--overlap', type=float, default= 0, # 10000/8,
                         dest='overlap', help='Overlap size for STFT')
-
+    
     parser.add_argument('--core', action='store', type=int, default=6,
-                         dest='core',
-                         help='Number of core to use for multithreading accumulation')
+                        dest='core',
+                        help='Number of core to use for multithreading accumulation')
+
+    parser.add_argument('--duration', action='store', type=float, default=None,
+                        dest='duration',
+                        help='to fixe the duration of the input traces '\
+                        + '(padded if input is short and cut otherwise)')
+
+    parser.add_argument('--device', action='store', type=str, default='pico',
+                        dest='device',
+                        help='to fixe the duration of the input traces '\
+                        + '(padded if input is short and cut otherwise)')
+       
     
     args, unknown = parser.parse_known_args ()
-    assert len (unknown) == 0, f"[ERROR] Unknown arguments:\n{unknown}\n"
-
+    assert len (unknown) == 0, f"[WARNING] Unknown arguments:\n{unknown}\n"
     
     # compute the accumulation
     acc_stft_by_sets  (path_lists          = args.path_lists,
@@ -200,4 +222,6 @@ if __name__ == '__main__':
                        overlap             = args.overlap,
                        output              = args.output_path,
                        nb_of_threads       = args.core,
-                       no_stft             = args.no_stft)
+                       no_stft             = args.no_stft,
+                       duration            = args.duration,
+                       device              = args.device)

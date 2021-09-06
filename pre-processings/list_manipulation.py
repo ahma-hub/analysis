@@ -5,11 +5,9 @@ import logging
 import random
 import glob, os
 
-from   tabulate                import tabulate
-from   tqdm                    import tqdm
 from   sklearn.model_selection import train_test_split
 from   tabulate                import tabulate
-
+from   tqdm                    import tqdm
 
 ################################################################################
 def change_directory (path_lists, new_dir):
@@ -18,6 +16,7 @@ def change_directory (path_lists, new_dir):
 # change the path of the directory where the traces are stored
 #
 # input:
+#  + path_lists: file containing tthe lists
 #  + new_dir: new directory
 ################################################################################
     [x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test] \
@@ -59,7 +58,7 @@ def get_tag (f):
 # + list of tags
 ################################################################################
     return "-".join(os.path.basename(f).split("-")[:-1])
-   
+
 ################################################################################
 def display_tabular (table, header):
 ################################################################################
@@ -84,20 +83,20 @@ def display_list (y_train, y_val, y_test):
     y_unique = np.unique (y_train + y_val + y_test)
 
     lines = []
-    
+
     for i in range (len (y_unique)):
         line = [i, y_unique [i]]
         count = 0
-        
+
         idx = np.where (np.array (y_train)  == y_unique [i])[0]
         line.append (len (idx))
         count += len (idx)
-        
+
         idx = np.where (np.array (y_val)  == y_unique [i]) [0]
         line.append (len (idx))
         count += len (idx)
         line.append (count)
-        
+
         idx = np.where (np.array (y_test)  == y_unique [i]) [0]
         line.append (len (idx))
         count += len (idx)
@@ -110,7 +109,7 @@ def display_list (y_train, y_val, y_test):
 
 
 ################################################################################
-def compute_main_list (data, extension = 'dat'):
+def compute_main_list (data, extension, nb_of_traces_per_label):
 ################################################################################
 # compute_main_list
 # [from neural-network/utils]
@@ -118,6 +117,7 @@ def compute_main_list (data, extension = 'dat'):
 # inputs:
 #  - datadir: path to the directory containing all data
 #  - extension: type of file in datadir
+#  - nb_of_traces_per_label: nb of traces per labels
 #
 # outputs:
 # - lists: {filelist, labels} x {learning, validating, testing}
@@ -128,11 +128,39 @@ def compute_main_list (data, extension = 'dat'):
     else:
         filelist = data
 
+    ## sanity check
+    clean_file = []
+    empty_file = []
+    for i in tqdm (filelist, desc = 'sanity check', leave = False):
+        if (os.stat (i).st_size == 0):
+            empty_file.append (i)
+        else:
+            clean_file.append (i)
+
+    if (len (empty_file) != 0):
+        print (f'[EMPTY FILES]: {empty_file} ({len (empty_file)})')
+
+    filelist = clean_file
+        
     random.shuffle (filelist)
+    
+    # get labels 
+    y = np.array ([get_tag (f) for f in filelist])
 
-    # get labels
-    y = [get_tag (f) for f in filelist]
+    # if a limit is needed
+    if (nb_of_traces_per_label is not None):
+        unique_y = np.unique (y)
+        new_y = []
+        new_filelist = []
+        filelist = np.array (filelist)
+        for u in unique_y:
+            idx = np.where (y == u)[0]
+            new_y += list (y [idx [:nb_of_traces_per_label]])
+            new_filelist += list (filelist [idx [:nb_of_traces_per_label]])
 
+        y = new_y
+        filelist = new_filelist
+    
     x_train_filelist, x_test_filelist, y_train, y_test\
         = train_test_split (filelist, y, test_size=0.2)
 
@@ -244,11 +272,17 @@ if __name__ == '__main__':
                          dest = 'path_new_dir',
                          help = 'Absolute path to the raw data, to change in a given file lists')
 
+    parser.add_argument('--nb_of_traces_per_label', action='store', type=int,
+                        default=None,
+                        dest='nb_of_traces_per_label',
+                        help='number of traces to keep per label')
+
+
     args, unknown = parser.parse_known_args ()
-    assert len (unknown) == 0, f"[ERROR] Unknown arguments:\n{unknown}\n"
-    
+    assert len (unknown) == 0, f"[WARNING] Unknown arguments:\n{unknown}\n"
+
     logging.basicConfig (level = args.log_level)
-    
+
     if (logging.root.level < logging.INFO):
         print ("argument:")
         for arg in vars(args):
@@ -264,7 +298,8 @@ if __name__ == '__main__':
     if (args.path_raw is not None and args.path_tagmap is None):
         # split testing and learning
         x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test \
-            = compute_main_list (args.path_raw, extension = args.extension)
+            = compute_main_list (args.path_raw, extension = args.extension,
+                                 nb_of_traces_per_label = args.nb_of_traces_per_label)
 
         main_list = True
 
@@ -303,17 +338,17 @@ if __name__ == '__main__':
 
         x_test_filelist = x_test_filelist + x_trainandtest_filelist
         y_test = y_test+ y_trainandtest
-        
+
         if (logging.root.level < logging.INFO):
             print ('new list:')
             display_list (y_train, y_val, y_test)
 
             if (len (x_del_0) != 0):
-                print (f'deleted from training: {len (x_del_0)}') 
+                print (f'deleted from training: {len (x_del_0)}')
                 display_list (y_del_0, [], [])
 
             if (len (x_del_1) != 0):
-                print (f'deleted from testing: {len (x_del_1)}') 
+                print (f'deleted from testing: {len (x_del_1)}')
                 display_list ([], [], y_del_1)
 
 
@@ -322,7 +357,7 @@ if __name__ == '__main__':
     elif (args.path_tagmap is not None):
         # get the list of files
         filelist = glob.glob (args.path_raw + "/**/*.%s"%args.extension, recursive = True)
-               
+
         # creat lists
         x_train_filelist, x_test_filelist, x_trainandtest_filelist,\
         y_train, y_test, y_trainandtest = parse_data (filelist, args.path_tagmap)
@@ -330,7 +365,7 @@ if __name__ == '__main__':
         # split x_trainandtest
         if (len (x_trainandtest_filelist) > 0):
             print (f'{len (x_trainandtest_filelist)}, {np.unique (y_trainandtest, return_counts = True)[1].sum ()}')
-            
+
             x_train_filelist_tmp, x_test_filelist_tmp, y_train_tmp, y_test_tmp\
                 = train_test_split(x_trainandtest_filelist, y_trainandtest, test_size=0.2)
 
@@ -354,8 +389,7 @@ if __name__ == '__main__':
 
         display_list (y_train, y_val, y_test)
 
-    
-            
+
     ## save the computed
     if (args.path_save is not None):
         np.save (args.path_save,

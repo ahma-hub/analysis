@@ -41,6 +41,9 @@ def unpackData (dataFile, device):
         x = np.array ([ctypes.c_int8(i).value for i in bytearray (dataFileHandler.read ())])
         dataFileHandler.close ()
         return x
+    elif (device == 'npy'):
+        return np.load (dataFile, allow_pickle = True)
+
     elif device == 'hackrf':
         return np.fromfile (dataFile, dtype=np.complex64)
     else: # pico
