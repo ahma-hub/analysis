@@ -10,13 +10,17 @@ Electromagnetic obfuscated malware classification*".
 ├── README.md
 ├── requirements.txt
 │── run_dl_on_selected_bandwidth.sh #> script to run the DL for all scenarii on  
-|                                   # the testing pre-computed dataset
+|                                   # the (full) testing dataset (available on zenodo) 
+|                                   # using pre-computed models
+|── run_dl_on_reduced_dataset.sh    #> script to run the training on 
+|                                   # on a reduced dataset (350 per samples per 
+|                                   # executable, available on zenodo)
 │── run_ml_on_reduced_dataset.sh    #> script to run the end-to-end analysis on 
 |                                   # on a reduced dataset (350 per samples per 
-|                                   # executable)
+|                                   # executable, available on zenodo)
 │── run_ml_on_selected_bandwidth.sh #> script to run the ML classification for all
 |                                   # for all scenarii on the testing pre-computed 
-|                                   # dataset 
+|                                   # dataset (available on zenodo)
 │── update_lists.sh                 #> script to update the location of the traces 
 │                                   # in the lists 
 │
@@ -226,6 +230,13 @@ the script ``run_dl_on_selected_bandwidth.sh``:
 
 ```
 ./run_dl_on_selected_bandwidth.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
+```
+
+To train and store pre-trained models for the MLP and CNN architecture using the reduced dataset, you can use 
+the script ``run_dl_on_reduced_dataset.sh``:
+
+```
+./run_dl_on_reduced_dataset.sh  [directory where the lists are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ] [DL architecture {cnn or mlp}] [number of epochs (e.g. 100)] [batch size (e.g. 100)]
 ```
 
 ## Preprocessings
