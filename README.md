@@ -9,12 +9,13 @@ Electromagnetic obfuscated malware classification*".
 .
 ├── README.md
 ├── requirements.txt
-│── run_dl.sh                       #> script to run the DL for all scenarii
+│── run_dl_on_selected_bandwidth.sh #> script to run the DL for all scenarii on  
+|                                   # the testing pre-computed dataset
 │── run_ml_on_reduced_dataset.sh    #> script to run the end-to-end analysis on 
 |                                   # on a reduced dataset (350 per samples per 
 |                                   # executable)
 │── run_ml_on_selected_bandwidth.sh #> script to run the ML classification for all
-|                                   # for all scenarii on the testing pre-treated 
+|                                   # for all scenarii on the testing pre-computed 
 |                                   # dataset 
 │── update_lists.sh                 #> script to update the location of the traces 
 │                                   # in the lists 
@@ -218,11 +219,11 @@ optional arguments:
 
 ## Deep Learning (DL) 
 To run the computation of the all the deep learning experiments, you can use
-the script ``run_dl.sh``:
+the script ``run_dl_on_selected_bandwidth.sh``:
 
 
 ```
-./run_dl.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
+./run_dl_on_selected_bandwidth.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
 ```
 
 ## Preprocessings
