@@ -11,30 +11,59 @@ from datetime                      import datetime
 from sklearn.svm                   import SVC
 from sklearn.naive_bayes           import GaussianNB
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.preprocessing         import LabelEncoder
+from sklearn.metrics               import classification_report
+
+
+sys.path.append(os.path.join (os.path.dirname (__file__), "../pre-processings/"))
+from nicv import compute_nicv
+from corr import compute_corr
+from list_manipulation import get_tag
+
+
+################################################################################
+import numpy            as np
+import matplotlib, sys
+import logging
+
+## to avoid bug when it is run without graphic interfaces
+try:
+    matplotlib.use('GTK3Agg')
+    import matplotlib.pyplot as plt
+except ImportError:
+    # print ('Warning importing GTK3Agg: ', sys.exc_info()[0])
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
 
 
 
 ################################################################################
-def load_traces (files_list):
+def load_traces (files_list, bandwidth, time_limit):
 ################################################################################
 # load_traces
 # load all the traces listed in 'files_lists', the 2D-traces are flattened
 #
 # input:
 #  + files_list: list of the filenames
+#  + bandwidth: selected bandwidth
+#  + time_limit: percentage of the trace to concerve
 #
 # output:
 #  + traces: array containing the traces (dimension: DxQ, D number of features,
 #  Q number of samples)
 ################################################################################
     ## get dimension
-    tmp_trace = np.load (files_list [0]).flatten ()
+    tmp_trace = np.load (files_list [0], allow_pickle = True)[-1][bandwidth, :]
+
+    ## takes only half of the features
+    D = int (tmp_trace.shape [1]*time_limit)
+    tmp_trace = tmp_trace [:, :D].flatten ()
     
     traces = np.zeros ((len (tmp_trace), len (files_list)))
-    traces [:, 0] = tmp_trace
+    traces [:, 0] = tmp_trace 
 
-    for i in range (1, traces.shape [1]):
-        traces [:, i] = np.load (files_list [i]).flatten ()
+    for i in tqdm (range (1, traces.shape [1])):
+        traces [:, i] = np.load (files_list [i], allow_pickle = True)[-1][bandwidth, :D].flatten ()
 
     return traces
 
@@ -72,8 +101,8 @@ def mean_by_label (traces, labels, mean_size):
     return np.array (tmp_res).T, tmp_labels
 
 ################################################################################
-def evaluate (path_lists, log_file, model_lda, model_svm, model_nb,
-              path_transformed_traces, mean_sizes):
+def evaluate (path_lists, log_file, mean_sizes, nb_of_bd, path_acc,
+              time_limit, metric):
 ################################################################################
 # mean_by_label
 # compute the LDA + BN and LDA + SVM machine learning algorithm
@@ -81,9 +110,11 @@ def evaluate (path_lists, log_file, model_lda, model_svm, model_nb,
 # input:
 #  + path_lists: path of the lists 
 #  + log_file: where the results are saved
-#  + model_{lda, svm, nb}: prevously saved {LDA, SVM, NB}-model
-#  + path_transformed_traces: path to the transformed learning traces (validate + train)
-#  + mean_sizes: numbers of mean sizes to try.
+#  + mean_sizes: numbers of mean sizes to try
+#  + nb_of_bd: nb of frequency band to conserve
+#  + path_acc: directory where acculmulators are
+#  + time_limit: percentage of the trace (from the begining)
+#  - metric: metric to use for the bandwidth selection
 ################################################################################
     ## logging exp in file
    
@@ -95,137 +126,121 @@ def evaluate (path_lists, log_file, model_lda, model_svm, model_nb,
     file_log.write (d1 + '\n')
     file_log.write ('path_lists: %s\n'%str (path_lists)\
                     + 'log_file: %s\n'%str (log_file)\
-                    + 'model_lda: %s\n'%str (model_lda)\
-                    + 'model_svm: %s\n'%str (model_svm)\
-                    + 'model_nb: %s\n'%str (model_nb)\
-                    + 'means; %s\n'%str (mean_sizes))
+                    + 'model_lda: None\n'\
+                    + 'model_svm: None\n'\
+                    + 'model_nb: None\n'\
+                    + 'means: %s\n'%str (mean_sizes)\
+                    + 'nb_of_bd: %s\n'%str (nb_of_bd)\
+                    + 'path_acc: %s\n'%str (path_acc)\
+                    + 'time_limit: %s\n'%str (time_limit)\
+                    + 'metric: %s\n'%str (metric))
+    
     file_log.write ('-'*80 + '\n')
     file_log.close ()
+
+    ## get indexes
+    if ('nicv' in metric):
+        t, f, nicv, bandwidth = compute_nicv (path_lists, path_acc, None,\
+                                              bandwidth_nb = nb_of_bd,
+                                              time_limit = time_limit,
+                                              metric = metric)
+    else:
+        t, f, nicv, bandwidth = compute_corr (path_lists, path_acc, None,\
+                                              bandwidth_nb = nb_of_bd,
+                                              time_limit = time_limit,
+                                              metric = metric)
 
     ## load lists
     [x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test] \
          = np.load (path_lists, allow_pickle = True)
 
-    # # raw data (need only if models are not loaded)
-    if (path_transformed_traces is None):
-        learning_traces = load_traces (x_train_filelist)
-        validating_traces = load_traces (x_val_filelist)
+    learning_traces = load_traces (x_train_filelist, bandwidth, time_limit)
+    validating_traces = load_traces (x_val_filelist, bandwidth, time_limit)
 
-        ## learning
-        traces = np.zeros ((learning_traces.shape [0], learning_traces.shape [1] + validating_traces.shape [1]))
-        traces [:, :learning_traces.shape [1]] = learning_traces 
-        traces [:, learning_traces.shape [1]:] = validating_traces 
-
-    else:
-        transformed_traces = np.load (path_transformed_traces, allow_pickle = True)
-        
+    ## learning
+    traces = np.zeros ((learning_traces.shape [0], learning_traces.shape [1] + validating_traces.shape [1]))
+    traces [:, :learning_traces.shape [1]] = learning_traces 
+    traces [:, learning_traces.shape [1]:] = validating_traces 
+    
         
     learning_labels = y_train
     validating_labels = y_val
 
     labels = np.concatenate ((learning_labels, validating_labels))
-   
-    
+       
     ## projection
     t0 = time.time ()
-    if (model_lda is None):
-        clf = LinearDiscriminantAnalysis()
-        transformed_traces = clf.fit_transform (traces.T, list (labels))
-
-        file_log = open (log_file, 'a')
-        file_log.write ('LDA (compuation): %s seconds\n'%(time.time () - t0))
-        file_log.close ()
-
-        ## save LDA
-        joblib.dump (clf, path_lists + '_LDA.jl')    
-
-        # save transformed traces
-        np.save (path_lists + '_transformed_traces', transformed_traces, allow_pickle = True)
-                    
-    else:
-        clf = joblib.load (model_lda)
-
-        if (path_transformed_traces is None):
-            transformed_traces = clf.transform (traces.T)
-            # once the traces has been transformed del the raw one in order to save RAM
-            del traces
-
-            # save transformed traces
-            np.save (path_lists + '_transformed_traces', transformed_traces, allow_pickle = True)
-            
-        else:
-            transformed_traces = np.load (path_transformed_traces, allow_pickle = True)
-            
-        file_log = open (log_file, 'a')
-        file_log.write ('LDA (loading): %s seconds\n'%(time.time () - t0))
-        file_log.close ()
-        
+    clf = LinearDiscriminantAnalysis ()
+  
+    transformed_traces = clf.fit_transform (traces.T, list (labels))
+    ## save LDA
+    tmp = path_lists.split ('=')[-1].split ('.')[0]
+    joblib.dump (clf, '/'.join (path_lists.split ('/')[:-1]) + f'/LDA_tagmpas={tmp}_{nb_of_bd}bd.jl')    
+    
+    file_log = open (log_file, 'a')
+    file_log.write ('LDA (compuation): %s seconds\n'%(time.time () - t0))
+    file_log.close ()   
 
     ## learning on projection
     t0 = time.time ()
-    if (model_nb is None):
-        gnb  = GaussianNB ()
-        gnb.fit (transformed_traces, labels)
 
-        file_log = open (log_file, 'a')   
-        file_log.write ('NB (computation): %s seconds\n'%(time.time () - t0))
-        file_log.close ()
-
-        ## save LDA
-        joblib.dump (gnb, path_lists + '_NB.jl')
-        
-    else :
-        gnb = joblib.load (model_nb)
-        file_log = open (log_file, 'a')   
-        file_log.write ('NB (loading): %s seconds\n'%(time.time () - t0))
-        file_log.close ()
-        
+    gnb  = GaussianNB ()
+    gnb.fit (transformed_traces, labels)
+    ## save GN
+    tmp = path_lists.split ('=')[-1].split ('.')[0]
+    joblib.dump (gnb, '/'.join (path_lists.split ('/')[:-1]) + f'/NB_tagmpas={tmp}_{nb_of_bd}bd.jl')    
+    
+    file_log = open (log_file, 'a')   
+    file_log.write ('NB (computation): %s seconds\n'%(time.time () - t0))
+    file_log.close ()
+    
     t0 = time.time ()
-    if (model_svm is None):
-        svc = SVC ()
+    svc = SVC ()
+    svc.fit (transformed_traces, labels)
 
-
-        svc.fit (transformed_traces, labels)
-
-        file_log = open (log_file, 'a')   
-        file_log.write ('SVM (computation): %s seconds\n'%(time.time () - t0))
-        file_log.close ()
-
-        ## save LDA
-        joblib.dump (svc, path_lists + '_SVM.jl')
-        
-    else :
-        svc = joblib.load (model_svm)
-        file_log = open (log_file, 'a')   
-        file_log.write ('SVM (loading): %s seconds\n'%(time.time () - t0))
-        file_log.close ()
-        
+    ## save SVM
+    tmp = path_lists.split ('=')[-1].split ('.')[0]
+    joblib.dump (svc, '/'.join (path_lists.split ('/')[:-1]) + f'/SVM_tagmpas={tmp}_{nb_of_bd}bd.jl')
+    
+    file_log = open (log_file, 'a')   
+    file_log.write ('SVM (computation): %s seconds\n'%(time.time () - t0))
+    file_log.close ()    
     
     ## now and testing
-    testing_traces = load_traces (x_test_filelist)
+    testing_traces = load_traces (x_test_filelist,  bandwidth, time_limit)
     testing_labels = y_test
     
-    res = []
     ## no means
+    ## projection LDA
     t0 = time.time ()
     X = clf.transform (testing_traces.T)
+
+    # save transformed traces
+    tmp = path_lists.split ('=')[-1].split ('.')[0]
+    np.save ('/'.join (path_lists.split ('/')[:-1]) + f'/transformed_traces_tagmaps={tmp}_{nb_of_bd}bd.npy',
+             X, allow_pickle = True)
+
     
     file_log = open (log_file, 'a')
     file_log.write ('transform (size: %s): %s seconds\n'%(str(testing_traces.shape), str (time.time () - t0)))
     file_log.close ()
-    
+
+    ## NB 
     t0 = time.time ()
-    res.append (gnb.score (transformed_traces, list (labels)))
-    res.append (gnb.score (X, list (testing_labels)))
+
+    predicted_labels = gnb.predict (X)
     file_log = open (log_file, 'a')
-    file_log.write ('Test NB  (size: %s) [%s seconds]: %s [%s]\n'%(str (X.shape), str (time.time () - t0), str (res  [-1]), str (res  [-2])))
+    file_log.write ('Test NB  (size: %s) [%s seconds]:\n'%(str (X.shape), str (time.time () - t0)))
+    file_log.write (f'{classification_report (list (testing_labels), predicted_labels, digits = 4, zero_division = 0)}')
     file_log.close ()
 
+    ## SVM
     t0 = time.time ()
-    res.append (svc.score (transformed_traces, list (labels)))
-    res.append (svc.score (X, list (testing_labels)))
+
+    predicted_labels = svc.predict (X)
     file_log = open (log_file, 'a')
-    file_log.write ('Test SVM (size: %s) [%s seconds]: %s [%s]\n'%(str (X.shape), str (time.time () - t0), str (res  [-1]), str (res  [-2])))
+    file_log.write ('Test SVM  (size: %s) [%s seconds]:\n'%(str (X.shape), str (time.time () - t0)))
+    file_log.write (f'{classification_report (list (testing_labels), predicted_labels, digits = 4, zero_division = 0)}')
     file_log.close ()
     
     for mean_size in mean_sizes:
@@ -235,26 +250,28 @@ def evaluate (path_lists, log_file, model_lda, model_svm, model_nb,
 
         X, y = mean_by_label (testing_traces, np.array (testing_labels), mean_size)
         
-        ## no means
+        ## LDA on means
         t0 = time.time ()
         X = clf.transform (X.T)
         file_log = open (log_file, 'a')
         file_log.write ('transform (size: %s): %s seconds\n'%(str(testing_traces.shape), str (time.time () - t0)))
         file_log.close ()
-        
+
+        ## NB
         t0 = time.time ()
-        res.append (gnb.score (X, list (y)))
+        predicted_labels = gnb.predict (X)
         file_log = open (log_file, 'a')
-        file_log.write ('Test NB   (size: %s) [%s seconds]: %s\n'%(str (X.shape), str (time.time () - t0), str (res  [-1])))
-        file_log.close ()
-        
-        t0 = time.time ()
-        res.append (svc.score (X, list (y)))
-        file_log = open (log_file, 'a')
-        file_log.write ('Test SVM   (size: %s) [%s seconds]: %s\n'%(str (X.shape), str (time.time () - t0), str (res  [-1])))
+        file_log.write (f'NB - mean {mean_size}:\n {classification_report (list (y), predicted_labels, digits = 4, zero_division = 0)}')
         file_log.close ()
 
-    
+        # SVM
+        t0 = time.time ()
+        predicted_labels = svc.predict (X)
+        file_log = open (log_file, 'a')
+        file_log.write (f'SVM - mean {mean_size}:\n {classification_report (list (y), predicted_labels, digits = 4, zero_division = 0)}')
+        file_log.close ()
+
+        
 ################################################################################
 if __name__ == '__main__':
 ################################################################################
@@ -265,22 +282,6 @@ if __name__ == '__main__':
                          type = str, dest = 'path_lists',
                          help = 'Absolute path to a file containing the lists')
 
-    parser.add_argument ('--model_lda', action = 'store', type=str,
-                         dest = 'model_lda',
-                         help = 'Absolute path to the file where the LDA model has been previously saved')
-
-    parser.add_argument ('--model_nb', action = 'store', type=str,
-                         dest = 'model_nb',
-                         help = 'Absolute path to the file where the NB model has been previously saved')
-
-    parser.add_argument ('--model_svm', action = 'store', type=str,
-                         dest = 'model_svm',
-                         help = 'Absolute path to the file where the SVM model has benn previously saved')
-
-    parser.add_argument ('--transformed_traces', action = 'store', type=str,
-                         dest = 'path_transform_traces',
-                         help = 'Absolute path to the file where the transformed learning traces has been previously saved')
-
     parser.add_argument("--mean_size", default = [2,3,4,5,6,7,9,10],
                         action = 'append', dest = 'mean_sizes',
                         help = 'Size of each means')
@@ -289,15 +290,34 @@ if __name__ == '__main__':
                          dest = 'log_file',
                          help = 'Absolute path to the file to save results')
 
+    
+    parser.add_argument ('--acc', action='store', type=str,
+                         dest='path_acc',
+                         help='Absolute path of the accumulators directory')
+
+    parser.add_argument('--nb_of_bandwidth', action='store', type=int,
+                        default=20,
+                        dest='nb_of_bandwidth',
+                        help='number of bandwidth to extract')
+
+    parser.add_argument ('--time_limit', action ='store', type = float, default = 1,
+                         dest = 'time_limit',
+                         help = 'percentage of time to concerve (from the begining)')
+
+    parser.add_argument('--metric', action='store', type=str, default='nicv_max',
+                        dest='metric', help='Metric to use for select bandwidth: {nicv, corr}_{mean, max} ')
+        
+        
+    args, unknown = parser.parse_known_args ()
+    assert len (unknown) == 0, f"[WARNING] Unknown arguments:\n{unknown}\n"
+    
     args, unknown = parser.parse_known_args ()
 
     # test (args, GaussianNB (), False)
     evaluate (args.path_lists,
               args.log_file,
-              args.model_lda,
-              args.model_svm,
-              args.model_nb,
-              args.path_transform_traces,
-              args.mean_sizes)
-    
-    
+              args.mean_sizes,
+              args.nb_of_bandwidth,
+              args.path_acc,
+              args.time_limit,
+              args.metric)

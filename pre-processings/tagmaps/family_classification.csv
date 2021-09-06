@@ -29,3 +29,7 @@ bashlite_addopaque,bashlite,3
 bashlite_cfflatten,bashlite,3
 bashlite_sub,bashlite,3
 bashlite_virtualize,bashlite,3
+playaudio,benign,3
+recordcamera,benign,3
+takepicture,benign,3
+encodevideo,benign,3
