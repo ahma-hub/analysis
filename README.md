@@ -104,6 +104,7 @@ The testing spectrograms used in the paper can be dowload on the following websi
 ```
 https://zenodo.org/record/5414107
 ```
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5414107.svg)](https://doi.org/10.5281/zenodo.5414107)
 ### File lists
 In order to update the location of the data, you previously dowloaded, inside 
@@ -112,6 +113,7 @@ the lists you need to run the script ``update_lists.sh``:
 ```
 ./update_lists  [directory where are stored the list] [directory where are stored the traces]
 ```
+
 This must be applyed to directoies ```list_selected_bandwidth``` and ```list_reduced_dataset```
 respectively associated to the datasets: ```traces_selected_bandwidth.zip``` and ```raw_data_reduced_dataset.zip```
 
@@ -122,16 +124,19 @@ the scripts ``run_ml_on_reduced_dataset.sh`` and ``run_ml_on_extracted_bandwidth
 ```
 ./run_ml_on_extracted_bandwidth.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
 ```
+
 The results are stored in the file ```ml_analysis/log-evaluation_selected_bandwidth.txt```.
 
 ```
 ./run_ml_on_reduced_dataset.sh  
 ```
+
 The results are stored in the file ```ml_analysis/log-evaluation_reduced_dataset.txt```.
 
 The directory ``ml_analysis`` contains the code needed for the classification by Machine Learning (ML).
 
 ### evaluate.py
+
 ``` 
 usage: evaluate.py [-h] 
                    [--lists PATH_LISTS]  
@@ -154,6 +159,7 @@ optional arguments:
 ```
 
 ### NB.py
+
 ``` 
 usage: NB.py [-h] 
              [--lists PATH_LISTS] 
@@ -175,6 +181,7 @@ optional arguments:
   --acc PATH_ACC           Absolute path of the accumulators directory
 
 ```
+
 ### read_logs.py
 ```
 usage: read_logs.py [-h]
@@ -187,6 +194,7 @@ optional arguments:
   --plot PATH_TO_PLOT  Absolute path to save the plot
 ``` 
 ### SVM.py
+
 ``` 
 usage: SVM.py [-h] 
               [--lists PATH_LISTS] 
@@ -206,11 +214,12 @@ optional arguments:
   --log-file LOG_FILE      Absolute path to the file to save results
   --time_limit TIME_LIMIT  percentage of time to concerve (from the begining)
   --acc PATH_ACC           Absolute path of the accumulators directory
-``
+```
 
 ## Deep Learning (DL) 
 To run the computation of the all the deep learning experiments, you can use
 the script ``run_dl.sh``:
+
 
 ```
 ./run_dl.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
