@@ -218,7 +218,7 @@ optional arguments:
 ```
 
 ## Deep Learning (DL) 
-To run the computation of the all the deep learning experiments, you can use
+To run the computation of the all the deep learning experiments on the testing dataset using pre-trained models, you can use
 the script ``run_dl_on_selected_bandwidth.sh``:
 
 
