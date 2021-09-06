@@ -1,78 +1,84 @@
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//MLP/executable_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=executable_classification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//MLP/executable_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=executable_classification.npy
 Nr of bandwidth: 24
-Testing accuracy: 71.31862745098039%
+Testing accuracy: 73.55660377358491%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//MLP/novelty_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=novelty_classification.npy
-Nr of bandwidth: 12
-Testing accuracy: 92.03490008443569%
+Preloaded model from: /home/p/git/github/pretrained_models//MLP/novelty_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 16
+Testing accuracy: 88.4138628889451%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//MLP/virtualization_identification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=virtualization_identification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//MLP/packer_identification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 28
+Testing accuracy: 93.39120694483339%
+------------------------------
+------------------------------
+Preloaded model from: /home/p/git/github/pretrained_models//MLP/virtualization_identification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=virtualization_identification.npy
 Nr of bandwidth: 20
-Testing accuracy: 94.42494321701425%
+Testing accuracy: 95.6018996489779%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//MLP/family_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=family_classification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//MLP/family_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=family_classification.npy
 Nr of bandwidth: 28
-Testing accuracy: 97.77941176470588%
+Testing accuracy: 98.57075471698113%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//MLP/obfuscation_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=obfuscation_classification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//MLP/obfuscation_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
 Nr of bandwidth: 28
-Testing accuracy: 72.77945619335348%
+Testing accuracy: 73.79154078549848%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//MLP/type_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=type_classification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//MLP/type_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=type_classification.npy
 Nr of bandwidth: 28
-Testing accuracy: 99.70098039215686%
+Testing accuracy: 99.75471698113208%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//CNN/executable_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=executable_classification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//CNN/executable_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=executable_classification.npy
 Nr of bandwidth: 24
-Testing accuracy: 80.02450980392157%
+Testing accuracy: 82.28301886792453%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//CNN/novelty_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=novelty_classification.npy
-Nr of bandwidth: 16
-Testing accuracy: 97.42471151139883%
-------------------------------
-------------------------------
-Preloaded model from: ../pretrained_models_prerelease//CNN/packer_identification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=packer_identification.npy
-Nr of bandwidth: 16
-Testing accuracy: 90.84290114813778%
-------------------------------
-------------------------------
-Preloaded model from: ../pretrained_models_prerelease//CNN/virtualization_identification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=virtualization_identification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//CNN/novelty_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=novelty_classification.npy
 Nr of bandwidth: 24
-Testing accuracy: 95.95292174272146%
+Testing accuracy: 98.84897546167468%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//CNN/family_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=family_classification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//CNN/packer_identification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 20
+Testing accuracy: 94.95939512741529%
+------------------------------
+------------------------------
+Preloaded model from: /home/p/git/github/pretrained_models//CNN/virtualization_identification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 24
+Testing accuracy: 95.82903159198844%
+------------------------------
+------------------------------
+Preloaded model from: /home/p/git/github/pretrained_models//CNN/family_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=family_classification.npy
 Nr of bandwidth: 28
-Testing accuracy: 99.32843137254902%
+Testing accuracy: 99.60849056603773%
 ------------------------------
 ------------------------------
-Preloaded model from: ../pretrained_models_prerelease//CNN/obfuscation_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=obfuscation_classification.npy
+Preloaded model from: /home/p/git/github/pretrained_models//CNN/obfuscation_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 24
+Testing accuracy: 82.6963746223565%
+------------------------------
+------------------------------
+Preloaded model from: /home/p/git/github/pretrained_models//CNN/type_classification.h5
+File list: /data1/acsac-2021/artefacts/full_dataset/lists//extracted_bd_files_lists_tagmaps=type_classification.npy
 Nr of bandwidth: 28
-Testing accuracy: 81.85045317220543%
-------------------------------
-------------------------------
-Preloaded model from: ../pretrained_models_prerelease//CNN/type_classification.h5
-File list: lists_selected_bandwidth//files_lists_tagmap=type_classification.npy
-Nr of bandwidth: 28
-Testing accuracy: 99.92156862745098%
+Testing accuracy: 99.81603773584906%
 ------------------------------

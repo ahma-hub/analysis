@@ -32,7 +32,7 @@ done
 for  (( i=0; i<${nb_of_tagmaps}; i++ ));
 do
     echo "Computing CNN, tagmap: ${tagmaps[$i]}"
-    #python3 dl_analysis/evaluate.py --band ${CNN_bds[$i]} --list ${path_lists}/extracted_bd_files_lists_tagmaps=${tagmaps[$i]}.npy\
-#	    --acc ${path_acc} --model ${path_models}/CNN/${tagmaps[$i]}.h5
+    python3 dl_analysis/evaluate.py --band ${CNN_bds[$i]} --list ${path_lists}/extracted_bd_files_lists_tagmaps=${tagmaps[$i]}.npy\
+	    --acc ${path_acc} --model ${path_models}/CNN/${tagmaps[$i]}.h5
 
 done
