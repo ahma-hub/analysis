@@ -264,7 +264,7 @@ the script ``run_dl_on_reduced_dataset.sh``:
 ```
 ./run_dl_on_reduced_dataset.sh  [directory where the lists are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ] [DL architecture {cnn or mlp}] [number of epochs (e.g. 100)] [batch size (e.g. 100)]
 ```
-Pre-trained models will be stored as ``{MLP,CNN}_{name of the scenario}_band_{the amount of selected bandwidth}.h5`` and can be used with the script ``evaluate.py`` or or automatically with ``run_dl_on_selected_bandwidth.sh``. Note ``run_dl_on_selected_bandwidth.sh`` expects models with a filename ``{name of the scenario}.h5`` in subfolders ``MLP`` and ``CNN``. For this simply selected the bandwidth that achieved the highest validation accuracy and shorten the filename to the scenario and store it in the corresponding subfolder.
+Pre-trained models will be stored as ``{MLP,CNN}_{name of the scenario}_band_{the amount of selected bandwidth}.h5`` and can be used with the script ``evaluate.py`` or automatically with ``run_dl_on_selected_bandwidth.sh``. Note ``run_dl_on_selected_bandwidth.sh`` expects models with a filename ``{name of the scenario}.h5`` in subfolders ``MLP`` and ``CNN``. For this simply selected the bandwidth that achieved the highest validation accuracy and shorten the filename to the scenario and store it in the corresponding subfolder.
 
 ## Preprocessings
 Once the traces have been aquiered and before beeing able to run the evualuation 
