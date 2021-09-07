@@ -106,7 +106,7 @@ pip install -r requirements.txt
 ```
 
 ### Data
-The testing spectrograms used in the paper can be dowload on the following website:
+The testing dataset (spectrograms) used in the paper can be dowload on the following website:
 
 ```
 https://zenodo.org/record/5414107
@@ -115,17 +115,17 @@ https://zenodo.org/record/5414107
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5414107.svg)](https://doi.org/10.5281/zenodo.5414107)
 ### File lists
 In order to update the location of the data, you previously dowloaded, inside 
-the lists you need to run the script ``update_lists.sh``:
+the lists please run the script ``update_lists.sh``:
 
 ```
-./update_lists  [directory where are stored the list] [directory where are stored the traces]
+./update_lists  [directory where the lists are stored] [directory where the downloaded spectograms are stored]
 ```
 
 This must be applyed to directoies ```list_selected_bandwidth``` and ```list_reduced_dataset```
 respectively associated to the datasets: ```traces_selected_bandwidth.zip``` and ```raw_data_reduced_dataset.zip```
 
 ## Machine Learning (ML)
-To run the computation of the all the machine learning experiments, you can use
+To run the computation of all the machine learning experiments, you can use
 the scripts ``run_ml_on_reduced_dataset.sh`` and ``run_ml_on_extracted_bandwidth.sh``:
 
 ```
@@ -224,9 +224,10 @@ optional arguments:
 ```
 
 ## Deep Learning (DL) 
+The folder ``dl_analysis`` contains a script for prediction (``evaluate.py``) and for training (``training.py``) the used cnn and mlp network models.
 
 ### evaluate.py
-Script to run prediction on a testing dataset using pre-trained models.
+Script to run the prediction on a testing dataset using pre-trained models.
 
 ``` 
 usage: evaluate.py [-h] 
@@ -237,7 +238,7 @@ usage: evaluate.py [-h]
 ```
 
 ### training.py
-Script to run training for our mlp or cnn model on a training and validation dataset and store trained models.
+Script to run the training for our mlp or cnn model on a training and validation dataset and store the trained models.
 ``` 
 usage: training.py [-h] 
                    [--lists PATH_LISTS]  
@@ -249,7 +250,7 @@ usage: training.py [-h]
 		   [--save filename to store model (h5 file)]
 ```
 
-To run the computation of the all the deep learning experiments on the testing dataset using pre-trained models, you can use
+To run the computation of the all the deep learning experiments on the testing dataset (downloaded from zenodo) using pre-trained models, you can use
 the script ``run_dl_on_selected_bandwidth.sh``:
 
 
@@ -257,7 +258,7 @@ the script ``run_dl_on_selected_bandwidth.sh``:
 ./run_dl_on_selected_bandwidth.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
 ```
 
-To train and store pre-trained models for the MLP and CNN architecture using the reduced dataset, you can use 
+To train and store pre-trained models for the MLP and CNN architecture using the reduced dataset (downloaded from zenodo), you can use 
 the script ``run_dl_on_reduced_dataset.sh``:
 
 ```
