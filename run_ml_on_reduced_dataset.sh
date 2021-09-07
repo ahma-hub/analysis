@@ -32,7 +32,7 @@ python pre-processings/accumulator.py\
 # creat the directory
 mkdir -p traces_40bd_reduced_dataset
 # run the computation
-python pre-processings/bandwidth_extractor.py --acc acc_raw/\
+python pre-processings/bandwidth_extractor.py --acc acc_raw_reduced_dataset/\
        --lists lists_reduced_dataset/files_lists_tagmaps=executable_classification.npy\
                lists_reduced_dataset/files_lists_tagmaps=novelty_classification.npy\
                lists_reduced_dataset/files_lists_tagmaps=packer_identification.npy\

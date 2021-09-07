@@ -19,8 +19,8 @@ declare -a tagmaps=('executable_classification'
                     'type_classification'
                     'virtualization_identification')
 
-declare -a NB_bds=('28' '28' '28' '10' '16' '22' '6')
-declare -a SVM_bds=('20' '28' '16' '10' '16' '24' '6')
+declare -a NB_bds=('28' '28' '28' '10' '16' '24' '6')
+declare -a SVM_bds=('20' '28' '28' '10' '16' '24' '6')
 
 # number of tagmaps
 nb_of_tagmaps=${#tagmaps[@]}
@@ -31,17 +31,20 @@ do
     python3 ml_analysis/NB.py --lists ${path_lists}/files_lists_tagmaps=${tagmaps[$i]}.npy\
 	    --log-file ml_analysis/log-evaluation_selected_bandwidth.txt\
 	    --acc ${path_acc}\
+            --time_limit 0.5\
             --model_nb  ${path_models}/NB/NB_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.jl\
-            --model_lda ${path_models}/LDA/LDA_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.jl\
-            #--model_lda  ${path_models}/LDA/transformed_traces/transformed_traces_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.npy
+            --model_lda  ${path_models}/LDA/transformed_traces/transformed_traces_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.npy
+    #   --model_lda ${path_models}/LDA/LDA_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.jl\
     
-    # echo "Computing LDA + SVM, tagmap: ${tagmaps[$i]}"
-    # python3 ml_analysis/SVM.py --lists ${path_lists}/files_lists_tagmaps=${tagmaps[$i]}.npy\
-    #         --log-file ml_analysis/log-evaluation_selected_bandwidth.txt\
-    #         --acc ${path_acc}\
-    #         --model_svm  ${path_models}/SVM/SVM_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.jl\
-    #         --model_lda ${path_models}/LDA/LDA_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.jl\
-    #         #--model_lda  ${path_models}/LDA/transformed_traces/transformed_traces_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.npy
+    echo "Computing LDA + SVM, tagmap: ${tagmaps[$i]}"
+    python3 ml_analysis/SVM.py --lists ${path_lists}/files_lists_tagmaps=${tagmaps[$i]}.npy\
+            --log-file ml_analysis/log-evaluation_selected_bandwidth.txt\
+            --acc ${path_acc}\
+            --time_limit 0.5\
+            --model_svm  ${path_models}/SVM/SVM_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.jl\
+            --model_lda  ${path_models}/LDA/transformed_traces/transformed_traces_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.npy
+    
+            # --model_lda ${path_models}/LDA/LDA_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.jl\
 done
 
 ################################################################################
