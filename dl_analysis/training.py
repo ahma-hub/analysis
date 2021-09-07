@@ -132,7 +132,16 @@ def main(input_file_list, path_acc, nb_epochs, batch_size, nb_of_bandwidth, arch
     class_weights = compute_class_weight('balanced', np.unique(y_integers), y_integers)
     d_class_weights = dict(enumerate(class_weights))
     history = nn.train(train_dataset, validation_dataset, d_class_weights, nb_epochs, save_kernel=save, verbose=verbose)
-    #best_training_accuracy = max(history.history["accuracy"])
+    best_validation_accuracy = max(history.history["val_accuracy"])
+    
+    log_file = "dl_analysis/training_log_DL.txt"
+    file_log = open (log_file, 'a')
+    file_log.write ("------------------------------\n")
+    file_log.write ("File list: {}\n".format(input_file_list))
+    file_log.write ("Nr of bandwidth: {}\n".format(nb_of_bandwidth))
+    file_log.write ("Validation accuracy: {}%\n".format(best_validation_accuracy*100))
+    file_log.write ("------------------------------\n")
+    file_log.close ()
 
 
 if __name__ == "__main__":
