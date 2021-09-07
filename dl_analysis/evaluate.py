@@ -1,3 +1,12 @@
+"""
+ File: evaluate.py 
+ Project: analysis 
+ Last Modified: 2021-8-2
+ Created Date: 2021-8-2
+ Copyright (c) 2021
+ Author: AHMA project (Univ Rennes, CNRS, Inria, IRISA)
+"""
+
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import confusion_matrix
 import tensorflow as tf
@@ -43,12 +52,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     ## get indexes
-    _, _, nicv = compute_nicv (args.path_lists, args.path_acc, None)
-    bandwidth = np.argsort (nicv.mean (1))[-args.nb_of_bd:]
-
-    ## then sort from the smallest to the biggest
-    bandwidth = np.sort (bandwidth)
-
+    _, _, nicv, bandwidth = compute_nicv (args.path_lists, args.path_acc, path_save = None,\
+                                              bandwidth_nb = args.nb_of_bd )
     ## load lists
     [_, _, x_test_filelist, y_train, _, y_test] = np.load (args.path_lists, allow_pickle = True)
    

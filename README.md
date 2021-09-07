@@ -9,13 +9,18 @@ Electromagnetic obfuscated malware classification*".
 .
 ├── README.md
 ├── requirements.txt
-│── run_dl.sh                       #> script to run the DL for all scenarii
+│── run_dl_on_selected_bandwidth.sh #> script to run the DL for all scenarii on  
+|                                   # the (full) testing dataset (available on zenodo) 
+|                                   # using pre-computed models
+|── run_dl_on_reduced_dataset.sh    #> script to run the training on 
+|                                   # on a reduced dataset (350 per samples per 
+|                                   # executable, available on zenodo)
 │── run_ml_on_reduced_dataset.sh    #> script to run the end-to-end analysis on 
 |                                   # on a reduced dataset (350 per samples per 
-|                                   # executable)
+|                                   # executable, available on zenodo)
 │── run_ml_on_selected_bandwidth.sh #> script to run the ML classification for all
-|                                   # for all scenarii on the testing pre-treated 
-|                                   # dataset 
+|                                   # for all scenarii on the testing pre-computed 
+|                                   # dataset (available on zenodo)
 │── update_lists.sh                 #> script to update the location of the traces 
 │                                   # in the lists 
 │
@@ -34,7 +39,9 @@ Electromagnetic obfuscated malware classification*".
 │
 │
 ├── dl_analysis
-│   │── evaluate.py            #> code to run MLP and CNN on all scenarios
+│   │── evaluate.py            #> code to predict MLP and CNN using pretrained models
+│   │── training.py            #> code to train MLP and CNN and store models 
+|   |                          # according to best validation accuracy   
 │   │── evaluation_log_DL.txt  #> output log file with stored accuracies
 |
 │
@@ -99,7 +106,7 @@ pip install -r requirements.txt
 ```
 
 ### Data
-The testing spectrograms used in the paper can be dowload on the following website:
+The testing dataset (spectrograms) used in the paper can be dowload on the following website:
 
 ```
 https://zenodo.org/record/5414107
@@ -108,17 +115,17 @@ https://zenodo.org/record/5414107
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5414107.svg)](https://doi.org/10.5281/zenodo.5414107)
 ### File lists
 In order to update the location of the data, you previously dowloaded, inside 
-the lists you need to run the script ``update_lists.sh``:
+the lists please run the script ``update_lists.sh``:
 
 ```
-./update_lists  [directory where are stored the list] [directory where are stored the traces]
+./update_lists  [directory where the lists are stored] [directory where the downloaded spectograms are stored]
 ```
 
 This must be applyed to directoies ```list_selected_bandwidth``` and ```list_reduced_dataset```
 respectively associated to the datasets: ```traces_selected_bandwidth.zip``` and ```raw_data_reduced_dataset.zip```
 
 ## Machine Learning (ML)
-To run the computation of the all the machine learning experiments, you can use
+To run the computation of all the machine learning experiments, you can use
 the scripts ``run_ml_on_reduced_dataset.sh`` and ``run_ml_on_extracted_bandwidth.sh``:
 
 ```
@@ -217,13 +224,47 @@ optional arguments:
 ```
 
 ## Deep Learning (DL) 
-To run the computation of the all the deep learning experiments, you can use
-the script ``run_dl.sh``:
+The folder ``dl_analysis`` contains a script for prediction (``evaluate.py``) and for training (``training.py``) the used cnn and mlp network models.
+
+### evaluate.py
+Script to run the prediction on a testing dataset using pre-trained models.
+
+``` 
+usage: evaluate.py [-h] 
+                   [--lists PATH_LISTS]  
+                   [--acc PATH_ACC]  
+                   [--band NB_OF_BANDWIDTH]  
+                   [--model h5-file containing precomputed model] 
+```
+
+### training.py
+Script to run the training for our mlp or cnn model on a training and validation dataset and store the trained models.
+``` 
+usage: training.py [-h] 
+                   [--lists PATH_LISTS]  
+                   [--acc PATH_ACC]  
+                   [--band NB_OF_BANDWIDTH]  
+                   [--epochs number of epochs] 
+                   [--batch batch size]
+		   [--arch neural network architecture {cnn, mlp}] 
+		   [--save filename to store model (h5 file)]
+```
+
+To run the computation of the all the deep learning experiments on the testing dataset (downloaded from zenodo) using pre-trained models, you can use
+the script ``run_dl_on_selected_bandwidth.sh``:
 
 
 ```
-./run_dl.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
+./run_dl_on_selected_bandwidth.sh  [directory where the lists are stored] [directory where the models are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ]
 ```
+
+To train and store pre-trained models for the MLP and CNN architecture using the reduced dataset (downloaded from zenodo), you can use 
+the script ``run_dl_on_reduced_dataset.sh``:
+
+```
+./run_dl_on_reduced_dataset.sh  [directory where the lists are stored] [directory where the accumulated data is stored (precomputed in pretrained_models/ACC) ] [DL architecture {cnn or mlp}] [number of epochs (e.g. 100)] [batch size (e.g. 100)]
+```
+Pre-trained models will be stored as ``{MLP,CNN}_{name of the scenario}_band_{the amount of selected bandwidth}.h5`` and can be used with the script ``evaluate.py`` or automatically with ``run_dl_on_selected_bandwidth.sh``. Note ``run_dl_on_selected_bandwidth.sh`` expects models with a filename ``{name of the scenario}.h5`` in subfolders ``MLP`` and ``CNN``. For this simply selected the bandwidth that achieved the highest validation accuracy and shorten the filename to the scenario and store it in the corresponding subfolder.
 
 ## Preprocessings
 Once the traces have been aquiered and before beeing able to run the evualuation 

@@ -12,8 +12,8 @@ declare -a tagmaps=('executable_classification'
                         'obfuscation_classification'
                         'type_classification')
 
-declare -a MLP_bds=('24' '12' '28' '20' '28' '28' '28')
-declare -a CNN_bds=('24' '16' '16' '24' '28' '28' '28')
+declare -a MLP_bds=('24' '16' '28' '20' '28' '28' '28')
+declare -a CNN_bds=('24' '24' '20' '24' '28' '24' '28')
 
 
 # number of tagmaps
@@ -22,7 +22,7 @@ nb_of_tagmaps=${#tagmaps[@]}
 for  (( i=0; i<${nb_of_tagmaps}; i++ ));
 do
 	echo "Computing MLP, tagmap: ${tagmaps[$i]}"
-	python3 dl_analysis/evaluate.py --band ${MLP_bds[$i]} --list ${path_lists}/files_lists_tagmap=${tagmaps[$i]}.npy\
+	python3 dl_analysis/evaluate.py --band ${MLP_bds[$i]} --list ${path_lists}/extracted_bd_files_lists_tagmaps=${tagmaps[$i]}.npy\
 		--acc ${path_acc}\
 	       	--model ${path_models}/MLP/${tagmaps[$i]}.h5
 done
@@ -32,7 +32,7 @@ done
 for  (( i=0; i<${nb_of_tagmaps}; i++ ));
 do
     echo "Computing CNN, tagmap: ${tagmaps[$i]}"
-    python3 dl_analysis/evaluate.py --band ${CNN_bds[$i]} --list ${path_lists}/files_lists_tagmap=${tagmaps[$i]}.npy\
+    python3 dl_analysis/evaluate.py --band ${CNN_bds[$i]} --list ${path_lists}/extracted_bd_files_lists_tagmaps=${tagmaps[$i]}.npy\
 	    --acc ${path_acc} --model ${path_models}/CNN/${tagmaps[$i]}.h5
 
 done
