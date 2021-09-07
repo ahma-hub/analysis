@@ -1,3 +1,13 @@
+__='
+   This is the default license template.
+   
+   File: run_ml_on_reduced_dataset.sh
+   Author: test
+   Copyright (c) 2021 test
+   
+   To edit this license information: Press Ctrl+Shift+P and press 'Create new License Template...'.
+'
+
 #!/bin/bash
 
 ## the following script compute the end-to-end process on the reduced dataset:

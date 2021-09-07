@@ -1,3 +1,12 @@
+"""
+ File: bandwidth_extractor.py 
+ Project: analysis 
+ Last Modified: 2021-8-2
+ Created Date: 2021-8-2
+ Copyright (c) 2021
+ Author: AHMA project (Univ Rennes, CNRS, Inria, IRISA)
+"""
+
 ################################################################################
 import sys, os, glob
 sys.path.append (os.path.join (os.path.dirname (__file__), '..', 'oscilloscopes', ))

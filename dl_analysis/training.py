@@ -1,3 +1,12 @@
+"""
+ File: training.py 
+ Project: analysis 
+ Last Modified: 2021-8-2
+ Created Date: 2021-8-2
+ Copyright (c) 2021
+ Author: AHMA project (Univ Rennes, CNRS, Inria, IRISA)
+"""
+
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.utils.class_weight import compute_class_weight
