@@ -142,7 +142,6 @@ def generate_dataset_thread (path_in, path_out, bandwidth, freq, window,
             elif (len (trace) > int (freq*duration)):
                 trace = trace [:int (duration * freq)]
 
-        print (path_in [i], path_out [i])
         t, f, tmp_stft =  stft (trace,\
                                 freq, window, overlap, False) #  [-1][bandwidth, :]
 
