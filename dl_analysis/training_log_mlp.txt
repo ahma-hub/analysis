@@ -1,0 +1,245 @@
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=executable_classification.npy
+Nr of bandwidth: 4
+Validation accuracy: 53.55135202407837%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=executable_classification.npy
+Nr of bandwidth: 8
+Validation accuracy: 57.077157497406006%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=executable_classification.npy
+Nr of bandwidth: 12
+Validation accuracy: 64.79305028915405%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=executable_classification.npy
+Nr of bandwidth: 16
+Validation accuracy: 65.76392650604248%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=executable_classification.npy
+Nr of bandwidth: 20
+Validation accuracy: 65.81502556800842%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=executable_classification.npy
+Nr of bandwidth: 24
+Validation accuracy: 66.1216139793396%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=executable_classification.npy
+Nr of bandwidth: 28
+Validation accuracy: 65.86611866950989%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 4
+Validation accuracy: 92.41486191749573%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 8
+Validation accuracy: 94.27244663238525%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 12
+Validation accuracy: 97.9876160621643%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 16
+Validation accuracy: 98.60681295394897%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 20
+Validation accuracy: 99.071204662323%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 24
+Validation accuracy: 98.91641139984131%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=novelty_classification.npy
+Nr of bandwidth: 28
+Validation accuracy: 98.83900880813599%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 4
+Validation accuracy: 73.1663703918457%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 8
+Validation accuracy: 81.57423734664917%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 12
+Validation accuracy: 85.15205979347229%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 16
+Validation accuracy: 85.15205979347229%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 20
+Validation accuracy: 85.33094525337219%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 24
+Validation accuracy: 84.97316837310791%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=packer_identification.npy
+Nr of bandwidth: 28
+Validation accuracy: 85.86761951446533%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 4
+Validation accuracy: 86.68639063835144%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 8
+Validation accuracy: 91.12426042556763%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 12
+Validation accuracy: 90.53254723548889%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 16
+Validation accuracy: 91.71597361564636%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 20
+Validation accuracy: 91.12426042556763%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 24
+Validation accuracy: 91.42012000083923%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=virtualization_identification.npy
+Nr of bandwidth: 28
+Validation accuracy: 91.42012000083923%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=family_classification.npy
+Nr of bandwidth: 4
+Validation accuracy: 86.15227341651917%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=family_classification.npy
+Nr of bandwidth: 8
+Validation accuracy: 95.14563083648682%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=family_classification.npy
+Nr of bandwidth: 12
+Validation accuracy: 95.96320986747742%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=family_classification.npy
+Nr of bandwidth: 16
+Validation accuracy: 95.80991268157959%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=family_classification.npy
+Nr of bandwidth: 20
+Validation accuracy: 96.67859077453613%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=family_classification.npy
+Nr of bandwidth: 24
+Validation accuracy: 97.13847637176514%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=family_classification.npy
+Nr of bandwidth: 28
+Validation accuracy: 96.98517918586731%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 4
+Validation accuracy: 45.04064917564392%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 8
+Validation accuracy: 61.869919300079346%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 12
+Validation accuracy: 64.79674577713013%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 16
+Validation accuracy: 62.92682886123657%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 20
+Validation accuracy: 64.63414430618286%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 24
+Validation accuracy: 64.95934724807739%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=obfuscation_classification.npy
+Nr of bandwidth: 28
+Validation accuracy: 65.52845239639282%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=type_classification.npy
+Nr of bandwidth: 4
+Validation accuracy: 92.18190908432007%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=type_classification.npy
+Nr of bandwidth: 8
+Validation accuracy: 93.9703643321991%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=type_classification.npy
+Nr of bandwidth: 12
+Validation accuracy: 96.83188796043396%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=type_classification.npy
+Nr of bandwidth: 16
+Validation accuracy: 97.39397168159485%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=type_classification.npy
+Nr of bandwidth: 20
+Validation accuracy: 99.1824209690094%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=type_classification.npy
+Nr of bandwidth: 24
+Validation accuracy: 99.23352003097534%
+------------------------------
+------------------------------
+File list:  /extracted_bd_files_lists_tagmaps=type_classification.npy
+Nr of bandwidth: 28
+Validation accuracy: 99.08022284507751%
+------------------------------
