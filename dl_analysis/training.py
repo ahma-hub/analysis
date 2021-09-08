@@ -143,7 +143,7 @@ def main(input_file_list, path_acc, nb_epochs, batch_size, nb_of_bandwidth, arch
     history = nn.train(train_dataset, validation_dataset, d_class_weights, nb_epochs, save_kernel=save, verbose=verbose)
     best_validation_accuracy = max(history.history["val_accuracy"])
     
-    log_file = "dl_analysis/training_log_{}.txt".format(arch)
+    log_file = "dl_analysis/training_log_reduced_dataset_{}.txt".format(arch)
     file_log = open (log_file, 'a')
     file_log.write ("------------------------------\n")
     file_log.write ("File list: {}\n".format(input_file_list))
