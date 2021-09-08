@@ -32,6 +32,7 @@ do
 	    --log-file ml_analysis/log-evaluation_selected_bandwidth.txt\
 	    --acc ${path_acc}\
             --time_limit 0.5\
+            --mean_size None\
             --model_nb  ${path_models}/NB/NB_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.jl\
             --model_lda  ${path_models}/LDA/transformed_traces/transformed_traces_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.npy
     #   --model_lda ${path_models}/LDA/LDA_tagmaps=${tagmaps[$i]}_${NB_bds[$i]}bd.jl\
@@ -41,6 +42,7 @@ do
             --log-file ml_analysis/log-evaluation_selected_bandwidth.txt\
             --acc ${path_acc}\
             --time_limit 0.5\
+            --mean_size None\
             --model_svm  ${path_models}/SVM/SVM_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.jl\
             --model_lda  ${path_models}/LDA/transformed_traces/transformed_traces_tagmaps=${tagmaps[$i]}_${SVM_bds[$i]}bd.npy
     

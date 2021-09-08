@@ -1,6 +1,6 @@
 """
- File: read_logs.py 
- Project: analysis 
+ File: read_logs.py
+ Project: analysis
  Last Modified: 2021-8-2
  Created Date: 2021-8-2
  Copyright (c) 2021
@@ -287,19 +287,6 @@ def display_results (exps, output):
 
         plt.xlabel ('Number of traces t per mean')
 
-        print(tabulate (tabular,
-                        headers= ['exp',
-                                  'LDA + NB ',
-                                  '#bd',
-                                  'precision (macro/weigh)',
-                                  'recall (macro/weigh)',
-                                  'f1 (macro/weigh)',
-                                  'LDA + SVM',
-                                  '#bd',
-                                  'precision (macro/weigh)',
-                                  'recall (macro/weigh)',
-                                  'f1 (macro/weigh)']))
-
         ## to save in file
         if (output):
             plt.savefig (output, format = 'pdf')
@@ -307,6 +294,18 @@ def display_results (exps, output):
             plt.show ()
 
 
+    print(tabulate (tabular,
+                    headers= ['exp',
+                              'LDA + NB ',
+                              '#bd',
+                              'precision (macro/weigh)',
+                              'recall (macro/weigh)',
+                              'f1 (macro/weigh)',
+                              'LDA + SVM',
+                              '#bd',
+                              'precision (macro/weigh)',
+                              'recall (macro/weigh)',
+                              'f1 (macro/weigh)']))
 
 
 ################################################################################

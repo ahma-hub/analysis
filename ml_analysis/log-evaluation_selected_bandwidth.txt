@@ -1,18 +1,18 @@
 --------------------------------------------------------------------------------
-07.09.2021 - 14:29:08
+08.09.2021 - 10:57:12
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=executable_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=executable_classification_28bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=executable_classification_28bd.jl
-means: None
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (21200, 34)): 0.009635210037231445 seconds
-Test NB  (size: (21200, 34)) [0.24446511268615723 seconds]:
+transform (size: (21200, 34)): 0.0024251937866210938 seconds
+Test NB  (size: (21200, 34)) [0.12310194969177246 seconds]:
                       precision    recall  f1-score   support
 
             bashlite     0.4478    0.4016    0.4235       620
@@ -55,20 +55,20 @@ gonnacry_virtualize2     0.5434    0.4789    0.5091       641
            macro avg     0.7194    0.7229    0.7174     21200
         weighted avg     0.7184    0.7092    0.7088     21200
 --------------------------------------------------------------------------------
-07.09.2021 - 14:29:09
+08.09.2021 - 10:57:13
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=executable_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=executable_classification_20bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=executable_classification_20bd.jl
 model_nb: None
-means: None
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 20
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (21200, 34)): 0.06571459770202637 seconds
-Test SVM  (size: (21200, 34)) [58.68781137466431 seconds]:
+transform (size: (21200, 34)): 0.017544984817504883 seconds
+Test SVM  (size: (21200, 34)) [59.48332476615906 seconds]:
                       precision    recall  f1-score   support
 
             bashlite     0.4186    0.4274    0.4230       620
@@ -111,20 +111,20 @@ gonnacry_virtualize2     0.5621    0.5507    0.5563       641
            macro avg     0.7232    0.7247    0.7237     21200
         weighted avg     0.7165    0.7184    0.7172     21200
 --------------------------------------------------------------------------------
-07.09.2021 - 14:30:10
+08.09.2021 - 10:58:15
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=family_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=family_classification_28bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=family_classification_28bd.jl
-means: None
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (21200, 5)): 0.005373239517211914 seconds
-Test NB  (size: (21200, 5)) [0.0070345401763916016 seconds]:
+transform (size: (21200, 5)): 0.0024251937866210938 seconds
+Test NB  (size: (21200, 5)) [0.011346101760864258 seconds]:
               precision    recall  f1-score   support
 
     bashlite     0.9941    0.9973    0.9957      4769
@@ -138,20 +138,20 @@ Test NB  (size: (21200, 5)) [0.0070345401763916016 seconds]:
    macro avg     0.9078    0.9099    0.9088     21200
 weighted avg     0.9719    0.9719    0.9719     21200
 --------------------------------------------------------------------------------
-07.09.2021 - 14:30:11
+08.09.2021 - 10:58:16
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=family_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=family_classification_28bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=family_classification_28bd.jl
 model_nb: None
-means: None
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (21200, 5)): 0.027530193328857422 seconds
-Test SVM  (size: (21200, 5)) [1.3743972778320312 seconds]:
+transform (size: (21200, 5)): 0.013612508773803711 seconds
+Test SVM  (size: (21200, 5)) [1.4166600704193115 seconds]:
               precision    recall  f1-score   support
 
     bashlite     0.9960    0.9958    0.9959      4769
@@ -165,20 +165,20 @@ Test SVM  (size: (21200, 5)) [1.3743972778320312 seconds]:
    macro avg     0.9114    0.9112    0.9113     21200
 weighted avg     0.9727    0.9727    0.9727     21200
 --------------------------------------------------------------------------------
-07.09.2021 - 14:30:14
+08.09.2021 - 10:58:19
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=novelty_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=novelty_classification_28bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=novelty_classification_28bd.jl
-means: None
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (7906, 4)): 0.003495931625366211 seconds
-Test NB  (size: (7906, 4)) [0.0035109519958496094 seconds]:
+transform (size: (7906, 4)): 0.002585172653198242 seconds
+Test NB  (size: (7906, 4)) [0.0030722618103027344 seconds]:
               precision    recall  f1-score   support
 
     bashlite     0.9874    0.9975    0.9924      1180
@@ -191,436 +191,20 @@ Test NB  (size: (7906, 4)) [0.0035109519958496094 seconds]:
    macro avg     0.9853    0.9869    0.9861      7906
 weighted avg     0.9825    0.9825    0.9825      7906
 --------------------------------------------------------------------------------
-07.09.2021 - 14:30:16
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=novelty_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=novelty_classification_16bd.npy
-model_svm: ../pretrained_models//SVM/SVM_tagmaps=novelty_classification_16bd.jl
-model_nb: None
-means: None
-nb_of_bd: 16
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (7906, 4)): 0.024978160858154297 seconds
-Test SVM  (size: (7906, 4)) [0.9232549667358398 seconds]:
-              precision    recall  f1-score   support
-
-    bashlite     0.9932    0.9932    0.9932      1180
-      benign     0.9898    0.9883    0.9890      1963
-    gonnacry     0.9805    0.9727    0.9766      1761
-       mirai     0.9748    0.9801    0.9775      2412
-     rootkit     0.9933    1.0000    0.9966       590
-
-    accuracy                         0.9839      7906
-   macro avg     0.9863    0.9869    0.9866      7906
-weighted avg     0.9839    0.9839    0.9839      7906
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:19
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=obfuscation_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=obfuscation_classification_10bd.npy
-model_svm: None
-model_nb: ../pretrained_models//NB/NB_tagmaps=obfuscation_classification_10bd.jl
-means: None
-nb_of_bd: 10
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (13240, 6)): 0.004382133483886719 seconds
-Test NB  (size: (13240, 6)) [0.009501218795776367 seconds]:
-              precision    recall  f1-score   support
-
-   addopaque     0.5238    0.5140    0.5189      1817
-         bcf     0.6663    0.6721    0.6692      1836
-   cfflatten     0.7193    0.7398    0.7294      1822
-     flatten     0.5268    0.5174    0.5220      1844
-         sub     0.5406    0.5199    0.5301      1781
-         upx     0.9382    0.9378    0.9380      2330
-  virtualize     0.4957    0.5144    0.5049      1810
-
-    accuracy                         0.6429     13240
-   macro avg     0.6301    0.6308    0.6303     13240
-weighted avg     0.6422    0.6429    0.6425     13240
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:21
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=obfuscation_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=obfuscation_classification_10bd.npy
-model_svm: ../pretrained_models//SVM/SVM_tagmaps=obfuscation_classification_10bd.jl
-model_nb: None
-means: None
-nb_of_bd: 10
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (13240, 6)): 0.029705286026000977 seconds
-Test SVM  (size: (13240, 6)) [14.96520209312439 seconds]:
-              precision    recall  f1-score   support
-
-   addopaque     0.5298    0.5179    0.5238      1817
-         bcf     0.6547    0.6950    0.6742      1836
-   cfflatten     0.7146    0.7393    0.7267      1822
-     flatten     0.5264    0.5190    0.5227      1844
-         sub     0.5442    0.5081    0.5256      1781
-         upx     0.9372    0.9481    0.9426      2330
-  virtualize     0.5028    0.4978    0.5003      1810
-
-    accuracy                         0.6447     13240
-   macro avg     0.6300    0.6322    0.6308     13240
-weighted avg     0.6420    0.6447    0.6432     13240
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:37
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=packer_identification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=packer_identification_16bd.npy
-model_svm: None
-model_nb: ../pretrained_models//NB/NB_tagmaps=packer_identification_16bd.jl
-means: None
-nb_of_bd: 16
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (7142, 1)): 0.002187013626098633 seconds
-Test NB  (size: (7142, 1)) [0.0003886222839355469 seconds]:
-              precision    recall  f1-score   support
-
-  not_packed     0.8621    0.8588    0.8605      4201
-      packed     0.7995    0.8038    0.8016      2941
-
-    accuracy                         0.8362      7142
-   macro avg     0.8308    0.8313    0.8311      7142
-weighted avg     0.8363    0.8362    0.8362      7142
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:38
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=packer_identification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=packer_identification_16bd.npy
-model_svm: ../pretrained_models//SVM/SVM_tagmaps=packer_identification_16bd.jl
-model_nb: None
-means: None
-nb_of_bd: 16
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (7142, 1)): 0.030765533447265625 seconds
-Test SVM  (size: (7142, 1)) [1.1059396266937256 seconds]:
-              precision    recall  f1-score   support
-
-  not_packed     0.8613    0.8591    0.8602      4201
-      packed     0.7995    0.8024    0.8010      2941
-
-    accuracy                         0.8358      7142
-   macro avg     0.8304    0.8308    0.8306      7142
-weighted avg     0.8359    0.8358    0.8358      7142
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:41
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=type_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=type_classification_22bd.npy
-model_svm: None
-model_nb: ../pretrained_models//NB/NB_tagmaps=type_classification_22bd.jl
-means: None
-nb_of_bd: 22
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (21200, 3)): 0.0051364898681640625 seconds
-Test NB  (size: (21200, 3)) [0.006937742233276367 seconds]:
-              precision    recall  f1-score   support
-
-      benign     0.9776    0.9990    0.9882      1963
-        ddos     0.9850    0.9744    0.9797     10120
-  ransomware     0.9706    0.9786    0.9746      7932
-     rootkit     0.9992    1.0000    0.9996      1185
-
-    accuracy                         0.9797     21200
-   macro avg     0.9831    0.9880    0.9855     21200
-weighted avg     0.9797    0.9797    0.9797     21200
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:43
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=type_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=type_classification_24bd.npy
-model_svm: ../pretrained_models//SVM/SVM_tagmaps=type_classification_24bd.jl
-model_nb: None
-means: None
-nb_of_bd: 24
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (21200, 3)): 0.01382589340209961 seconds
-Test SVM  (size: (21200, 3)) [1.2042310237884521 seconds]:
-              precision    recall  f1-score   support
-
-      benign     0.9954    0.9924    0.9939      1963
-        ddos     0.9811    0.9798    0.9805     10120
-  ransomware     0.9738    0.9762    0.9750      7932
-     rootkit     1.0000    1.0000    1.0000      1185
-
-    accuracy                         0.9808     21200
-   macro avg     0.9876    0.9871    0.9873     21200
-weighted avg     0.9808    0.9808    0.9808     21200
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:45
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=virtualization_identification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=virtualization_identification_6bd.npy
-model_svm: None
-model_nb: ../pretrained_models//NB/NB_tagmaps=virtualization_identification_6bd.jl
-means: None
-nb_of_bd: 6
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (4843, 1)): 0.002844572067260742 seconds
-Test NB  (size: (4843, 1)) [0.0005316734313964844 seconds]:
-              precision    recall  f1-score   support
-
-        orig     0.9403    0.9192    0.9296      3033
- virtualized     0.8695    0.9022    0.8856      1810
-
-    accuracy                         0.9129      4843
-   macro avg     0.9049    0.9107    0.9076      4843
-weighted avg     0.9139    0.9129    0.9132      4843
---------------------------------------------------------------------------------
-07.09.2021 - 14:30:47
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=virtualization_identification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=virtualization_identification_6bd.npy
-model_svm: ../pretrained_models//SVM/SVM_tagmaps=virtualization_identification_6bd.jl
-model_nb: None
-means: None
-nb_of_bd: 6
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (4843, 1)): 0.024180889129638672 seconds
-Test SVM  (size: (4843, 1)) [0.35329437255859375 seconds]:
-              precision    recall  f1-score   support
-
-        orig     0.9312    0.9288    0.9300      3033
- virtualized     0.8812    0.8851    0.8831      1810
-
-    accuracy                         0.9125      4843
-   macro avg     0.9062    0.9069    0.9066      4843
-weighted avg     0.9125    0.9125    0.9125      4843
---------------------------------------------------------------------------------
-07.09.2021 - 15:07:30
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=executable_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=executable_classification_28bd.npy
-model_svm: None
-model_nb: ../pretrained_models//NB/NB_tagmaps=executable_classification_28bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
-nb_of_bd: 28
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (21200, 34)): 0.011790752410888672 seconds
-Test NB  (size: (21200, 34)) [0.25842952728271484 seconds]:
-                      precision    recall  f1-score   support
-
-            bashlite     0.4478    0.4016    0.4235       620
-  bashlite_addopaque     0.3737    0.3541    0.3636       593
-        bashlite_bcf     0.8083    0.7938    0.8010       611
-  bashlite_cfflatten     0.8997    0.9401    0.9194       601
-    bashlite_flatten     0.2643    0.2688    0.2666       584
-        bashlite_sub     0.2823    0.3097    0.2954       578
-        bashlite_upx     0.7673    0.8498    0.8065       586
- bashlite_virtualize     0.2793    0.2517    0.2648       596
-         encodevideo     0.9567    0.9900    0.9731       201
-            gonnacry     0.8981    0.5383    0.6731      1228
-        gonnacry-aes     0.4619    0.8244    0.5921       581
-    gonnacry-aes-upx     0.4991    0.4948    0.4970       580
-        gonnacry-des     0.9464    0.9319    0.9391       587
-    gonnacry-des-upx     0.9215    0.9411    0.9312       611
-        gonnacry-upx     0.4891    0.4834    0.4863       604
-  gonnacry_addopaque     0.6431    0.6554    0.6492       624
-        gonnacry_bcf     0.5979    0.6244    0.6109       631
-  gonnacry_cfflatten     0.5390    0.5417    0.5403       600
-    gonnacry_flatten     0.5262    0.5779    0.5509       642
-        gonnacry_sub     0.5105    0.4842    0.4970       603
-gonnacry_virtualize2     0.5434    0.4789    0.5091       641
-               mirai     0.9502    0.9181    0.9339      1185
-           mirai-bcf     0.8027    0.9175    0.8562       594
-     mirai-cfflatten     0.9825    0.9066    0.9430       621
-           mirai-sub     0.9278    0.8783    0.9024       600
-           mirai-upx     0.8333    0.9375    0.8824       560
-     mirai_addopaque     0.7585    0.9317    0.8362       600
-       mirai_flatten     0.9287    0.8220    0.8721       618
-    mirai_virtualize     0.8692    0.7888    0.8271       573
-           playaudio     0.9949    0.9898    0.9923       196
-            random34     1.0000    1.0000    1.0000      1163
-        recordcamera     0.9949    1.0000    0.9975       197
-       rootkit_kisni     0.7350    0.7475    0.7412       590
-      rootkit_maK_it     0.7453    0.7328    0.7390       595
-         takepicture     1.0000    0.9951    0.9976       206
-
-            accuracy                         0.7092     21200
-           macro avg     0.7194    0.7229    0.7174     21200
-        weighted avg     0.7184    0.7092    0.7088     21200
---------------------------------------------------------------------------------
-07.09.2021 - 15:07:32
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=executable_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=executable_classification_20bd.npy
-model_svm: ../pretrained_models//SVM/SVM_tagmaps=executable_classification_20bd.jl
-model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
-nb_of_bd: 20
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (21200, 34)): 0.06366825103759766 seconds
-Test SVM  (size: (21200, 34)) [57.4261839389801 seconds]:
-                      precision    recall  f1-score   support
-
-            bashlite     0.4186    0.4274    0.4230       620
-  bashlite_addopaque     0.3951    0.3558    0.3744       593
-        bashlite_bcf     0.7832    0.8216    0.8019       611
-  bashlite_cfflatten     0.9113    0.9401    0.9255       601
-    bashlite_flatten     0.2664    0.2774    0.2718       584
-        bashlite_sub     0.3027    0.3080    0.3053       578
-        bashlite_upx     0.8142    0.8601    0.8365       586
- bashlite_virtualize     0.3060    0.2752    0.2898       596
-         encodevideo     0.9851    0.9900    0.9876       201
-            gonnacry     0.7417    0.7484    0.7450      1228
-        gonnacry-aes     0.4713    0.4527    0.4618       581
-    gonnacry-aes-upx     0.4711    0.5052    0.4875       580
-        gonnacry-des     0.9350    0.9557    0.9452       587
-    gonnacry-des-upx     0.9375    0.9329    0.9352       611
-        gonnacry-upx     0.4598    0.4354    0.4473       604
-  gonnacry_addopaque     0.6347    0.6683    0.6511       624
-        gonnacry_bcf     0.6467    0.6323    0.6394       631
-  gonnacry_cfflatten     0.5460    0.5733    0.5593       600
-    gonnacry_flatten     0.5530    0.5607    0.5568       642
-        gonnacry_sub     0.5217    0.4776    0.4987       603
-gonnacry_virtualize2     0.5621    0.5507    0.5563       641
-               mirai     0.9342    0.9460    0.9400      1185
-           mirai-bcf     0.9159    0.8805    0.8979       594
-     mirai-cfflatten     0.9506    0.9597    0.9551       621
-           mirai-sub     0.9064    0.9200    0.9132       600
-           mirai-upx     0.8697    0.8464    0.8579       560
-     mirai_addopaque     0.8542    0.8300    0.8419       600
-       mirai_flatten     0.8969    0.8867    0.8918       618
-    mirai_virtualize     0.8364    0.8656    0.8508       573
-           playaudio     0.9949    0.9898    0.9923       196
-            random34     1.0000    1.0000    1.0000      1163
-        recordcamera     1.0000    1.0000    1.0000       197
-       rootkit_kisni     0.7457    0.7407    0.7432       590
-      rootkit_maK_it     0.7446    0.7496    0.7471       595
-         takepicture     1.0000    1.0000    1.0000       206
-
-            accuracy                         0.7184     21200
-           macro avg     0.7232    0.7247    0.7237     21200
-        weighted avg     0.7165    0.7184    0.7172     21200
---------------------------------------------------------------------------------
-07.09.2021 - 15:08:32
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=family_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=family_classification_28bd.npy
-model_svm: None
-model_nb: ../pretrained_models//NB/NB_tagmaps=family_classification_28bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
-nb_of_bd: 28
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (21200, 5)): 0.008152008056640625 seconds
-Test NB  (size: (21200, 5)) [0.016370058059692383 seconds]:
-              precision    recall  f1-score   support
-
-    bashlite     0.9941    0.9973    0.9957      4769
-      benign     0.9820    0.9990    0.9904      1963
-    gonnacry     0.9837    0.9820    0.9828      7932
-       kisni     0.7530    0.7542    0.7536       590
-      maK_it     0.7546    0.7546    0.7546       595
-       mirai     0.9791    0.9725    0.9758      5351
-
-    accuracy                         0.9719     21200
-   macro avg     0.9078    0.9099    0.9088     21200
-weighted avg     0.9719    0.9719    0.9719     21200
---------------------------------------------------------------------------------
-07.09.2021 - 15:08:34
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=family_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=family_classification_28bd.npy
-model_svm: ../pretrained_models//SVM/SVM_tagmaps=family_classification_28bd.jl
-model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
-nb_of_bd: 28
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (21200, 5)): 0.0452580451965332 seconds
-Test SVM  (size: (21200, 5)) [3.065441846847534 seconds]:
-              precision    recall  f1-score   support
-
-    bashlite     0.9960    0.9958    0.9959      4769
-      benign     0.9954    0.9934    0.9944      1963
-    gonnacry     0.9815    0.9842    0.9829      7932
-       kisni     0.7537    0.7678    0.7607       590
-      maK_it     0.7641    0.7513    0.7576       595
-       mirai     0.9779    0.9746    0.9762      5351
-
-    accuracy                         0.9727     21200
-   macro avg     0.9114    0.9112    0.9113     21200
-weighted avg     0.9727    0.9727    0.9727     21200
---------------------------------------------------------------------------------
-07.09.2021 - 15:08:39
-path_lists: lists_selected_bandwidth//files_lists_tagmaps=novelty_classification.npy
-log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
-model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=novelty_classification_28bd.npy
-model_svm: None
-model_nb: ../pretrained_models//NB/NB_tagmaps=novelty_classification_28bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
-nb_of_bd: 28
-path_acc: ../pretrained_models/ACC/
-time_limit: 0.5
-metric: max_nicv
---------------------------------------------------------------------------------
-transform (size: (7906, 4)): 0.0033884048461914062 seconds
-Test NB  (size: (7906, 4)) [0.0023651123046875 seconds]:
-              precision    recall  f1-score   support
-
-    bashlite     0.9874    0.9975    0.9924      1180
-      benign     0.9840    0.9995    0.9917      1963
-    gonnacry     0.9750    0.9739    0.9744      1761
-       mirai     0.9802    0.9635    0.9718      2412
-     rootkit     1.0000    1.0000    1.0000       590
-
-    accuracy                         0.9825      7906
-   macro avg     0.9853    0.9869    0.9861      7906
-weighted avg     0.9825    0.9825    0.9825      7906
---------------------------------------------------------------------------------
-07.09.2021 - 15:08:40
+08.09.2021 - 10:58:21
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=novelty_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=novelty_classification_28bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=novelty_classification_28bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (7906, 4)): 0.027723073959350586 seconds
-Test SVM  (size: (7906, 4)) [0.16092491149902344 seconds]:
+transform (size: (7906, 4)): 0.02444911003112793 seconds
+Test SVM  (size: (7906, 4)) [0.28392767906188965 seconds]:
               precision    recall  f1-score   support
 
     bashlite     0.9899    0.9949    0.9924      1180
@@ -633,20 +217,20 @@ Test SVM  (size: (7906, 4)) [0.16092491149902344 seconds]:
    macro avg     0.9882    0.9890    0.9886      7906
 weighted avg     0.9861    0.9861    0.9861      7906
 --------------------------------------------------------------------------------
-07.09.2021 - 15:08:41
+08.09.2021 - 10:58:23
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=obfuscation_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=obfuscation_classification_10bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=obfuscation_classification_10bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 10
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (13240, 6)): 0.004530429840087891 seconds
-Test NB  (size: (13240, 6)) [0.007728099822998047 seconds]:
+transform (size: (13240, 6)): 0.002619028091430664 seconds
+Test NB  (size: (13240, 6)) [0.008957147598266602 seconds]:
               precision    recall  f1-score   support
 
    addopaque     0.5238    0.5140    0.5189      1817
@@ -661,20 +245,20 @@ Test NB  (size: (13240, 6)) [0.007728099822998047 seconds]:
    macro avg     0.6301    0.6308    0.6303     13240
 weighted avg     0.6422    0.6429    0.6425     13240
 --------------------------------------------------------------------------------
-07.09.2021 - 15:08:42
+08.09.2021 - 10:58:25
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=obfuscation_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=obfuscation_classification_10bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=obfuscation_classification_10bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 10
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (13240, 6)): 0.023555278778076172 seconds
-Test SVM  (size: (13240, 6)) [15.845787048339844 seconds]:
+transform (size: (13240, 6)): 0.02538776397705078 seconds
+Test SVM  (size: (13240, 6)) [15.731040954589844 seconds]:
               precision    recall  f1-score   support
 
    addopaque     0.5298    0.5179    0.5238      1817
@@ -689,20 +273,20 @@ Test SVM  (size: (13240, 6)) [15.845787048339844 seconds]:
    macro avg     0.6300    0.6322    0.6308     13240
 weighted avg     0.6420    0.6447    0.6432     13240
 --------------------------------------------------------------------------------
-07.09.2021 - 15:09:00
+08.09.2021 - 10:58:42
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=packer_identification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=packer_identification_16bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=packer_identification_16bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 16
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (7142, 1)): 0.00319671630859375 seconds
-Test NB  (size: (7142, 1)) [0.0006449222564697266 seconds]:
+transform (size: (7142, 1)): 0.002485036849975586 seconds
+Test NB  (size: (7142, 1)) [0.0006287097930908203 seconds]:
               precision    recall  f1-score   support
 
   not_packed     0.8621    0.8588    0.8605      4201
@@ -712,20 +296,20 @@ Test NB  (size: (7142, 1)) [0.0006449222564697266 seconds]:
    macro avg     0.8308    0.8313    0.8311      7142
 weighted avg     0.8363    0.8362    0.8362      7142
 --------------------------------------------------------------------------------
-07.09.2021 - 15:09:02
+08.09.2021 - 10:58:44
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=packer_identification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=packer_identification_16bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=packer_identification_16bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 16
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (7142, 1)): 0.023262739181518555 seconds
-Test SVM  (size: (7142, 1)) [1.038572072982788 seconds]:
+transform (size: (7142, 1)): 0.025441646575927734 seconds
+Test SVM  (size: (7142, 1)) [1.071596384048462 seconds]:
               precision    recall  f1-score   support
 
   not_packed     0.8613    0.8591    0.8602      4201
@@ -735,20 +319,20 @@ Test SVM  (size: (7142, 1)) [1.038572072982788 seconds]:
    macro avg     0.8304    0.8308    0.8306      7142
 weighted avg     0.8359    0.8358    0.8358      7142
 --------------------------------------------------------------------------------
-07.09.2021 - 15:09:05
+08.09.2021 - 10:58:47
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=type_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=type_classification_24bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=type_classification_24bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 24
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (21200, 3)): 0.004020214080810547 seconds
-Test NB  (size: (21200, 3)) [0.006572723388671875 seconds]:
+transform (size: (21200, 3)): 0.002976655960083008 seconds
+Test NB  (size: (21200, 3)) [0.007666587829589844 seconds]:
               precision    recall  f1-score   support
 
       benign     0.9771    0.9995    0.9882      1963
@@ -760,20 +344,20 @@ Test NB  (size: (21200, 3)) [0.006572723388671875 seconds]:
    macro avg     0.9835    0.9884    0.9859     21200
 weighted avg     0.9802    0.9801    0.9801     21200
 --------------------------------------------------------------------------------
-07.09.2021 - 15:09:07
+08.09.2021 - 10:58:50
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=type_classification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=type_classification_24bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=type_classification_24bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 24
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (21200, 3)): 0.0310213565826416 seconds
-Test SVM  (size: (21200, 3)) [1.6955626010894775 seconds]:
+transform (size: (21200, 3)): 0.026469707489013672 seconds
+Test SVM  (size: (21200, 3)) [1.5512616634368896 seconds]:
               precision    recall  f1-score   support
 
       benign     0.9954    0.9924    0.9939      1963
@@ -785,20 +369,20 @@ Test SVM  (size: (21200, 3)) [1.6955626010894775 seconds]:
    macro avg     0.9876    0.9871    0.9873     21200
 weighted avg     0.9808    0.9808    0.9808     21200
 --------------------------------------------------------------------------------
-07.09.2021 - 15:09:10
+08.09.2021 - 10:58:52
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=virtualization_identification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=virtualization_identification_6bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=virtualization_identification_6bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 6
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (4843, 1)): 0.001817941665649414 seconds
-Test NB  (size: (4843, 1)) [0.0003695487976074219 seconds]:
+transform (size: (4843, 1)): 0.0013365745544433594 seconds
+Test NB  (size: (4843, 1)) [0.000354766845703125 seconds]:
               precision    recall  f1-score   support
 
         orig     0.9403    0.9192    0.9296      3033
@@ -808,20 +392,20 @@ Test NB  (size: (4843, 1)) [0.0003695487976074219 seconds]:
    macro avg     0.9049    0.9107    0.9076      4843
 weighted avg     0.9139    0.9129    0.9132      4843
 --------------------------------------------------------------------------------
-07.09.2021 - 15:09:11
+08.09.2021 - 10:58:53
 path_lists: lists_selected_bandwidth//files_lists_tagmaps=virtualization_identification.npy
 log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=virtualization_identification_6bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=virtualization_identification_6bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
 nb_of_bd: 6
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
 metric: max_nicv
 --------------------------------------------------------------------------------
-transform (size: (4843, 1)): 0.011506080627441406 seconds
-Test SVM  (size: (4843, 1)) [0.16065359115600586 seconds]:
+transform (size: (4843, 1)): 0.01139068603515625 seconds
+Test SVM  (size: (4843, 1)) [0.16418123245239258 seconds]:
               precision    recall  f1-score   support
 
         orig     0.9312    0.9288    0.9300      3033
