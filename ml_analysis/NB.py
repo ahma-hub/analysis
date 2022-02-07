@@ -1,5 +1,5 @@
 """
- File: SVM.py 
+ File: NB.py 
  Project: analysis 
  Last Modified: 2022-2-7
  Created Date: 2022-2-7
