@@ -1,8 +1,8 @@
 """
  File: SVM.py 
  Project: analysis 
- Last Modified: 2021-8-2
- Created Date: 2021-8-2
+ Last Modified: 2022-2-7
+ Created Date: 2022-2-7
  Copyright (c) 2021
  Author: AHMA project (Univ Rennes, CNRS, Inria, IRISA)
 """
@@ -23,75 +23,7 @@ from sklearn.metrics               import classification_report
 sys.path.append(os.path.join (os.path.dirname (__file__), "../pre-processings/"))
 from nicv import compute_nicv
 from list_manipulation import get_tag
-
-################################################################################
-def load_traces (files_list, bandwidth, time_limit):
-################################################################################
-# load_traces
-# load all the traces listed in 'files_lists', the 2D-traces are flattened
-# /!\ only half of the time features are used (to speedup without decreasing
-# the accuracy)
-# 
-# input:
-#  + files_list: list of the filenames
-#  + bandwidth: indexes of the bandwidth
-#  + time_limit: percentage of the trace to concerve
-#
-# output:
-#  + traces: array containing the traces (dimension: DxQ, D number of features,
-#  Q number of samples)
-################################################################################
-    ## get dimension
-    tmp_trace = np.load (files_list [0], allow_pickle = True)[-1][bandwidth, :]
-
-    ## take only half of the features
-    D = int (tmp_trace.shape [1]*time_limit)
-    tmp_trace = tmp_trace [:, :D].flatten ()
-    
-    traces = np.zeros ((len (tmp_trace), len (files_list)))
-    traces [:, 0] = tmp_trace 
-
-    for i in range (1, traces.shape [1]):
-        traces [:, i] = np.load (files_list [i], allow_pickle = True)[-1][bandwidth, :D].flatten ()
-
-    return traces
-
-################################################################################
-def mean_by_label (traces, labels, files, mean_size):
-################################################################################
-# mean_by_label
-# mean traces per executable, it means the input traces are mean by batch of
-# 'mean_size' of the same executable (not only same label) 
-# 
-# input:
-#  + traces: array of traces (DxQ)
-#  + labels: list of the labels (Q elements)
-#  + files: names of the files, to be able to get the exaecutable name
-#  + mean_size: size of the batch
-#
-# output:
-#  + traces: mean traces (dimension: Dx(Q/new_size), D number of features,
-#  (Q/new_size) number of samples)
-#  + labels: new labels (Q/new_size)
-################################################################################
-
-    tags = np.array ([get_tag (f) for f in files])
-    unique = np.unique (tags)
-
-    tmp_res = []
-    tmp_labels = []
-
-    for i in tqdm (range (len (unique)), desc = 'meaning (%s)'%mean_size, leave=False):
-        idx = np.where (tags == str (unique [i]))[0]
-
-        for j in range (0, len (idx) - mean_size, mean_size):
-            tmp_labels.append (labels [idx [j]])
-            current_res = 0.
-            for k in range (mean_size):
-                current_res += traces [:, idx [j + k]]
-            tmp_res.append (current_res/mean_size)
-
-    return np.array (tmp_res).T, tmp_labels
+from NB import mean_by_tags, load_traces
 
 ################################################################################
 def evaluate (path_lists, log_file, model_lda, model_svm, mean_sizes, nb_of_bd,
@@ -161,6 +93,9 @@ def evaluate (path_lists, log_file, model_lda, model_svm, mean_sizes, nb_of_bd,
     ## testing
     testing_labels = y_test
     
+    ## get tags to be able to mean
+    testing_tags = np.array ([get_tag (f) for f in x_test_filelist])
+    
     ## load SVM
     svm = joblib.load (model_svm)
 
@@ -185,7 +120,8 @@ def evaluate (path_lists, log_file, model_lda, model_svm, mean_sizes, nb_of_bd,
             file_log.write ('compute with %s per mean\n'%mean_size)
             file_log.close ()
 
-            X, y = mean_by_label (testing_traces, np.array (testing_labels), x_test_filelist, mean_size)
+            X, y = mean_by_tags (testing_traces, testing_tags,
+                                 np.array (testing_labels), x_test_filelist, mean_size)
 
             # SVM
             t0 = time.time ()
