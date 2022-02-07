@@ -131,7 +131,10 @@ def display_matrix_exp (grid_x, grid_y, data_nb, data_svm, file_name, **kwargs):
         xy = grid_x [i], grid_y [j]
         width = grid_x [i+1] - grid_x [i]
         height = grid_y [j+1] - grid_y [j]
-        ptchs.append (Rectangle (xy=xy, width=width, height=height, rasterized=True, linewidth=0, linestyle="None"))
+        ptchs.append (Rectangle (xy=xy, width=width, height=height, rasterized=True,
+                                 linewidth=0,
+                                 linestyle="None"))
+
     p_nb  = PatchCollection (ptchs, linewidth=0, cmap='Blues', **kwargs)
     p_svm = PatchCollection (ptchs, linewidth=0, cmap='Blues', **kwargs)
 
@@ -472,11 +475,14 @@ def display_results (exps, output, bin_malware):
             ## in case we have more than 2 classes (not a detection procedure: clean Vs mal)
             if (unique_tags [i] == exps [j].path_lists and not bin_malware):
                 ## for the display of the matrix
-                res_matrix_SVM [i][0, bds_idx [exps [j].nb_of_bd]] = exps [j].SVM_acc [0]
-                res_matrix_NB [i][0, bds_idx [exps [j].nb_of_bd]] = exps [j].NB_acc [0]
-                for k in range (1, len (exps [j].means_vect))   :
-                    res_matrix_SVM [i][k, bds_idx [exps [j].nb_of_bd]] = exps [j].SVM_acc [k]
-                    res_matrix_NB [i][k, bds_idx [exps [j].nb_of_bd]] = exps [j].NB_acc [k]
+                if (exps [0].means is not None):
+                    res_matrix_SVM [i][0, bds_idx [exps [j].nb_of_bd]] = exps [j].SVM_acc [0]
+                    res_matrix_NB [i][0, bds_idx [exps [j].nb_of_bd]] = exps [j].NB_acc [0]
+
+
+                    for k in range (1, len (exps [j].means_vect))   :
+                        res_matrix_SVM [i][k, bds_idx [exps [j].nb_of_bd]] = exps [j].SVM_acc [k]
+                        res_matrix_NB [i][k, bds_idx [exps [j].nb_of_bd]] = exps [j].NB_acc [k]
 
                 if (len (exps [j].NB_acc)> 0
                     and ((exps [j].NB_acc [0] > current_nb [0]) or (exps [j].NB_acc [0] == current_nb [0]
@@ -519,9 +525,10 @@ def display_results (exps, output, bin_malware):
                 metric = (tmp_precision_0 [0] + tmp_precision_1 [0])/2
 
                 ## for the display of the matrix
-                res_matrix_NB [i][0, bds_idx [exps [j].nb_of_bd]] = metric
-                for k in range (1, len (exps [j].means_vect))   :
-                    res_matrix_NB [i][k, bds_idx [exps [j].nb_of_bd]] = (tmp_precision_0 [k] + tmp_precision_1 [k])/2
+                if (exps [0].means is not None):
+                    res_matrix_NB [i][0, bds_idx [exps [j].nb_of_bd]] = metric
+                    for k in range (1, len (exps [j].means_vect))   :
+                        res_matrix_NB [i][k, bds_idx [exps [j].nb_of_bd]] = (tmp_precision_0 [k] + tmp_precision_1 [k])/2
 
 
                 if (len (tmp_precision_0)> 0
@@ -548,9 +555,10 @@ def display_results (exps, output, bin_malware):
                 metric = (tmp_precision_0 [0] + tmp_precision_1 [0])/2
 
                 ## for the display of the matrix
-                res_matrix_SVM [i][0, bds_idx [exps [j].nb_of_bd]] = metric
-                for k in range (1, len (exps [j].means_vect))   :
-                    res_matrix_SVM [i][k, bds_idx [exps [j].nb_of_bd]] = (tmp_precision_0 [k] + tmp_precision_1 [k])/2
+                if (exps [0].means is not None):
+                    res_matrix_SVM [i][0, bds_idx [exps [j].nb_of_bd]] = metric
+                    for k in range (1, len (exps [j].means_vect))   :
+                        res_matrix_SVM [i][k, bds_idx [exps [j].nb_of_bd]] = (tmp_precision_0 [k] + tmp_precision_1 [k])/2
 
 
                 if (len (tmp_precision_0) > 0

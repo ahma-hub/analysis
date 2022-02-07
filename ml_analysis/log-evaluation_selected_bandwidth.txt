@@ -5,7 +5,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=executable_classification_28bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=executable_classification_28bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -61,7 +61,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=executable_classification_20bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=executable_classification_20bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 20
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -117,7 +117,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=family_classification_28bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=family_classification_28bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -144,7 +144,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=family_classification_28bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=family_classification_28bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -171,7 +171,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=novelty_classification_28bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=novelty_classification_28bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -197,7 +197,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=novelty_classification_28bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=novelty_classification_28bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 28
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -223,7 +223,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=obfuscation_classification_10bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=obfuscation_classification_10bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 10
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -251,7 +251,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=obfuscation_classification_10bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=obfuscation_classification_10bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 10
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -279,7 +279,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=packer_identification_16bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=packer_identification_16bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 16
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -302,7 +302,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=packer_identification_16bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=packer_identification_16bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 16
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -325,7 +325,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=type_classification_24bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=type_classification_24bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 24
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -350,7 +350,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=type_classification_24bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=type_classification_24bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 24
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -375,7 +375,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=virtualization_identification_6bd.npy
 model_svm: None
 model_nb: ../pretrained_models//NB/NB_tagmaps=virtualization_identification_6bd.jl
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 6
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5
@@ -398,7 +398,7 @@ log_file: ml_analysis/log-evaluation_selected_bandwidth.txt
 model_lda: ../pretrained_models//LDA/transformed_traces/transformed_traces_tagmaps=virtualization_identification_6bd.npy
 model_svm: ../pretrained_models//SVM/SVM_tagmaps=virtualization_identification_6bd.jl
 model_nb: None
-means: [2, 3, 4, 5, 6, 7, 8, 9, 10, 'None']
+means: None
 nb_of_bd: 6
 path_acc: ../pretrained_models/ACC/
 time_limit: 0.5

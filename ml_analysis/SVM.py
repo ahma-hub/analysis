@@ -23,7 +23,7 @@ from sklearn.metrics               import classification_report
 sys.path.append(os.path.join (os.path.dirname (__file__), "../pre-processings/"))
 from nicv import compute_nicv
 from list_manipulation import get_tag
-from NB import mean_by_tags, load_traces
+from evaluation import mean_by_tags, load_traces
 
 ################################################################################
 def evaluate (path_lists, log_file, model_lda, model_svm, mean_sizes, nb_of_bd,

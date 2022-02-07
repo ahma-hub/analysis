@@ -1,8 +1,8 @@
 """
  File: evaluate.py 
  Project: analysis 
- Last Modified: 2021-8-2
- Created Date: 2021-8-2
+ Last Modified: 2022-2-7
+ Created Date: 2022-2-7
  Copyright (c) 2021
  Author: AHMA project (Univ Rennes, CNRS, Inria, IRISA)
 """
@@ -77,37 +77,46 @@ def load_traces (files_list, bandwidth, time_limit):
     return traces
 
 ################################################################################
-def mean_by_label (traces, labels, mean_size):
+def mean_by_tags (traces, tags, labels, mean_size):
 ################################################################################
-# mean_by_label
+# mean_by_tags
 # mean traces per label, it means the input traces are mean by batch of 'mean_size' 
 # of the same label
 # 
 # input:
 #  + traces: array of traces (DxQ)
+#  + tags: unique Id per {malware} x {baits} (from the name of the file)
+#  + labels: labels used for the classification
+#  + mean_size: nbr of samples per mean
 #
 # output:
 #  + traces: mean traces (dimension: DxQ, D number of features,
 #  Q number of samples)
+#  + labels: lbaels of the average traces
 ################################################################################
 
-    unique = np.unique (labels)
-
+    unique_tags = np.unique (tags)
+    tags_to_label = {}
+    for i in unique_tags: # conversion from tag to label
+        tags_to_label [i] = labels [np.where (tags == i)[0][0]]
+        
     tmp_res = []
     tmp_labels = []
     count = 0
 
-    for i in tqdm (range (len (unique)), desc = 'meaning (%s)'%mean_size):
-        idx = np.where (labels == unique [i])[0]
-        
+    for i in range (len (unique_tags)): 
+        idx = np.where (tags == unique_tags [i])[0]
+
         for j in range (0, len (idx) - mean_size, mean_size):
-            tmp_labels.append (unique [i])
+            tmp_labels.append (tags_to_label [unique_tags [i]])
             current_res = 0.
+            
             for k in range (mean_size):
                 current_res += traces [:, idx [j + k]]
+                    
             tmp_res.append (current_res/mean_size)
 
-    return np.array (tmp_res).T, tmp_labels
+    return np.array (tmp_res, dtype = tmp_res [0][0].dtype).T, np.array (tmp_labels)
 
 ################################################################################
 def evaluate (path_lists, log_file, mean_sizes, nb_of_bd, path_acc,
@@ -219,6 +228,9 @@ def evaluate (path_lists, log_file, mean_sizes, nb_of_bd, path_acc,
     testing_traces = load_traces (x_test_filelist,  bandwidth, time_limit)
     testing_labels = y_test
     
+    ## get tags to be able to mean
+    testing_tags = np.array ([get_tag (f) for f in x_test_filelist])
+    
     ## no means
     ## projection LDA
     t0 = time.time ()
@@ -257,7 +269,8 @@ def evaluate (path_lists, log_file, mean_sizes, nb_of_bd, path_acc,
         file_log.write ('compute with %s per mean\n'%mean_size)
         file_log.close ()
 
-        X, y = mean_by_label (testing_traces, np.array (testing_labels), mean_size)
+        X, y = mean_by_tags (testing_traces, testing_tags,
+                                 np.array (testing_labels), x_test_filelist, mean_size)
         
         ## LDA on means
         t0 = time.time ()
