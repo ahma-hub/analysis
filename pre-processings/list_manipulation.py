@@ -1,8 +1,8 @@
 """
  File: list_manipulation.py 
  Project: analysis 
- Last Modified: 2021-8-2
- Created Date: 2021-8-2
+ Last Modified: 2022-7-2
+ Created Date: 2022-7-2
  Copyright (c) 2021
  Author: AHMA project (Univ Rennes, CNRS, Inria, IRISA)
 """
@@ -18,6 +18,40 @@ from   sklearn.model_selection import train_test_split
 from   tabulate                import tabulate
 from   tqdm                    import tqdm
 
+
+################################################################################
+class bcolors:
+################################################################################
+# class bcolors
+# use to get colors iun the terminal
+#
+################################################################################
+
+    black='\033[30m'
+    red='\033[31m'
+    green='\033[32m'
+    orange='\033[33m'
+    blue='\033[34m'
+    purple='\033[35m'
+    cyan='\033[36m'
+    lightgrey='\033[37m'
+    darkgrey='\033[90m'
+    lightred='\033[91m'
+    lightgreen='\033[92m'
+    yellow='\033[93m'
+    lightyellow = '\u001b[33;1m'
+    lightblue='\033[94m'
+    pink='\033[95m'
+    lightcyan='\033[96m'
+
+    endc = '\033[0m'
+    bold = '\033[1m'
+    underline = '\033[4m'
+
+
+    whitebg = '\u001b[47;1m'
+    resetbg = '\u001b[0m'
+    
 ################################################################################
 def change_directory (path_lists, new_dir):
 ################################################################################
@@ -80,40 +114,176 @@ def display_tabular (table, header):
 ################################################################################
     print(tabulate (table, headers= header))
 
+    
 ################################################################################
-def display_list (y_train, y_val, y_test):
+def display_list (x_train, x_val, x_test, y_train, y_val, y_test):
 ################################################################################
 # display_list
-# display the the content of a list
+# display the the content of a list:
 #
 # inputs:
+#  + x_{train, val, test} filenames to get the tags
 #  + y_{train, val, test} labels of a list
 ################################################################################
-    y_unique = np.unique (y_train + y_val + y_test)
+
+    y_unique = np.unique (np.array (list (y_train) + list (y_val) + list (y_test)))
+    tags = [np.array ([get_tag (f) for f in list (x_train)]),
+            np.array ([get_tag (f) for f in list (x_val)]),
+            np.array ([get_tag (f) for f in list (x_test)])]
 
     lines = []
+    last_line = ['-', 'total', 0, 0, 0, 0, 0]
 
+    y_idx_lines = []
+    tags_idx_lines = []
+    
     for i in range (len (y_unique)):
-        line = [i, y_unique [i]]
+        line = [i, f'{bcolors.bold}{y_unique [i]}{bcolors.endc}']
         count = 0
-
+        
+        current_tags = []
+        
+        ## train 
         idx = np.where (np.array (y_train)  == y_unique [i])[0]
         line.append (len (idx))
+        last_line [2] += len (idx)
         count += len (idx)
+        
+        current_tags.append (tags [0][idx])
 
+        ## val
         idx = np.where (np.array (y_val)  == y_unique [i]) [0]
         line.append (len (idx))
+        last_line [3] += len (idx)
         count += len (idx)
-        line.append (count)
 
+        current_tags.append (tags [1][idx])
+                
+        ## train + val
+        line.append (count)
+        last_line [4] += count
+        
+        ## test
         idx = np.where (np.array (y_test)  == y_unique [i]) [0]
         line.append (len (idx))
+        last_line [5] += len (idx)
         count += len (idx)
+        
+        current_tags.append (tags [2][idx])
+        
+        ## totlal
         line.append (count)
+        last_line [6] += count
 
         lines.append (line)
+        y_idx_lines.append (len (lines) - 1)
 
-    print(tabulate (lines, headers= ['idx', 'label', 'train', 'val', 'train + val', 'test', 'total']))
+        tmp_tags_idx_lines = []
+        
+        current_unique_tags = np.unique (np.concatenate ((current_tags [0], current_tags [1], current_tags [2])))
+
+        for j in range (len (current_unique_tags)):
+            
+            line = [f'{i}-{j}', f'{current_unique_tags [j]}']
+            tag_count = 0
+            
+            ## train 
+            idx = np.where (np.array (tags [0])  == current_unique_tags [j])[0]
+            line.append (len (idx))
+            tag_count += len (idx)
+        
+            ## val
+            idx = np.where (np.array (tags [1])  == current_unique_tags [j]) [0]
+            line.append (len (idx))
+                        
+            ## train + val
+            tag_count += len (idx)
+            line.append (tag_count)
+                    
+            ## test
+            idx = np.where (np.array (tags [2])  == current_unique_tags [j]) [0]
+            line.append (len (idx))
+                    
+            ## totlal
+            tag_count += len (idx)
+            line.append (tag_count)
+
+            lines.append (line)
+
+            tmp_tags_idx_lines.append (len (lines) - 1)
+        
+        tags_idx_lines.append (tmp_tags_idx_lines)
+        
+
+    ## add the percentages
+    lines_array = np.array (np.array (lines)[:, 2:], dtype = np.uint32)
+    
+    for i in range (lines_array.shape [1]): ## for each colunm
+        for j in range (len (y_idx_lines)): ## for each label
+            current_percentage = 100*lines_array [y_idx_lines [j], i]/lines_array [y_idx_lines, i].sum ()
+            lines [y_idx_lines [j]][i + 2] = f'{bcolors.lightblue}{lines [y_idx_lines [j]][i + 2]}{bcolors.endc} {bcolors.lightgreen}[{current_percentage:.2f}]{bcolors.endc}'
+            
+            for k in range (len (tags_idx_lines [j])): # for each tags
+                current_percentage_local = 100*lines_array [tags_idx_lines [j][k], i]/lines_array [tags_idx_lines [j], i].sum ()
+                current_percentage_global = 100*lines_array [tags_idx_lines [j][k], i]/lines_array [y_idx_lines, i].sum ()
+
+                lines [tags_idx_lines [j][k]][i + 2] = f'{bcolors.blue}{lines [tags_idx_lines [j][k]][i + 2]}{bcolors.endc}'\
+                    +f' {bcolors.green}[{current_percentage_global:.2f}]{bcolors.endc}'\
+                    +f' {bcolors.yellow}[{current_percentage_local:.2f}]{bcolors.endc}'
+                
+
+    for j in range (len (y_idx_lines)):
+        lines [y_idx_lines [j]][0]  = f'{bcolors.whitebg} {lines [y_idx_lines [j]][0]} {bcolors.resetbg}'
+                
+    for i in range (2, len (last_line) - 1):
+        last_line [i] = f'{bcolors.blue}{last_line [i]}{bcolors.endc} {bcolors.green}[{100*last_line [i]/last_line [-1]:.2f}]{bcolors.endc}'
+        
+    last_line [-1] = f'{bcolors.lightred}{last_line [-1]}{bcolors.endc}'
+
+    lines.append (last_line)
+
+    print(tabulate (lines, headers= [f'{bcolors.bold}idx{bcolors.endc}\nsub-idx',
+                                     f'{bcolors.bold}label{bcolors.endc}\ntag',
+                                     f'{bcolors.bold}train nbr [gobal %] {bcolors.endc}\nnbr [global %] [local %]',
+                                     f'{bcolors.bold}val nbr [gobal %] {bcolors.endc}\nnbr [global %] [local %]',
+                                     f'{bcolors.bold}test nbr [gobal %] {bcolors.endc}\nnbr [global %] [local %]',
+                                     f'{bcolors.bold}total nbr [gobal %] {bcolors.endc}\nnbr [global %] [local %]'], tablefmt="grid"))
+
+    
+# ################################################################################
+# def display_list (y_train, y_val, y_test):
+# ################################################################################
+# # display_list
+# # display the the content of a list
+# #
+# # inputs:
+# #  + y_{train, val, test} labels of a list
+# ################################################################################
+#     y_unique = np.unique (y_train + y_val + y_test)
+
+#     lines = []
+
+#     for i in range (len (y_unique)):
+#         line = [i, y_unique [i]]
+#         count = 0
+
+#         idx = np.where (np.array (y_train)  == y_unique [i])[0]
+#         line.append (len (idx))
+#         count += len (idx)
+
+#         idx = np.where (np.array (y_val)  == y_unique [i]) [0]
+#         line.append (len (idx))
+#         count += len (idx)
+#         line.append (count)
+
+#         idx = np.where (np.array (y_test)  == y_unique [i]) [0]
+#         line.append (len (idx))
+#         count += len (idx)
+#         line.append (count)
+
+#         lines.append (line)
+
+#     print(tabulate (lines, headers= ['idx', 'label', 'train', 'val', 'train + val', 'test', 'total']))
 
 
 
@@ -314,7 +484,7 @@ if __name__ == '__main__':
 
         if (logging.root.level < logging.INFO):
             print ('main generated list:')
-            display_list (y_train, y_val, y_test)
+            display_list (x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test)
 
 
     ## otherwise it is loaded
@@ -325,8 +495,8 @@ if __name__ == '__main__':
         main_list = True
         if (logging.root.level < logging.INFO):
             print ('main loaded list:')
-            display_list (y_train, y_val, y_test)
-
+            display_list (x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test)
+        
     ## creat list from the main list
     if (args.path_tagmap is not None and main_list):
         x_train_filelist, x_del_0, x_trainandtest_filelist,\
@@ -350,15 +520,15 @@ if __name__ == '__main__':
 
         if (logging.root.level < logging.INFO):
             print ('new list:')
-            display_list (y_train, y_val, y_test)
+            display_list (x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test)
 
-            if (len (x_del_0) != 0):
-                print (f'deleted from training: {len (x_del_0)}')
-                display_list (y_del_0, [], [])
+            # if (len (x_del_0) != 0):
+            #     print (f'deleted from training: {len (x_del_0)}')
+            #     display_list (y_del_0, [], [])
 
-            if (len (x_del_1) != 0):
-                print (f'deleted from testing: {len (x_del_1)}')
-                display_list ([], [], y_del_1)
+            # if (len (x_del_1) != 0):
+            #     print (f'deleted from testing: {len (x_del_1)}')
+            #     display_list ([], [], y_del_1)
 
 
 
@@ -390,14 +560,15 @@ if __name__ == '__main__':
 
         if (logging.root.level < logging.INFO):
             print ('generated list:')
-            display_list (y_train, y_val, y_test)
-
+            display_list (x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test)
+            
     ## display a provided list
     elif ((args.path_lists is not None) and  (logging.root.level < logging.INFO)):
-        [_, _, _, y_train, y_val, y_test] = np.load (args.path_lists, allow_pickle = True)
+        [x_train_filelist, x_val_filelist, x_test_filelist,
+         y_train, y_val, y_test] = np.load (args.path_lists, allow_pickle = True)
 
-        display_list (y_train, y_val, y_test)
-
+        display_list (x_train_filelist, x_val_filelist, x_test_filelist, y_train, y_val, y_test)
+            
 
     ## save the computed
     if (args.path_save is not None):
